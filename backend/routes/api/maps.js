@@ -12,7 +12,7 @@ router.get('/:mapId', asyncHandler(async(req, res) => {
     res.json(map)
 }))
 
-router.get('/user/:systemId', asyncHandler(async(req, res) => {
+router.get('/system/:systemId', asyncHandler(async(req, res) => {
     const {systemId} = req.params
     const maps = await Map.findAll({
         where: {

@@ -1,24 +1,16 @@
 import './Home.css'
-import {useDispatch} from 'react-redux'
-import { useEffect } from 'react'
-import {userSystems} from '../../store/systems'
-import { getMap } from '../../store/maps'
-// import { useSelector } from 'react-redux'
+import LoggedInHome from './LoggedInHome'
+
 
 export default function Home({user}) {
-    const dispatch = useDispatch()
-
-
-    useEffect(() => {
-        dispatch(userSystems(user.id))
-        dispatch(getMap(1))
-    }, [dispatch, user.id])
-
-    // const systems = useSelector()
 
     return (
         <>
-            <div>Yo</div>
+            {user ?
+            <LoggedInHome user={user}/>
+            :
+            <div>Welcome, Sign Up Now!</div>
+            }
         </>
     )
 }

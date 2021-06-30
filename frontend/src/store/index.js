@@ -7,7 +7,7 @@ import mapDispatch from './maps'
 const rootReducer = combineReducers({
   session: sessionReducer,
   systems: systemDispatch,
-  map: mapDispatch,
+  maps: mapDispatch,
 });
 
 let enhancer;
