@@ -1,3 +1,4 @@
+import { csrfFetch } from "./csrf"
 
 
 const GET_SYSTEM = 'system/GET_SYSTEM'
@@ -15,21 +16,21 @@ const getUserSystems = (systems) => ({
 
 
 export const getSystem = (systemId) => async dispatch => {
-    const res = await dispatch(`/api/systems/${systemId}`)
+    const res = await csrfFetch(`/api/systems/${systemId}`)
     const data = await res.json()
     dispatch(getASystem(data))
     return res
 }
 
 export const userSystems = (userId) => async dispatch => {
-    const res = await dispatch(`/api/systems/user/${userId}`)
+    const res = await csrfFetch(`/api/systems/user/${userId}`)
     const data = await res.json()
     dispatch(getUserSystems(data))
     return res
 }
 
 
-const systemDispatch = (state, action) => {
+const systemDispatch = (state = {}, action) => {
     let newState;
 
     switch (action.type) {
@@ -39,12 +40,12 @@ const systemDispatch = (state, action) => {
             return newState
         case (USER_SYSTEMS):
             newState = {...state}
-            action.payload.map(system => {
+            action.payload.forEach(system => {
                 newState.userSystems[system.id] = system
             })
             return newState
         default:
-            return newState
+            return state
     }
 }
 

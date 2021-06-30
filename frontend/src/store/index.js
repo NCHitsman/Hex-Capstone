@@ -5,7 +5,7 @@ import systemDispatch from './systems'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  system: systemDispatch
+  systems: systemDispatch
 });
 
 let enhancer;
