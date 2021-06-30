@@ -4,11 +4,10 @@ const { System } = require('../../db/models')
 
 const router = express.Router();
 
-
 router.get('/:systemId', asyncHandler(async(req, res) => {
     const {systemId} = req.params
     const system = await System.findByPk(systemId)
-    return system
+    res.json(system)
 }))
 
 router.get('/user/:userId', asyncHandler(async(req, res) => {
@@ -18,8 +17,7 @@ router.get('/user/:userId', asyncHandler(async(req, res) => {
             owner_id: userId
         }
     })
-    return systems
+    res.json(systems)
 }))
-
 
 module.exports = router;

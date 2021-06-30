@@ -4,11 +4,12 @@ const { Map } = require('../../db/models')
 
 const router = express.Router();
 
+console.log(Map)
 
 router.get('/:mapId', asyncHandler(async(req, res) => {
     const {mapId} = req.params
     const map = await Map.findByPk(mapId)
-    return map
+    res.json(map)
 }))
 
 router.get('/user/:systemId', asyncHandler(async(req, res) => {
@@ -18,7 +19,7 @@ router.get('/user/:systemId', asyncHandler(async(req, res) => {
             system_id: systemId
         }
     })
-    return maps
+    res.json(maps)
 }))
 
 

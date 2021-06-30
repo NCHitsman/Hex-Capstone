@@ -39,7 +39,7 @@ const systemDispatch = (state = {}, action) => {
             newState.system = action.payload
             return newState
         case (USER_SYSTEMS):
-            newState = {...state}
+            newState = {...state, userSystems: {}}
             action.payload.forEach(system => {
                 newState.userSystems[system.id] = system
             })

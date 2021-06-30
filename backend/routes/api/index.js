@@ -9,8 +9,8 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('/systems', systemRouter)
+router.use('/systems', systemRouter);
 
-router.use('/maps', mapRouter)
+router.use('/maps', mapRouter);
 
 module.exports = router;
