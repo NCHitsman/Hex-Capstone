@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { clearMaps } from "../../store/maps";
 import * as sessionActions from '../../store/session';
+import { clearAllSystems } from "../../store/systems";
 import './Navigation.css';
 
 function ProfileButton({ user }) {
@@ -26,6 +28,8 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
+    dispatch(clearAllSystems())
+    dispatch(clearMaps())
     dispatch(sessionActions.logout());
   };
 

@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 const PERMISSION = 'session/PERMISSION'
+const CLEAR = 'session/CLEAR'
 
 const setUser = (user) => {
   return {
@@ -20,6 +21,10 @@ const removeUser = () => {
 const permissions = (permission) => ({
   type: PERMISSION,
   payload: permission,
+})
+
+const clear = () => ({
+  type: CLEAR
 })
 
 export const login = (user) => async (dispatch) => {
@@ -63,6 +68,7 @@ export const logout = () => async (dispatch) => {
   const response = await csrfFetch('/api/session', {
     method: 'DELETE',
   });
+  dispatch(clear())
   dispatch(removeUser());
   return response;
 };
@@ -90,6 +96,9 @@ const sessionReducer = (state = initialState, action) => {
     case PERMISSION:
       newState = Object.assign({}, state);
       newState.permission = action.payload
+      return newState
+    case CLEAR:
+      newState = {}
       return newState
     default:
       return state;

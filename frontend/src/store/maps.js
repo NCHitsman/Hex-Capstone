@@ -55,6 +55,7 @@ const mapDispatch = (state = {}, action) => {
             })
             return newState
         case (CLEAR):
+            newState = {}
             return newState
         default:
             return state

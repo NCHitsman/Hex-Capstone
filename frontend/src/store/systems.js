@@ -10,6 +10,7 @@ const SYSTEM_USERS = 'system/SYSTEM_USERS'
 const CLEAR_SYSUSERS = 'system/CLEAR_SYSUSERS'
 const INVITED_SYSTEMS = 'system/INVITED_SYSTEMS'
 const INVITE_USER = 'system/INVITE_USER'
+const CLEAR = 'SYSTEM/CLEAR'
 
 const getASystem = (system) => ({
     type: GET_SYSTEM,
@@ -52,6 +53,10 @@ const invitedSystems =(systems) => ({
 const inviteAUser = (user) => ({
     type: INVITE_USER,
     payload: user
+})
+
+const clear = () => ({
+    type: CLEAR
 })
 
 export const getSystem = (systemId) => async dispatch => {
@@ -126,6 +131,10 @@ export const inviteUser = (username, level, systemId) => async dispatch => {
     return res
 }
 
+export const clearAllSystems = () => async dispatch => {
+    dispatch(clear())
+}
+
 
 const systemDispatch = (state = {}, action) => {
     let newState = {...state};
@@ -160,6 +169,9 @@ const systemDispatch = (state = {}, action) => {
             return newState
         case (INVITE_USER):
             newState.systemUsers[action.payload.id] = action.payload
+            return newState
+        case (CLEAR):
+            newState = {}
             return newState
         default:
             return state
