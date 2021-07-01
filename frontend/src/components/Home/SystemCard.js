@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { removeSystem } from '../../store/systems'
 
-const SystemCard = ({system}) => {
+const SystemCard = ({system, user}) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -15,13 +15,13 @@ const SystemCard = ({system}) => {
             )}}
         >
             <div>{system.name}</div>
-            <button
+            {system.owner_id === user.id && <button
                 id={system.id}
                 onClick={(e) => {
                     e.stopPropagation()
                     dispatch(removeSystem(system.id))
                     }}
-            >Delete</button>
+            >Delete</button>}
         </div>
     )
 }

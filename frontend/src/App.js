@@ -20,19 +20,19 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
+      {isLoaded && user && (
         <Switch>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
           <Route exact path='/system/:systemId'>
-            <SystemPage user={user}/>
+            <SystemPage user={user} />
           </Route>
           <Route exact path='/createMap'>
             <div>WIP WIP WIP CREATE MAP PAGE WIP WIP WIP</div>
           </Route>
           <Route exact path='/'>
-            <Home user={user}/>
+            <Home user={user} />
           </Route>
         </Switch>
       )}

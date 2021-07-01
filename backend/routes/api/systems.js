@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { System } = require('../../db/models')
+const { Op } = require('sequelize');
+const { System, Permission, User } = require('../../db/models')
 
 const router = express.Router();
 
@@ -31,6 +32,31 @@ router.delete('/remove/:systemId', asyncHandler(async(req, res) => {
     const system = await System.findByPk(systemId)
     system.destroy()
     res.json(systemId)
+}))
+
+router.get('/systemUsers/:systemId', asyncHandler(async(req, res) => {
+    const {systemId} = req.params
+    const users = await Permission.findAll({
+        where: {
+            system_id: systemId
+        },
+        include: User
+    })
+    res.json(users)
+}))
+
+router.get('/invitedSystems/:userId', asyncHandler(async(req, res) => {
+    const {userId} = req.params
+    const systems = await Permission.findAll({
+        where: {
+            user_id: userId,
+            level: {
+                [Op.not]: 1,
+            }
+        },
+        include: System
+    })
+    res.json(systems)
 }))
 
 module.exports = router;

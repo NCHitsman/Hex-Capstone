@@ -42,15 +42,14 @@ export const clearMaps = () => async dispatch => {
 
 
 const mapDispatch = (state = {}, action) => {
-    let newState = {};
+    let newState = {...state};
 
     switch (action.type) {
         case (GET_MAP):
-            newState = {...state}
             newState.map = action.payload
             return newState
         case (USER_MAPS):
-            newState = {...state, systemMaps: {}}
+            newState.systemMaps = {}
             action.payload.forEach(map => {
                 newState.systemMaps[map.id] = map
             })

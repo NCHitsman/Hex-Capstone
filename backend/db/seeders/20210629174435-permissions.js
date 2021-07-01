@@ -21,6 +21,18 @@ module.exports = {
         level:3,
         createdAt: new Date(),
         updatedAt: new Date()
+      },{
+        user_id: 1,
+        system_id: 2,
+        level:1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },{
+        user_id: 1,
+        system_id: 3,
+        level:1,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
     ], {});
   },

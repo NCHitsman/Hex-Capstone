@@ -4,14 +4,14 @@ import { createNewSystem } from "../../store/systems"
 import { useHistory } from 'react-router-dom'
 
 
-const NewSystemForm = ({user}) => {
+const NewSystemForm = ({ user }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [systemName, setSystemName] = useState('')
 
     const newSystemFormSubmitHandler = () => {
         dispatch(createNewSystem(systemName, user.id))
-        .then((res) => history.push(`/system/${res}`))
+            .then((res) => history.push(`/system/${res}`))
     }
 
     return (
@@ -20,14 +20,14 @@ const NewSystemForm = ({user}) => {
             <label>
                 System Name:
                 <input
-                type='text'
-                value={systemName}
-                required={true}
-                onChange={(e) => setSystemName(e.target.value)}
+                    type='text'
+                    value={systemName}
+                    required={true}
+                    onChange={(e) => setSystemName(e.target.value)}
                 />
             </label>
             <button
-            onClick={() => newSystemFormSubmitHandler()}
+                onClick={() => systemName.length > 0 && newSystemFormSubmitHandler()}
             >Submit</button>
         </>
     )

@@ -6,6 +6,9 @@ const USER_SYSTEMS = 'system/USER_SYSTEMS'
 const ADD_SYSTEM = 'system/ADD_SYSTEM'
 const REMOVE_SYSTEM = 'system/REMOVE_SYSTEM'
 const CLEAR_CURRENT = 'system/CLEAR_CURRENT'
+const SYSTEM_USERS = 'system/SYSTEM_USERS'
+const CLEAR_SYSUSERS = 'system/CLEAR_SYSUSERS'
+const INVITED_SYSTEMS = 'system/INVITED_SYSTEMS'
 
 const getASystem = (system) => ({
     type: GET_SYSTEM,
@@ -31,6 +34,19 @@ const clearCurrent = () => ({
     type: CLEAR_CURRENT
 })
 
+const systemUsers = (systemUsers) => ({
+    type: SYSTEM_USERS,
+    payload: systemUsers
+})
+
+const clearSysUsers = () => ({
+    type: CLEAR_SYSUSERS
+})
+
+const invitedSystems =(systems) => ({
+    type: INVITED_SYSTEMS,
+    payload: systems
+})
 
 export const getSystem = (systemId) => async dispatch => {
     const res = await csrfFetch(`/api/systems/${systemId}`)
@@ -70,30 +86,55 @@ export const clearCurrentSystem = () => async dispatch => {
     dispatch(clearCurrent())
 }
 
+export const getSystemUsers = (systemId) => async dispatch => {
+    const res = await csrfFetch(`/api/systems/systemUsers/${systemId}`)
+    const data = await res.json()
+    dispatch(systemUsers(data))
+    return res
+}
+
+export const clearSystemUsers = () => async dispatch => {
+    dispatch(clearSysUsers())
+}
+
+export const getInvitedSystems = (userId) => async dispatch => {
+    const res = await csrfFetch(`/api/systems/invitedSystems/${userId}`)
+    const data = await res.json()
+    dispatch(invitedSystems(data))
+    return res
+}
+
 
 const systemDispatch = (state = {}, action) => {
-    let newState;
+    let newState = {...state};
 
     switch (action.type) {
         case (GET_SYSTEM):
-            newState = {...state}
             newState.system = action.payload
             return newState
         case (USER_SYSTEMS):
-            newState = {...state, userSystems: {}}
+            newState.userSystems = {}
             action.payload.forEach(system => newState.userSystems[system.id] = system)
             return newState
         case (ADD_SYSTEM):
-            newState = {...state}
             newState.userSystems[action.payload.id] = action.payload
             return newState
         case (REMOVE_SYSTEM):
-            newState = {...state}
             delete newState.userSystems[action.payload]
             return newState
         case (CLEAR_CURRENT):
-            newState = {...state}
             delete newState.system
+            return newState
+        case (SYSTEM_USERS):
+            newState.systemUsers = {}
+            action.payload.forEach(user => newState.systemUsers[user.id] = user)
+            return newState
+        case (CLEAR_SYSUSERS):
+            delete newState.systemUsers
+            return newState
+        case (INVITED_SYSTEMS):
+            newState.invitedSystems = {}
+            action.payload.forEach(system => newState.invitedSystems[system.id] = system)
             return newState
         default:
             return state

@@ -1,16 +1,51 @@
+import { useSelector, connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { getUserSystems, clearCurrentSystem, clearSystemUsers, getInvitedSystems } from '../../store/systems'
+import { clearMaps } from '../../store/maps'
+import SystemCard from './SystemCard'
 import './Home.css'
-import LoggedInHome from './LoggedInHome'
+import NewSystemForm from './NewSystemForm'
 
 
-export default function Home({user}) {
+const Home = ({ user, systems }) => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUserSystems(user.id))
+        dispatch(clearMaps())
+        dispatch(clearCurrentSystem())
+        dispatch(clearSystemUsers())
+        dispatch(getInvitedSystems(user.id))
+    }, [dispatch, user])
+
+    const currentSystems = useSelector(state => state.systems.userSystems)
+    const invitedSystems = useSelector(state => state.systems.invitedSystems)
 
     return (
-        <>
-            {user ?
-            <LoggedInHome user={user}/>
-            :
-            <div>Welcome, Sign Up Now!</div>
+        <div>
+            {currentSystems ?
+                <div className='systemCard__cont'>
+                    <div className='systemCard__cont__title'>
+                        Your Systems:
+                    </div>
+                    {currentSystems && Object.values(currentSystems).map((system, i) => (
+                        <SystemCard key={i} system={system} user={user} />
+                    ))}
+                    <div>
+                        <NewSystemForm user={user} />
+                    </div>
+                    <div className='systemCard__cont__title'>Invited Systems:</div>
+                    {invitedSystems && Object.keys(invitedSystems).length > 0 &&
+                        Object.values(invitedSystems).map((system, i) => (
+                            <SystemCard key={i} system={system.System} user={user} />
+                        ))}
+                </div>
+                :
+                <div>Loading...</div>
             }
-        </>
+        </div>
     )
 }
+
+export default connect(state => ({ systems: state.systems }))(Home)
