@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { getSystem, getSystemUsers, inviteUser, removeUser } from "../../store/systems"
+import { getSystem, getSystemUsers, inviteUser, removeUser, getInvitedSystems } from "../../store/systems"
 import { getSystemMaps } from "../../store/maps"
 import MapCard from "./MapCard"
 import { useHistory } from 'react-router-dom'
@@ -40,6 +40,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
 
     const leaveSystemClickHandler = () => {
         dispatch(removeUser(user.id, currentSystem.id))
+        dispatch(getInvitedSystems(user.id))
         history.push('/')
     }
 
