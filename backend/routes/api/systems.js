@@ -24,13 +24,18 @@ router.get('/user/:userId', asyncHandler(async(req, res) => {
 router.post('/new', asyncHandler(async(req, res) => {
     const {id} = await System.create(req.body)
     const system = await System.findByPk(id)
+    await Permission.create({
+        user_id: req.body.owner_id,
+        system_id: id,
+        level: 1,
+    })
     res.json(system)
 }))
 
 router.delete('/remove/:systemId', asyncHandler(async(req, res) => {
     const {systemId} = req.params
     const system = await System.findByPk(systemId)
-    system.destroy()
+    await system.destroy()
     res.json(systemId)
 }))
 
@@ -57,6 +62,26 @@ router.get('/invitedSystems/:userId', asyncHandler(async(req, res) => {
         include: System
     })
     res.json(systems)
+}))
+
+router.post('/inviteUser/:systemId', asyncHandler(async(req, res) => {
+    const {systemId} = req.params
+    const {username, level} = req.body
+    const user = await User.findOne({
+        where: {
+            username
+        }
+    })
+    if (user) {
+        await Permission.create({
+        user_id: user.id,
+        system_id: systemId,
+        level,
+        })
+        res.json(user)
+    } else {
+        res.json('NOT FOUND')
+    }
 }))
 
 module.exports = router;

@@ -19,7 +19,8 @@ module.exports = {
       system_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'Systems' }
+        references: { model: 'Systems' },
+        onDelete: 'CASCADE',
       },
       size: {
         type: Sequelize.INTEGER,

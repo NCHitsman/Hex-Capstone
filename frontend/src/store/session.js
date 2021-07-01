@@ -67,8 +67,8 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
-export const getPermission = (userId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/users/permission/${userId}`)
+export const getPermission = (userId, systemId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/users/permission/${userId}/${systemId}`)
   const data = await res.json()
   dispatch(permissions(data))
   return res

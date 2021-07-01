@@ -15,7 +15,8 @@ module.exports = {
       system_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'Systems' }
+        references: { model: 'Systems' },
+        onDelete: 'CASCADE',
       },
       faction: {
         type: Sequelize.STRING(5),

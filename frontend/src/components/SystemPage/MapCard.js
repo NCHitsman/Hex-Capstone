@@ -15,7 +15,7 @@ const MapCard = ({ map, permissionLevel }) => {
             }}
         >
             <div>{map.name}</div>
-            {permissionLevel <= 1 && <button
+            {permissionLevel <= 2 && <button
                 id={map.id}
                 onClick={(e) => {
                     e.stopPropagation()

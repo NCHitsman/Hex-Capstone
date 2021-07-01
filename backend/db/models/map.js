@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     map_seed: DataTypes.STRING
   }, {});
   Map.associate = function(models) {
-    Map.belongsTo(models.System, {foreignKey:'system_id'})
+    Map.belongsTo(models.System, {foreignKey:'system_id', onDelete: 'cascade'})
   };
   return Map;
 };

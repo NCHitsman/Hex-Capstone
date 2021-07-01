@@ -18,6 +18,11 @@ module.exports = {
           name: 'Test System 3',
           createdAt: new Date(),
           updatedAt: new Date()
+        },{
+          owner_id: 2,
+          name: 'Tester A',
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
     ], {});
   },

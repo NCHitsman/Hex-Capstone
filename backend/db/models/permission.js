@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Permission.associate = function(models) {
     Permission.belongsTo(models.User, {foreignKey:'user_id'})
-    Permission.belongsTo(models.System, {foreignKey:'system_id'})
+    Permission.belongsTo(models.System, {foreignKey:'system_id', onDelete: 'cascade'})
   };
   return Permission;
 };

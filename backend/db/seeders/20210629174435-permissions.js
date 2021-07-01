@@ -12,13 +12,13 @@ module.exports = {
       },{
         user_id: 2,
         system_id: 1,
-        level:2,
+        level:3,
         createdAt: new Date(),
         updatedAt: new Date()
       },{
         user_id: 3,
         system_id: 1,
-        level:3,
+        level:4,
         createdAt: new Date(),
         updatedAt: new Date()
       },{
@@ -31,6 +31,12 @@ module.exports = {
         user_id: 1,
         system_id: 3,
         level:1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },{
+        user_id: 1,
+        system_id: 4,
+        level:2,
         createdAt: new Date(),
         updatedAt: new Date()
       },

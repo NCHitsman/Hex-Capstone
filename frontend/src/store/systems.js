@@ -9,6 +9,7 @@ const CLEAR_CURRENT = 'system/CLEAR_CURRENT'
 const SYSTEM_USERS = 'system/SYSTEM_USERS'
 const CLEAR_SYSUSERS = 'system/CLEAR_SYSUSERS'
 const INVITED_SYSTEMS = 'system/INVITED_SYSTEMS'
+const INVITE_USER = 'system/INVITE_USER'
 
 const getASystem = (system) => ({
     type: GET_SYSTEM,
@@ -46,6 +47,11 @@ const clearSysUsers = () => ({
 const invitedSystems =(systems) => ({
     type: INVITED_SYSTEMS,
     payload: systems
+})
+
+const inviteAUser = (user) => ({
+    type: INVITE_USER,
+    payload: user
 })
 
 export const getSystem = (systemId) => async dispatch => {
@@ -104,6 +110,22 @@ export const getInvitedSystems = (userId) => async dispatch => {
     return res
 }
 
+export const inviteUser = (username, level, systemId) => async dispatch => {
+    const res = await csrfFetch(`/api/systems/inviteUser/${systemId}`, {
+        method: 'POST',
+        body: JSON.stringify({
+            username,
+            level
+        })
+    })
+    const data = await res.json()
+    if (data === 'NOT FOUND') {
+        return data
+    }
+    dispatch(inviteAUser(data))
+    return res
+}
+
 
 const systemDispatch = (state = {}, action) => {
     let newState = {...state};
@@ -135,6 +157,9 @@ const systemDispatch = (state = {}, action) => {
         case (INVITED_SYSTEMS):
             newState.invitedSystems = {}
             action.payload.forEach(system => newState.invitedSystems[system.id] = system)
+            return newState
+        case (INVITE_USER):
+            newState.systemUsers[action.payload.id] = action.payload
             return newState
         default:
             return state

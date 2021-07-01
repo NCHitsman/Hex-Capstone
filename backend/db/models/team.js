@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     points: DataTypes.INTEGER
   }, {});
   Team.associate = function(models) {
-    Team.belongsTo(models.System, {foreignKey: 'system_id'})
+    Team.belongsTo(models.System, {foreignKey: 'system_id', onDelete: 'cascade'})
     Team.hasMany(models.Team_Player, {foreignKey: 'team_id'})
   };
   return Team;

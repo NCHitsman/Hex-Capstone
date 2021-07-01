@@ -75,6 +75,14 @@ module.exports = {
         map_seed: null,
         createdAt: new Date(),
         updatedAt: new Date()
+      },{
+        name: "Test World A",
+        type: "[PLT]",
+        system_id: 4,
+        size: 64,
+        map_seed: null,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
     ], {});
   },

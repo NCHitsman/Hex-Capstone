@@ -43,11 +43,12 @@ router.post(
     }),
 );
 
-router.get(`/permission/:userId`, asyncHandler(async (req, res) => {
-    const { userId } = req.params
+router.get(`/permission/:userId/:systemId`, asyncHandler(async (req, res) => {
+    const { userId, systemId } = req.params
     const permission = await Permission.findOne({
         where: {
             user_id: userId,
+            system_id: systemId,
         }
     })
     res.json(permission)
