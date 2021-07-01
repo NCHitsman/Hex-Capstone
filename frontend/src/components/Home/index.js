@@ -38,7 +38,7 @@ const Home = ({ user, systems }) => {
                     <div className='systemCard__cont__title'>Invited Systems:</div>
                     {invitedSystems && Object.keys(invitedSystems).length > 0 &&
                         Object.values(invitedSystems).map((system, i) => (
-                            <SystemCard key={i} system={system.System} user={user} />
+                            <SystemCard key={i} system={system.System} user={user} pend={system.status === '[ACPT]' ? false : true}/>
                         ))}
                 </div>
                 :

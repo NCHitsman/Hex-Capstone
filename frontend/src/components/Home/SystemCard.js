@@ -1,11 +1,16 @@
 import './Home.css'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { removeSystem } from '../../store/systems'
+import { removeSystem, acceptInvite } from '../../store/systems'
 
-const SystemCard = ({system, user}) => {
+const SystemCard = ({system, user, pend}) => {
     const dispatch = useDispatch()
     const history = useHistory()
+
+    const acceptInviteClickHandler = (e) => {
+        e.stopPropagation()
+        dispatch(acceptInvite(user.id, system.id))
+    }
 
     return (
         <div
@@ -15,13 +20,18 @@ const SystemCard = ({system, user}) => {
             )}}
         >
             <div>{system.name}</div>
-            {system.owner_id === user.id && <button
+            {system.owner_id === user.id ? <button
                 id={system.id}
                 onClick={(e) => {
                     e.stopPropagation()
                     dispatch(removeSystem(system.id))
                     }}
-            >Delete</button>}
+            >Delete</button>
+            : pend &&
+            <button
+            onClick={(e) => acceptInviteClickHandler(e)}
+            >Accept Invite</button>
+            }
         </div>
     )
 }

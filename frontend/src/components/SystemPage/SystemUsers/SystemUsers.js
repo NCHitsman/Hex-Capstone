@@ -18,7 +18,7 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser }) => {
                 return 'Co-Owner'
             case 3:
                 return 'Editor'
-            case 4:
+            default:
                 return 'Viewer'
         }
     }
@@ -38,7 +38,11 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser }) => {
                     >Remove</button>
                     }
 
+                    {user.status === '[ACPT]' ?
                     <div>{permissionTitle(user.level)}</div>
+                    :
+                    <div>PENDING</div>
+                    }
                 </div>
             ))}
         </div>

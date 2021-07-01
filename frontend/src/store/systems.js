@@ -11,6 +11,7 @@ const CLEAR_SYSUSERS = 'system/CLEAR_SYSUSERS'
 const INVITED_SYSTEMS = 'system/INVITED_SYSTEMS'
 const CLEAR = 'system/CLEAR'
 const REMOVE_USER = 'system/REMOVE_USER'
+const ACCEPT_INVITE = 'system/ACCEPT_INVITE'
 
 const getASystem = (system) => ({
     type: GET_SYSTEM,
@@ -57,6 +58,11 @@ const clear = () => ({
 const removeAUser = (userId) => ({
     type: REMOVE_USER,
     payload: userId
+})
+
+const acceptAnInvite = (permission) => ({
+    type: ACCEPT_INVITE,
+    payload: permission
 })
 
 export const getSystem = (systemId) => async dispatch => {
@@ -141,6 +147,13 @@ export const removeUser = (userId, systemId, i = null) => async dispatch => {
     return res
 }
 
+export const acceptInvite = (userId, systemId) => async dispatch => {
+    const res = await csrfFetch(`/api/systems/acceptInvite/${userId}/${systemId}`, {method: 'PATCH'})
+    const data = await res.json()
+    dispatch(acceptAnInvite(data))
+    return res
+}
+
 const systemDispatch = (state = {}, action) => {
     let newState = {...state};
 
@@ -176,6 +189,9 @@ const systemDispatch = (state = {}, action) => {
             return newState
         case (REMOVE_USER):
             delete newState.systemUsers[action.payload]
+            return newState
+        case (ACCEPT_INVITE):
+            newState.invitedSystems[action.payload.id] = action.payload
             return newState
         default:
             return state

@@ -49,6 +49,7 @@ router.get(`/permission/:userId/:systemId`, asyncHandler(async (req, res) => {
         where: {
             user_id: userId,
             system_id: systemId,
+            status: '[ACPT]'
         }
     })
     res.json(permission)

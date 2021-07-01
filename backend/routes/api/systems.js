@@ -28,6 +28,7 @@ router.post('/new', asyncHandler(async(req, res) => {
         user_id: req.body.owner_id,
         system_id: id,
         level: 1,
+        status: '[ACPT]'
     })
     res.json(system)
 }))
@@ -78,6 +79,7 @@ router.post('/inviteUser/:systemId', asyncHandler(async(req, res) => {
         user_id: user.id,
         system_id: systemId,
         level,
+        status: '[PEND]'
         })
         let users = await Permission.findAll({
             where: {
@@ -101,7 +103,26 @@ router.delete(`/removeUser/:systemId/:userId`, asyncHandler(async(req, res) => {
         }
     })
     await premission.destroy()
-    res.json('Sucsess')
+    res.json('Success')
+}))
+
+router.patch(`/acceptInvite/:userId/:systemId`, asyncHandler(async(req, res) => {
+    const {userId, systemId} = req.params
+    await Permission.update({status: '[ACPT]'}, {
+        where: {
+            user_id: userId,
+            system_id: systemId,
+            status: '[PEND]'
+        }
+    })
+    const premission = await Permission.findOne({
+        where: {
+            user_id: userId,
+            system_id: systemId,
+        },
+        include: System
+    })
+    res.json(premission)
 }))
 
 module.exports = router;
