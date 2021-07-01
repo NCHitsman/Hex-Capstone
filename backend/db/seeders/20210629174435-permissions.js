@@ -39,6 +39,12 @@ module.exports = {
         level:2,
         createdAt: new Date(),
         updatedAt: new Date()
+      },{
+        user_id: 2,
+        system_id: 4,
+        level:1,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
     ], {});
   },

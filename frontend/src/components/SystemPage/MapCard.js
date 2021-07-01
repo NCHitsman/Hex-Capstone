@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 
-const MapCard = ({ map, permissionLevel }) => {
+const MapCard = ({ map, showRemove }) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -15,7 +15,7 @@ const MapCard = ({ map, permissionLevel }) => {
             }}
         >
             <div>{map.name}</div>
-            {permissionLevel <= 2 && <button
+            {showRemove && <button
                 id={map.id}
                 onClick={(e) => {
                     e.stopPropagation()

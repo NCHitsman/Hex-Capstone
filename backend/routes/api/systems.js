@@ -45,7 +45,8 @@ router.get('/systemUsers/:systemId', asyncHandler(async(req, res) => {
         where: {
             system_id: systemId
         },
-        include: User
+        include: User,
+        order: [['level', 'ASC']]
     })
     res.json(users)
 }))
@@ -78,10 +79,29 @@ router.post('/inviteUser/:systemId', asyncHandler(async(req, res) => {
         system_id: systemId,
         level,
         })
-        res.json(user)
+        let users = await Permission.findAll({
+            where: {
+                system_id: systemId
+            },
+            include: User,
+            order: [['level', 'ASC']]
+        })
+        res.json(users)
     } else {
         res.json('NOT FOUND')
     }
+}))
+
+router.delete(`/removeUser/:systemId/:userId`, asyncHandler(async(req, res) => {
+    const {systemId, userId} = req.params
+    const premission = await Permission.findOne({
+        where: {
+            user_id: userId,
+            system_id: systemId
+        }
+    })
+    await premission.destroy()
+    res.json('Sucsess')
 }))
 
 module.exports = router;
