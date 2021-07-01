@@ -61,7 +61,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                         <MapCard key={i} map={map} showRemove={showRemove} />
                     ))}
 
-                    {showRemove ? <button
+                    {permissionLevel <= 2 ? <button
                         onClick={() => history.push('/createMap')}
                         >Create New Map</button>
                         :
@@ -78,7 +78,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                     <div>.</div>
                     <div>.</div>
 
-                    {showRemove &&
+                    {permissionLevel <= 2 &&
                     <>
                         <div>{error}</div>
                         <label>Invite User:
