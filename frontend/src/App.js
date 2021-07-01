@@ -28,6 +28,9 @@ function App() {
           <Route exact path='/system/:systemId'>
             <SystemPage user={user}/>
           </Route>
+          <Route exact path='/createMap'>
+            <div>WIP WIP WIP CREATE MAP PAGE WIP WIP WIP</div>
+          </Route>
           <Route exact path='/'>
             <Home user={user}/>
           </Route>
