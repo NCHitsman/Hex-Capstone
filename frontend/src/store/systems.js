@@ -171,12 +171,13 @@ const systemDispatch = (state = {}, action) => {
     let newState = {...state};
 
     switch (action.type) {
-        case (GET_SYSTEM):
-            newState.system = action.payload
-            return newState
         case (USER_SYSTEMS):
             newState.userSystems = {}
             action.payload.forEach(system => newState.userSystems[system.id] = system)
+            return newState
+        case (INVITED_SYSTEMS):
+            newState.invitedSystems = {}
+            action.payload.forEach(system => newState.invitedSystems[system.id] = system)
             return newState
         case (ADD_SYSTEM):
             newState.userSystems[action.payload.id] = action.payload
@@ -184,21 +185,11 @@ const systemDispatch = (state = {}, action) => {
         case (REMOVE_SYSTEM):
             delete newState.userSystems[action.payload]
             return newState
-        case (CLEAR_CURRENT):
-            delete newState.system
+        case (GET_SYSTEM):
+            newState.system = action.payload
             return newState
         case (SYSTEM_USERS):
             newState.systemUsers = action.payload
-            return newState
-        case (CLEAR_SYSUSERS):
-            delete newState.systemUsers
-            return newState
-        case (INVITED_SYSTEMS):
-            newState.invitedSystems = {}
-            action.payload.forEach(system => newState.invitedSystems[system.id] = system)
-            return newState
-        case (CLEAR):
-            newState = {}
             return newState
         case (REMOVE_USER):
             delete newState.systemUsers[action.payload]
@@ -207,9 +198,16 @@ const systemDispatch = (state = {}, action) => {
             newState.invitedSystems[action.payload.id] = action.payload
             return newState
         case (DECLINE_INVITE):
-            console.log(action.payload)
-            console.log(newState.invitedSystems)
             delete newState.invitedSystems[action.payload]
+            return newState
+        case (CLEAR_CURRENT):
+            delete newState.system
+            return newState
+        case (CLEAR_SYSUSERS):
+            delete newState.systemUsers
+            return newState
+        case (CLEAR):
+            newState = {}
             return newState
         default:
             return state

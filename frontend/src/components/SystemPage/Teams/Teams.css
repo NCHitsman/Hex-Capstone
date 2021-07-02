@@ -1,18 +1,18 @@
-
-.systemCard__cont{
-    background-color: lightcyan;
+.teams__parent__cont{
+    background-color: #8AA39B;
     min-height: calc(100vh - 50px - 45px);
     margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 20%;
-    min-width: 20%;
+    max-width: 75%;
+    min-width: 75%;
     border-radius: 10px;
-    border: 1px solid black
+    border: 1px solid black;
 }
 
-.systemCard__cont__title{
+
+.teams__title{
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 32px;

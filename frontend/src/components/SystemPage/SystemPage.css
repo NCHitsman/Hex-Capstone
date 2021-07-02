@@ -1,0 +1,5 @@
+.systemPage__parent__cont{
+    display: flex;
+    min-width: 100%;
+    justify-content: space-evenly;
+}

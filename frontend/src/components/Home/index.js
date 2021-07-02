@@ -12,7 +12,7 @@ const Home = ({ user, systems }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getUserSystems(user.id))
+        dispatch(getUserSystems(user.id))   //TODO GHOST BUG NEED TO BE FIXED
         dispatch(getInvitedSystems(user.id))
         dispatch(clearCurrentSystem())
         dispatch(clearSystemUsers())
@@ -41,6 +41,7 @@ const Home = ({ user, systems }) => {
                             <SystemCard key={i} system={system.System} user={user} pend={system.status === '[ACPT]' ? false : true}/>
                         ))}
                 </div>
+
                 :
                 <div>Loading...</div>
             }
