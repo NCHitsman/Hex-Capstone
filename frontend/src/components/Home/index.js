@@ -12,7 +12,7 @@ const Home = ({ user, systems }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getUserSystems(user.id))   //TODO GHOST BUG NEED TO BE FIXED
+        dispatch(getUserSystems(user.id))
         dispatch(getInvitedSystems(user.id))
         dispatch(clearCurrentSystem())
         dispatch(clearSystemUsers())
@@ -38,7 +38,7 @@ const Home = ({ user, systems }) => {
                     <div className='systemCard__cont__title'>Invited Systems:</div>
                     {invitedSystems && Object.keys(invitedSystems).length > 0 &&
                         Object.values(invitedSystems).map((system, i) => (
-                            <SystemCard key={i} system={system.System} user={user} pend={system.status === '[ACPT]' ? false : true}/>
+                            <SystemCard key={i} system={system.System} user={user} pend={system.status === '[ACPT]' ? false : true} />
                         ))}
                 </div>
 

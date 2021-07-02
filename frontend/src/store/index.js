@@ -1,13 +1,15 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from './session';
-import systemDispatch from './systems'
-import mapDispatch from './maps'
+import systemReducer from './systems'
+import mapReducer from './maps'
+import teamReducer from './teams'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  systems: systemDispatch,
-  maps: mapDispatch,
+  systems: systemReducer,
+  maps: mapReducer,
+  teams: teamReducer
 });
 
 let enhancer;

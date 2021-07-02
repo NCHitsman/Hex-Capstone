@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { Op } = require('sequelize');
-const { System, Permission, User } = require('../../db/models')
+const { System, Permission, User, Team } = require('../../db/models')
 
 const router = express.Router();
 
@@ -136,6 +136,16 @@ router.delete('/declineInvite/:userId/:systemId', asyncHandler(async(req, res) =
     const permissionId = premission.id
     await premission.destroy()
     res.json(permissionId)
+}))
+
+router.get('/teams/:systemId', asyncHandler(async(req, res) => {
+    const {systemId} = req.params
+    const teams = await Team.findAll({
+        where: {
+            system_id: systemId
+        }
+    })
+    res.json(teams)
 }))
 
 module.exports = router;

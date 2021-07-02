@@ -47,7 +47,7 @@ const clearSysUsers = () => ({
     type: CLEAR_SYSUSERS
 })
 
-const invitedSystems =(systems) => ({
+const invitedSystems = (systems) => ({
     type: INVITED_SYSTEMS,
     payload: systems
 })
@@ -99,7 +99,7 @@ export const createNewSystem = (name, owner_id) => async dispatch => {
 }
 
 export const removeSystem = (systemId) => async dispatch => {
-    const res = await csrfFetch(`/api/systems/remove/${systemId}`, {method: 'DELETE'})
+    const res = await csrfFetch(`/api/systems/remove/${systemId}`, { method: 'DELETE' })
     const data = await res.json()
     dispatch(removeASystem(data))
     return res
@@ -148,27 +148,27 @@ export const clearAllSystems = () => async dispatch => {
 }
 
 export const removeUser = (userId, systemId, i = null) => async dispatch => {
-    const res = await csrfFetch(`/api/systems/removeUser/${systemId}/${userId}`, {method: 'DELETE'})
+    const res = await csrfFetch(`/api/systems/removeUser/${systemId}/${userId}`, { method: 'DELETE' })
     if (i) dispatch(removeAUser(i))
     return res
 }
 
 export const acceptInvite = (userId, systemId) => async dispatch => {
-    const res = await csrfFetch(`/api/systems/acceptInvite/${userId}/${systemId}`, {method: 'PATCH'})
+    const res = await csrfFetch(`/api/systems/acceptInvite/${userId}/${systemId}`, { method: 'PATCH' })
     const data = await res.json()
     dispatch(acceptAnInvite(data))
     return res
 }
 
 export const declineInvite = (userId, systemId) => async dispatch => {
-    const res = await csrfFetch(`/api/systems/declineInvite/${userId}/${systemId}`, {method: 'DELETE'})
+    const res = await csrfFetch(`/api/systems/declineInvite/${userId}/${systemId}`, { method: 'DELETE' })
     const data = await res.json()
     dispatch(declineAnInvite(data))
     return res
 }
 
-const systemDispatch = (state = {}, action) => {
-    let newState = {...state};
+const systemReducer = (state = {}, action) => {
+    let newState = { ...state };
 
     switch (action.type) {
         case (USER_SYSTEMS):
@@ -215,4 +215,4 @@ const systemDispatch = (state = {}, action) => {
 }
 
 
-export default systemDispatch
+export default systemReducer

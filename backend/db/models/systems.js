@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     System.hasMany(models.Permission, {foreignKey:'system_id'})
     System.hasMany(models.Team, {foreignKey:'system_id'})
     System.hasMany(models.Map, {foreignKey:'system_id'})
+    System.hasMany(models.Team_Player, {foreignKey:'system_id'})
   };
   return System;
 };

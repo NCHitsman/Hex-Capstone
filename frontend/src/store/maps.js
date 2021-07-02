@@ -41,7 +41,7 @@ export const clearMaps = () => async dispatch => {
 }
 
 
-const mapDispatch = (state = {}, action) => {
+const mapReducer = (state = {}, action) => {
     let newState = {...state};
 
     switch (action.type) {
@@ -63,4 +63,4 @@ const mapDispatch = (state = {}, action) => {
 }
 
 
-export default mapDispatch
+export default mapReducer

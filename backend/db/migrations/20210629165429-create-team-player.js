@@ -16,7 +16,14 @@ module.exports = {
       team_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'Teams' }
+        references: { model: 'Teams' },
+        onDelete: 'CASCADE',
+      },
+      system_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Systems' },
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
