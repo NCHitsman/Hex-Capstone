@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { getSystem, getSystemUsers, inviteUser, removeUser, getInvitedSystems, clearCurrentSystem, clearSystemUsers } from "../../store/systems"
-import { clearMaps, getSystemMaps } from "../../store/maps"
+import { getSystem, getSystemUsers, inviteUser, removeUser, getInvitedSystems } from "../../store/systems"
+import { getSystemMaps } from "../../store/maps"
 import MapCard from "./MapCard"
 import { useHistory } from 'react-router-dom'
 import SystemUsers from "./SystemUsers/SystemUsers"
 import { getPermission } from "../../store/session"
 import './SystemPage.css'
 import Teams from './Teams/Teams'
-import { getTeams } from "../../store/teams"
+import { getTeams, getTeamPlayers } from "../../store/teams"
 
 const SystemPage = ({ user, maps, systems, session }) => {
     const { systemId } = useParams()
@@ -26,6 +26,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
         dispatch(getSystemUsers(systemId))
         dispatch(getPermission(user.id, systemId))
         dispatch(getTeams(systemId))
+        dispatch(getTeamPlayers(systemId))
     }, [dispatch, systemId, user.id])
 
     const currentSystem = useSelector(state => state.systems.system)
@@ -112,7 +113,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                                     onClick={() => leaveSystemClickHandler()}
                                 >Leave System</button>}
                         </div>
-                        <Teams teams={teams} />
+                        {teams && <Teams teams={teams} />}
                     </div>
                     :
                     <div>DO NOT HAVE PERMISSION</div>

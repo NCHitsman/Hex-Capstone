@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { Op } = require('sequelize');
-const { System, Permission, User, Team } = require('../../db/models')
+const { System, Permission, User, Team, Team_Player } = require('../../db/models')
 
 const router = express.Router();
 
@@ -146,6 +146,17 @@ router.get('/teams/:systemId', asyncHandler(async(req, res) => {
         }
     })
     res.json(teams)
+}))
+
+router.get('/teamPlayers/:systemId', asyncHandler(async(req, res) => {
+    const {systemId} = req.params
+    const players = await Team_Player.findAll({
+        where: {
+            system_id: systemId
+        },
+        include: User
+    })
+    res.json(players)
 }))
 
 module.exports = router;
