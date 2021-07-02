@@ -36,12 +36,15 @@ const teamReducer = (state = {}, action) => {
             action.payload.forEach(team => newState[team.id] = team)
             return newState
         case GET_PLAYERS:
+            newState.players = {}
             action.payload.forEach(player => {
                 newState[player.team_id].players ?
                 newState[player.team_id].players = [...newState[player.team_id].players, player]
                 :
-                newState[player.team_id].players = [player]
+                newState[player.team_id].players = [player];
+                newState.players[player.user_id] = player
             })
+            return newState
         default:
             return state
     }

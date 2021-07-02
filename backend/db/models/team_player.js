@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   Team_Player.associate = function(models) {
     Team_Player.belongsTo(models.Team, {foreignKey: 'team_id'})
     Team_Player.belongsTo(models.User, {foreignKey: 'user_id'})
-    Team_Player.belongsTo(models.System, {foreignKey: 'system_id'})
+    Team_Player.belongsTo(models.System, {foreignKey: 'system_id', onDelete: 'cascade'})
   };
   return Team_Player;
 };

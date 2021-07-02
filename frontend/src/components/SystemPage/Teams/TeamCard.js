@@ -3,12 +3,10 @@ import factionSwitch from "./factionSwitch"
 
 const TeamCard = ({team}) => {
 
-    const faction = factionSwitch(team.faction)
-
-    console.log('PLAYERS =>>>>>', team.players)
+    const [faction, color] = factionSwitch(team.faction)
 
     return (
-        <div className='teamcard__cont'>
+        <div className='teamcard__cont' style={{backgroundColor: color}}>
             <div>{team.name}</div>
             <div>{faction}</div>
             <div>{team.points}</div>

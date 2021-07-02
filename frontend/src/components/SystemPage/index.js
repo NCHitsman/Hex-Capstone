@@ -26,7 +26,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
         dispatch(getSystemUsers(systemId))
         dispatch(getPermission(user.id, systemId))
         dispatch(getTeams(systemId))
-        dispatch(getTeamPlayers(systemId))
+        .then(() => dispatch(getTeamPlayers(systemId)))
     }, [dispatch, systemId, user.id])
 
     const currentSystem = useSelector(state => state.systems.system)
@@ -113,7 +113,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                                     onClick={() => leaveSystemClickHandler()}
                                 >Leave System</button>}
                         </div>
-                        {teams && <Teams teams={teams} />}
+                        {teams.players && <Teams teams={teams} />}
                     </div>
                     :
                     <div>DO NOT HAVE PERMISSION</div>

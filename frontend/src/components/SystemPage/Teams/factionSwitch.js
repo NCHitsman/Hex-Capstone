@@ -1,11 +1,11 @@
 const factionSwitch = (faction) => {
     switch (faction) {
         case '[NCR]':
-            return 'Necrons'
+            return ['Necrons', 'lightgreen']
         case '[SOB]':
-            return 'Sisters of Battle'
+            return ['Sisters of Battle', 'pink']
         default:
-            return 'not set'
+            return ['not set', 'white']
     }
 }
 

@@ -18,6 +18,11 @@ module.exports = {
         references: { model: 'Systems' },
         onDelete: 'CASCADE',
       },
+      owner_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Users' }
+      },
       faction: {
         type: Sequelize.STRING(5),
         allowNull: false
