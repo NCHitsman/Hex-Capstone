@@ -1,7 +1,7 @@
 import './Home.css'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { removeSystem, acceptInvite } from '../../store/systems'
+import { removeSystem, acceptInvite, declineInvite } from '../../store/systems'
 
 const SystemCard = ({system, user, pend}) => {
     const dispatch = useDispatch()
@@ -10,6 +10,11 @@ const SystemCard = ({system, user, pend}) => {
     const acceptInviteClickHandler = (e) => {
         e.stopPropagation()
         dispatch(acceptInvite(user.id, system.id))
+    }
+
+    const declineInviteClickHandler = (e) => {
+        e.stopPropagation()
+        dispatch(declineInvite(user.id, system.id))
     }
 
     return (
@@ -28,9 +33,15 @@ const SystemCard = ({system, user, pend}) => {
                     }}
             >Delete</button>
             : pend &&
-            <button
-            onClick={(e) => acceptInviteClickHandler(e)}
-            >Accept Invite</button>
+            <>
+                <button
+                onClick={(e) => acceptInviteClickHandler(e)}
+                >Accept</button>
+                <button
+                onClick={(e) => declineInviteClickHandler(e)}
+                >Decline
+                </button>
+            </>
             }
         </div>
     )

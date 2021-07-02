@@ -13,10 +13,10 @@ const Home = ({ user, systems }) => {
 
     useEffect(() => {
         dispatch(getUserSystems(user.id))
-        dispatch(clearMaps())
+        dispatch(getInvitedSystems(user.id))
         dispatch(clearCurrentSystem())
         dispatch(clearSystemUsers())
-        dispatch(getInvitedSystems(user.id))
+        dispatch(clearMaps())
     }, [dispatch, user])
 
     const currentSystems = useSelector(state => state.systems.userSystems)

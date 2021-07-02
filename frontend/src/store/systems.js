@@ -12,6 +12,7 @@ const INVITED_SYSTEMS = 'system/INVITED_SYSTEMS'
 const CLEAR = 'system/CLEAR'
 const REMOVE_USER = 'system/REMOVE_USER'
 const ACCEPT_INVITE = 'system/ACCEPT_INVITE'
+const DECLINE_INVITE = 'system/DECLINE_INVITE'
 
 const getASystem = (system) => ({
     type: GET_SYSTEM,
@@ -63,6 +64,11 @@ const removeAUser = (userId) => ({
 const acceptAnInvite = (permission) => ({
     type: ACCEPT_INVITE,
     payload: permission
+})
+
+const declineAnInvite = (systemId) => ({
+    type: DECLINE_INVITE,
+    payload: systemId
 })
 
 export const getSystem = (systemId) => async dispatch => {
@@ -154,6 +160,13 @@ export const acceptInvite = (userId, systemId) => async dispatch => {
     return res
 }
 
+export const declineInvite = (userId, systemId) => async dispatch => {
+    const res = await csrfFetch(`/api/systems/declineInvite/${userId}/${systemId}`, {method: 'DELETE'})
+    const data = await res.json()
+    dispatch(declineAnInvite(data))
+    return res
+}
+
 const systemDispatch = (state = {}, action) => {
     let newState = {...state};
 
@@ -192,6 +205,11 @@ const systemDispatch = (state = {}, action) => {
             return newState
         case (ACCEPT_INVITE):
             newState.invitedSystems[action.payload.id] = action.payload
+            return newState
+        case (DECLINE_INVITE):
+            console.log(action.payload)
+            console.log(newState.invitedSystems)
+            delete newState.invitedSystems[action.payload]
             return newState
         default:
             return state

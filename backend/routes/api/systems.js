@@ -125,4 +125,17 @@ router.patch(`/acceptInvite/:userId/:systemId`, asyncHandler(async(req, res) => 
     res.json(premission)
 }))
 
+router.delete('/declineInvite/:userId/:systemId', asyncHandler(async(req, res) => {
+    const {userId, systemId} = req.params
+    const premission = await Permission.findOne({
+        where: {
+            user_id: userId,
+            system_id: systemId
+        }
+    })
+    const permissionId = premission.id
+    await premission.destroy()
+    res.json(permissionId)
+}))
+
 module.exports = router;
