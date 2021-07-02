@@ -18,6 +18,8 @@ const SystemPage = ({ user, maps, systems, session }) => {
     const [invitee, setInvitee] = useState('')
     const [level, setLevel] = useState('4')
     const [error, setError] = useState('')
+    const [loaded, setLoaded] = useState(false)
+    const [loadedPlayers, setLoadedPlayers] = useState(false)
     const [showRemove, setShowRemove] = useState(false)
 
     useEffect(() => {
@@ -27,6 +29,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
         dispatch(getPermission(user.id, systemId))
         dispatch(getTeams(systemId))
         .then(() => dispatch(getTeamPlayers(systemId)))
+        .then(() => setLoadedPlayers(true))
     }, [dispatch, systemId, user.id])
 
     const currentSystem = useSelector(state => state.systems.system)
@@ -50,9 +53,15 @@ const SystemPage = ({ user, maps, systems, session }) => {
         history.push('/')
     }
 
+    useEffect(() => {
+        if (systemMaps && currentSystem && systemUsers && teams.players && permissionLevel && loadedPlayers) {
+            setLoaded(true)
+        }
+    }, [systemMaps, currentSystem, systemUsers, teams.players, permissionLevel, loadedPlayers])
+
     return (
         <div>
-            {systemMaps && currentSystem && systemUsers ?
+            {loaded ?
                 permissionLevel ?
                     <div className='systemPage__parent__cont'>
                         <div className='systemCard__cont'>
@@ -113,7 +122,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                                     onClick={() => leaveSystemClickHandler()}
                                 >Leave System</button>}
                         </div>
-                        {teams.players && <Teams teams={teams} />}
+                        {teams.players && <Teams teams={teams} user={user} systemUsers={systemUsers} systemId={currentSystem.id}/>}
                     </div>
                     :
                     <div>DO NOT HAVE PERMISSION</div>

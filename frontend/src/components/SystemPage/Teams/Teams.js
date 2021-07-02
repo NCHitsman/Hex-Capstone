@@ -1,7 +1,8 @@
 import './Teams.css'
 import TeamCard from './TeamCard'
 
-const Teams = ({teams}) => {
+const Teams = ({teams, user, systemUsers, systemId}) => {
+
 
 
     return (
@@ -11,9 +12,10 @@ const Teams = ({teams}) => {
                 {Object.entries(teams).map(([key, team], i) => {
                     if (key !== 'players') {
                         return(
-                        <TeamCard key={i} team={team}/>
+                        <TeamCard key={i} team={team} user={user} systemUsers={systemUsers} systemId={systemId}/>
                         )
                     }
+                    return null
                     })}
             </div>
         </div>

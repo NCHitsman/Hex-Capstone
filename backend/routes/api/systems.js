@@ -159,4 +159,35 @@ router.get('/teamPlayers/:systemId', asyncHandler(async(req, res) => {
     res.json(players)
 }))
 
+router.delete('/deleteTeam/:teamId', asyncHandler(async(req, res) => {
+    const {teamId} = req.params
+    const team = await Team.findByPk(teamId)
+    await team.destroy()
+    res.json(teamId)
+}))
+
+router.delete('/removeUserTeam/:userId/:teamId', asyncHandler(async(req, res) => {
+    const {userId, teamId} = req.params
+    const teamPlayer = await Team_Player.findOne({
+        where: {
+            user_id: userId,
+            team_id: teamId
+        }
+    })
+    await teamPlayer.destroy()
+    const teamPlayers = await Team_Player.findAll({
+        where: {
+            team_id: teamId
+        },
+        include: User
+    })
+    res.json(teamPlayers)
+}))
+
+router.post('/addUserTeam', asyncHandler(async(req, res) => {
+    const {id} = await Team_Player.create(req.body)
+    const teamPlayer = await Team_Player.findByPk(id, {include: User})
+    res.json(teamPlayer)
+}))
+
 module.exports = router;
