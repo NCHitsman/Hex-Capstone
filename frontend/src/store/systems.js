@@ -153,6 +153,11 @@ export const removeUser = (userId, systemId, i = null) => async dispatch => {
     return res
 }
 
+export const leaveSystem = (userId, systemId, i = null) => async dispatch => {
+    const res = await csrfFetch(`/api/systems/removeUser/${systemId}/${userId}`, { method: 'DELETE' })
+    return res
+}
+
 export const acceptInvite = (userId, systemId) => async dispatch => {
     const res = await csrfFetch(`/api/systems/acceptInvite/${userId}/${systemId}`, { method: 'PATCH' })
     const data = await res.json()

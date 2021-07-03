@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { getSystem, getSystemUsers, inviteUser, removeUser, getInvitedSystems } from "../../store/systems"
+import { getSystem, getSystemUsers, inviteUser, getInvitedSystems, leaveSystem } from "../../store/systems"
 import { getSystemMaps } from "../../store/maps"
 import MapCard from "./MapCard"
 import { useHistory } from 'react-router-dom'
@@ -50,7 +50,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
     }
 
     const leaveSystemClickHandler = () => {
-        dispatch(removeUser(user.id, currentSystem.id))
+        dispatch(leaveSystem(user.id, currentSystem.id))
         dispatch(getInvitedSystems(user.id))
         history.push('/')
     }
@@ -63,7 +63,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                     <div className='systemPage__parent__cont'>
                         <div className='systemCard__cont'>
                             <div className='systemCard__cont__title'>
-                                Worlds in {currentSystem?.name}: FIX USERS LEAVING UPDATING TEAMS
+                                Worlds in {currentSystem?.name}:
                             </div>
 
                             {permissionLevel <= 2 && <button
