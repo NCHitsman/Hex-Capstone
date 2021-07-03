@@ -63,7 +63,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                     <div className='systemPage__parent__cont'>
                         <div className='systemCard__cont'>
                             <div className='systemCard__cont__title'>
-                                Worlds in {currentSystem?.name}:
+                                Worlds in {currentSystem?.name}: FIX USERS LEAVING UPDATING TEAMS
                             </div>
 
                             {permissionLevel <= 2 && <button
