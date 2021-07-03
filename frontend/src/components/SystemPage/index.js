@@ -10,6 +10,7 @@ import { getPermission } from "../../store/session"
 import './SystemPage.css'
 import Teams from './Teams/Teams'
 import { getTeams, getTeamPlayers } from "../../store/teams"
+import CreateTeamForm from './CreateTeamForm/CreateTeamForm'
 
 const SystemPage = ({ user, maps, systems, session }) => {
     const { systemId } = useParams()
@@ -18,7 +19,6 @@ const SystemPage = ({ user, maps, systems, session }) => {
     const [invitee, setInvitee] = useState('')
     const [level, setLevel] = useState('4')
     const [error, setError] = useState('')
-    const [loaded, setLoaded] = useState(false)
     const [loadedPlayers, setLoadedPlayers] = useState(false)
     const [showRemove, setShowRemove] = useState(false)
 
@@ -40,10 +40,12 @@ const SystemPage = ({ user, maps, systems, session }) => {
 
     const inviteUserHandler = () => {
         dispatch(inviteUser(invitee, level, systemId))
-            .then(res => res === 'NOT FOUND' ?
-                setError('NOT FOUND')
-                :
-                setInvitee(''))
+            .then(res => {
+                if (res === 'NOT FOUND' || res === 'ALREADY INVITED') {
+                    setError(res)
+                } else {
+                    setInvitee('')
+                }})
         setError('')
     }
 
@@ -53,15 +55,10 @@ const SystemPage = ({ user, maps, systems, session }) => {
         history.push('/')
     }
 
-    useEffect(() => {
-        if (systemMaps && currentSystem && systemUsers && teams.players && permissionLevel && loadedPlayers) {
-            setLoaded(true)
-        }
-    }, [systemMaps, currentSystem, systemUsers, teams.players, permissionLevel, loadedPlayers])
 
     return (
         <div>
-            {loaded ?
+            {systemMaps && currentSystem && systemUsers && teams.players && permissionLevel && loadedPlayers ?
                 permissionLevel ?
                     <div className='systemPage__parent__cont'>
                         <div className='systemCard__cont'>
@@ -114,6 +111,17 @@ const SystemPage = ({ user, maps, systems, session }) => {
                                     <button
                                         onClick={() => inviteUserHandler()}
                                     >Invite</button>
+
+                                    <div>.</div>
+                                    <div>.</div>
+                                    <div>.</div>
+
+                                    <CreateTeamForm user={user} system={currentSystem}/>
+
+
+                                    <div>.</div>
+                                    <div>.</div>
+                                    <div>.</div>
                                 </>
                             }
 

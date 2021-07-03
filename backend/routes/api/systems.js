@@ -75,20 +75,30 @@ router.post('/inviteUser/:systemId', asyncHandler(async(req, res) => {
         }
     })
     if (user) {
-        await Permission.create({
-        user_id: user.id,
-        system_id: systemId,
-        level,
-        status: '[PEND]'
-        })
-        let users = await Permission.findAll({
-            where: {
+        const test = await Permission.findOne({
+            where:{
+                user_id: user.id,
                 system_id: systemId
-            },
-            include: User,
-            order: [['level', 'ASC']]
+            }
         })
-        res.json(users)
+        if (test) {
+            res.json('ALREADY INVITED')
+        } else {
+            await Permission.create({
+            user_id: user.id,
+            system_id: systemId,
+            level,
+            status: '[PEND]'
+            })
+            let users = await Permission.findAll({
+                where: {
+                    system_id: systemId
+                },
+                include: User,
+                order: [['level', 'ASC']]
+            })
+            res.json(users)
+        }
     } else {
         res.json('NOT FOUND')
     }
@@ -103,6 +113,17 @@ router.delete(`/removeUser/:systemId/:userId`, asyncHandler(async(req, res) => {
         }
     })
     await premission.destroy()
+    const teamPlayers = await Team_Player.findAll({
+        where:{
+            user_id: userId,
+            system_id: systemId
+        }
+    })
+    if (teamPlayers) {
+        teamPlayers.forEach(async tp => {
+            await tp.destroy()
+        })
+    }
     res.json('Success')
 }))
 
@@ -188,6 +209,14 @@ router.post('/addUserTeam', asyncHandler(async(req, res) => {
     const {id} = await Team_Player.create(req.body)
     const teamPlayer = await Team_Player.findByPk(id, {include: User})
     res.json(teamPlayer)
+}))
+
+router.post('/createTeam', asyncHandler(async(req, res) => {
+    const {id} = await Team.create(req.body)
+    let x = await Team_Player.create({user_id: req.body.owner_id, team_id: id, system_id: req.body.system_id})
+    const teamPlayer = await Team_Player.findByPk(x.id, {include: User})
+    const team = await Team.findByPk(id)
+    res.json([team, teamPlayer])
 }))
 
 module.exports = router;

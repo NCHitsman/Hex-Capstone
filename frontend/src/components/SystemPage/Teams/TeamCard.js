@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { deleteTeam, removeFromTeam, addUserToTeam } from "../../../store/teams"
 import factionSwitch from "./factionSwitch"
-import { useDispatch } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
 
 const TeamCard = ({team, user, systemUsers, systemId}) => {
@@ -23,6 +23,7 @@ const TeamCard = ({team, user, systemUsers, systemId}) => {
     const addUserClickHandler = () => {
         if (addUser) {
             dispatch(addUserToTeam(addUser, team.id, systemId))
+            setAddUser('')
         }
     }
 
@@ -41,7 +42,7 @@ const TeamCard = ({team, user, systemUsers, systemId}) => {
             <div>.</div>
             <div>.</div>
 
-            {Object.values(team.players).map((player,i) => (
+            {team.players && Object.values(team.players).map((player,i) => (
                 <div key={i} style={{display: 'flex'}}>
                     <div>{player.User.username}</div>
                     {edit && player.user_id !== user.id && <button
@@ -91,4 +92,4 @@ const TeamCard = ({team, user, systemUsers, systemId}) => {
     )
 }
 
-export default TeamCard
+export default connect(state => ({ teams: state.teams }))(TeamCard)

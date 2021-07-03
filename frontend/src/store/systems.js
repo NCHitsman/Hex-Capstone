@@ -136,7 +136,7 @@ export const inviteUser = (username, level, systemId) => async dispatch => {
         })
     })
     const data = await res.json()
-    if (data === 'NOT FOUND') {
+    if (data === 'NOT FOUND' || data === 'ALREADY INVITED') {
         return data
     }
     dispatch(systemUsers(data))
@@ -149,7 +149,7 @@ export const clearAllSystems = () => async dispatch => {
 
 export const removeUser = (userId, systemId, i = null) => async dispatch => {
     const res = await csrfFetch(`/api/systems/removeUser/${systemId}/${userId}`, { method: 'DELETE' })
-    if (i) dispatch(removeAUser(i))
+    dispatch(removeAUser(userId))
     return res
 }
 
@@ -189,7 +189,10 @@ const systemReducer = (state = {}, action) => {
             newState.system = action.payload
             return newState
         case (SYSTEM_USERS):
-            newState.systemUsers = action.payload
+            newState.systemUsers={}
+            action.payload.forEach(user => {
+                newState.systemUsers[user.user_id] = user
+            })
             return newState
         case (REMOVE_USER):
             delete newState.systemUsers[action.payload]

@@ -1,6 +1,7 @@
 import { removeUser } from "../../../store/systems"
 import { useDispatch } from "react-redux"
 import './SystemUsers.css'
+import { getTeamPlayers, getTeams } from "../../../store/teams"
 
 
 const SystemUsers = ({ systemUsers, system, showRemove, currentUser }) => {
@@ -8,6 +9,8 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser }) => {
 
     const removeUserClickHandler = (userId, i) => {
         dispatch(removeUser(userId, system.id, i))
+        .then(() => dispatch(getTeams(system.id)))
+        .then(() => dispatch(getTeamPlayers(system.id)))  //TODO FIX TEAMS BLINKING IN AND OUT WHEN REMOVING USER
     }
 
     const permissionTitle = (level) => {

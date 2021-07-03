@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     system_id: DataTypes.INTEGER
   }, {});
   Team_Player.associate = function(models) {
-    Team_Player.belongsTo(models.Team, {foreignKey: 'team_id'})
+    Team_Player.belongsTo(models.Team, {foreignKey: 'team_id', onDelete: 'cascade'})
     Team_Player.belongsTo(models.User, {foreignKey: 'user_id'})
     Team_Player.belongsTo(models.System, {foreignKey: 'system_id', onDelete: 'cascade'})
   };

@@ -6,6 +6,7 @@ const GET_PLAYERS = 'teams/GET_PLAYERS'
 const DELETE_TEAM = 'teams/DELETE_TEAM'
 const REMOVE_USER = 'teams/REMOVE_USER'
 const ADD_TEAM_PLAYER = 'teams/ADD_TEAM_PLAYER'
+const CREATE_TEAM = 'teams/CREATE_TEAM'
 
 const getSystemTeams = (teams) => ({
     type: GET_TEAMS,
@@ -30,6 +31,11 @@ const removeUser = (userId, teamId, data) => ({
 const addUserTeam = (teamPlayer) => ({
     type: ADD_TEAM_PLAYER,
     payload: teamPlayer
+})
+
+const createATeam = (teamAndTeamPlayer) => ({
+    type: CREATE_TEAM,
+    payload: teamAndTeamPlayer
 })
 
 export const getTeams = (systemId) => async dispatch  => {
@@ -73,6 +79,22 @@ export const addUserToTeam = (userId, teamId, systemId) => async dispatch => {
     return res
 }
 
+export const createTeam = (name, faction, system_id, owner_id) => async dispatch => {
+    const res = await csrfFetch(`/api/systems/createTeam`, {
+        method:'POST',
+        body: JSON.stringify({
+            name,
+            system_id,
+            owner_id,
+            faction,
+            points: 0
+        })
+    })
+    const data = await res.json()
+    dispatch(createATeam(data))
+    return res
+}
+
 const teamReducer = (state = {}, action) => {
     let newState = {...state}
 
@@ -97,11 +119,19 @@ const teamReducer = (state = {}, action) => {
             return newState
         case REMOVE_USER:
             delete newState.players[action.payload[0]]
-            newState[action.payload[1]].players = action.payload[2]
+            newState[action.payload[1]].players = {}
+            action.payload[2].forEach(player => {
+                newState[action.payload[1]].players[player.user_id] = player
+            })
             return newState
         case ADD_TEAM_PLAYER:
             newState[action.payload.team_id].players[action.payload.user_id] = action.payload
             newState.players[action.payload.user_id] = action.payload
+            return newState
+        case CREATE_TEAM:
+            newState[action.payload[0].id] = action.payload[0]
+            newState[action.payload[0].id].players = {}
+            newState[action.payload[0].id].players[action.payload[1].userId] = action.payload[1]
             return newState
         default:
             return state
