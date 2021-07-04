@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from './components/Home'
 import SystemPage from "./components/SystemPage";
+import CreateMap from './components/CreateMap'
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ function App() {
             <SystemPage user={user} />
           </Route>
           <Route exact path='/createMap'>
-            <div>WIP WIP WIP CREATE MAP PAGE WIP WIP WIP</div>
+            <CreateMap />
           </Route>
           <Route exact path='/'>
             <Home user={user} />
