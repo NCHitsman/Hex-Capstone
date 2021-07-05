@@ -1,24 +1,37 @@
-import { HexGrid, Layout, Hexagon, Text, Pattern, Path, Hex } from 'react-hexgrid';
+import { HexGrid, Layout, Pattern } from 'react-hexgrid';
+import './CreateMap.css'
+import Hex from './Hex';
 
 
 const CreateMap = () => {
 
+    const array = []
+    let counter = 0
+
+    for (let i = 1; i <= 25; i++) {
+        let x = []
+        for (let j = 1; j <= 25; j++) {
+            x.push([])
+        }
+        array.push(x)
+    }
 
     return (
-        <div className="App">
-            <HexGrid width={1200} height={800} viewBox="-50 -50 100 100">
-                <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.05} origin={{ x: 0, y: 0 }}>
-                    <Hexagon q={0} r={0} s={0} />
-                    <Hexagon q={0} r={-1} s={1} />
-                    <Hexagon q={0} r={1} s={-1} />
-                    <Hexagon q={1} r={-1} s={0} />
-                    <Hexagon q={1} r={0} s={-1} />
-                    <Hexagon q={-1} r={1} s={0} />
-                    <Hexagon q={-1} r={0} s={1} />
-                    <Hexagon q={-2} r={0} s={1} />
-                </Layout>
-            </HexGrid>
-        </div>
+        <>
+
+            {/* {array.map((a, i) => {
+                counter += .5
+                return (
+                    a.map((b, j) => {
+                        return (
+                            <>
+                            <Hex key={[i,j]} q={i-12} r={(j - 5) - Math.ceil(counter)} />
+                            </>
+                        )
+                    })
+                )
+            })} */}
+        </>
     )
 }
 

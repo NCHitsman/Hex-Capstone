@@ -6,7 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from './components/Home'
 import SystemPage from "./components/SystemPage";
-import CreateMap from './components/CreateMap'
+import CreateMap from "./components/CreateMap";
 
 function App() {
   const dispatch = useDispatch();
