@@ -1,12 +1,13 @@
 import './CreateMap.css'
-import {Canvas} from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import Hex from './Hex'
-import {range} from 'lodash'
-import { useState } from 'react'
+import { range } from 'lodash'
+import { useState, memo } from 'react'
 
 
 const CreateMap = () => {
     const [mapArray, setMapArray] = useState(range(25).map(() => range(25)))
+    const [action, setAction] = useState({ type: null, body: {} })
 
     let x = -21.42
     let y = -19.63
@@ -14,9 +15,15 @@ const CreateMap = () => {
 
 
     const hexClickHandler = (x, y) => {
-        let copy = [...mapArray]
-        copy[x][y] = 'CLICKED'
-        setMapArray(copy)
+        switch (action.type) {
+            case '[RMV]':
+                mapArray[x][y] = y
+                setMapArray(mapArray)
+                break
+            default:
+                mapArray[x][y] = 'CLICKED'
+                setMapArray(mapArray)
+        }
         console.log(mapArray)
     }
 
@@ -24,13 +31,13 @@ const CreateMap = () => {
     return (
         <>
             <Canvas
-            className="WorldCanvas"
-            camera={{ fov: 75, near: 0.1, far: 1000, position: [Math.PI / -2, 30, 0] }}
+                className="WorldCanvas"
+                camera={{ fov: 75, near: 0.1, far: 1000, position: [Math.PI / -2, 30, 0] }}
             >
                 <ambientLight />
                 {/* <gridHelper args={[50,50]}/> */}
                 <pointLight position={[10, 10, 10]} />
-                {mapArray.map((b,i) => {
+                {mapArray.map((xArray, xArrayIndex) => {
                     y += 1.51
 
                     if (eachOther) {
@@ -42,17 +49,25 @@ const CreateMap = () => {
                     }
 
                     return (
-                    b.map((l,p) => {
-                        x += 1.74
-                        return (
-                            <Hex key={i+p+x+y} pos={[x, 0.3, y]} x={i} y={p} hexClickHandler={hexClickHandler}/>
-                        )
-                    }))
+                        xArray.map((yArray, yArrayIndex) => {
+                            x += 1.74
+                            return (
+                                <Hex key={xArrayIndex + yArrayIndex + x + y} pos={[x, 0.3, y]} x={xArrayIndex} y={yArrayIndex} hexClickHandler={hexClickHandler} action={action} />
+                            )
+                        }))
                 })}
             </Canvas>
+            <div>.</div>
+            <div>.</div>
+            <div>.</div>
+            <button
+                onClick={() => {
+                    action.type === '[RMV]' ? setAction({ type: null, body: {} }) : setAction({ type: '[RMV]', body: {} })
+                }}
+            >{action.type === '[RMV]' ? 'Place Squares' : 'Remove Squares'}</button>
         </>
     )
 }
 
 
-export default CreateMap
+export default memo(CreateMap)
