@@ -1,0 +1,5 @@
+.WorldCanvas {
+    max-width: 40%;
+    min-height: calc(100vh - 50px - 45px);
+    background-color: black;
+}
