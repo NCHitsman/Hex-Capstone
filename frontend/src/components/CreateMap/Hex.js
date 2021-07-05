@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 
-const Hex = ({pos, x, y}) => {
+const Hex = ({pos, x, y, hexClickHandler}) => {
 
     const mesh = useRef()
     const [hovered, setHover] = useState(false);
@@ -13,13 +13,13 @@ const Hex = ({pos, x, y}) => {
             <mesh
             ref={mesh}
             position={pos}
-            onPointerOver={(e) => {
+            onPointerOver={() => {
                 if (!clicked) {
                     setHover(true)
                     setVisable(true)
                 }
             }}
-            onPointerOut={(e) => {
+            onPointerOut={() => {
                 setHover(false)
                 if (!clicked) {
                     setVisable(false)
@@ -29,6 +29,7 @@ const Hex = ({pos, x, y}) => {
                 setColor('white')
                 setClicked(true)
                 setVisable(true)
+                hexClickHandler(x, y)
             }}
             >
                 <cylinderBufferGeometry attach='geometry' args={[0.92, 0.92, 0.001, 6]}/>
