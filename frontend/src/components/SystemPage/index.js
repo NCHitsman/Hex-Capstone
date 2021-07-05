@@ -71,7 +71,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                             >Edit:</button>}
 
                             {Object.values(systemMaps).map((map, i) => (
-                                <MapCard key={i} map={map} showRemove={showRemove} />
+                                <MapCard key={i} map={map} showRemove={showRemove} systemId={systemId}/>
                             ))}
 
                             {permissionLevel <= 2 ? <button

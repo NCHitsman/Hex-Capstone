@@ -27,7 +27,7 @@ module.exports = {
         allowNull: false
       },
       map_seed: {
-        type: Sequelize.STRING
+        type: Sequelize.JSONB
       },
       createdAt: {
         allowNull: false,

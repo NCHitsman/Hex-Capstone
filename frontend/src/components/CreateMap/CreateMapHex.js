@@ -1,6 +1,6 @@
-import { useRef, useState, memo, useEffect } from "react"
+import { useRef, useState, memo } from "react"
 
-const Hex = ({ pos, x, y, hexClickHandler, action }) => {
+const CreateMapHex = ({ pos, x, y, hexClickHandler, action }) => {
 
     const mesh = useRef()
     const [hovered, setHover] = useState(false);
@@ -8,15 +8,6 @@ const Hex = ({ pos, x, y, hexClickHandler, action }) => {
     const [clicked, setClicked] = useState(false)
     const [hoveredColor, setHoveredColor] = useState('green')
 
-    useEffect(() => {
-        switch (action.type) { // * ACTION TYPE SWITCH FOR SETTING HOVER COLOR
-            case '[RMV]':
-                setHoveredColor('red')
-                break
-            default:
-                setHoveredColor('green')
-        }
-    }, [action, setHoveredColor])
 
     console.log('render')
 
@@ -26,14 +17,25 @@ const Hex = ({ pos, x, y, hexClickHandler, action }) => {
                 ref={mesh}
                 position={pos}
                 onPointerOver={() => {
-                    if (action.type === '[RMV]' || !clicked) {
-                        setHover(true)
+                    switch (action.type) { // * ACTION TYPE SWITCH FOR SETTING HOVER COLOR
+                        case '[RMV]':
+                            if (clicked) {
+                                setHoveredColor('red')
+                                setHover(true)
+                            }
+                            break
+                        default:
+                            if (!clicked) {
+                                setHover(true)
+                                setHoveredColor('green')
+                            }
                     }
                 }}
                 onPointerOut={() => {
                     setHover(false)
                 }}
                 onClick={() => {
+                    console.log(x,y)
                     switch (action.type) {  // * ACTION TYPE SWITCH FOR SETTING BASE COLOR AND CLICKED
                         case ('[RMV]'):
                             setColor('#1C1C1C')
@@ -53,4 +55,4 @@ const Hex = ({ pos, x, y, hexClickHandler, action }) => {
     )
 }
 
-export default memo(Hex)
+export default memo(CreateMapHex, (prevProps, nextProps) => prevProps.action === nextProps.action ? true : false)

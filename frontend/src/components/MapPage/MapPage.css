@@ -1,10 +1,15 @@
+.MapCanvas {
+    max-width: 43.5%;
+    min-height: calc(100vh - 50px - 145px);
+    background-color: black;
+}
 
 .createmap__parent__cont{
     display: flex;
     justify-content: space-evenly;
 }
 
-.mapcontrols__cont{
+.mapform__cont{
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 50px - 45px);

@@ -1,8 +1,9 @@
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { getSystemMaps, removeMap } from '../../store/maps'
 
 
-const MapCard = ({ map, showRemove }) => {
+const MapCard = ({ map, showRemove, systemId }) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -19,7 +20,8 @@ const MapCard = ({ map, showRemove }) => {
                 id={map.id}
                 onClick={(e) => {
                     e.stopPropagation()
-                    dispatch()
+                    dispatch(removeMap(map.id))
+                    .then(() => dispatch(getSystemMaps(systemId)))
                 }}
             >Delete</button>}
         </div>

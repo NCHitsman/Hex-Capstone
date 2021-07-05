@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Home from './components/Home'
 import SystemPage from "./components/SystemPage";
 import CreateMap from "./components/CreateMap";
+import MapPage from "./components/MapPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route exact path='/createMap'>
             <CreateMap />
+          </Route>
+          <Route exact path='/map/:mapId'>
+            <MapPage />
           </Route>
           <Route exact path='/'>
             <Home user={user} />

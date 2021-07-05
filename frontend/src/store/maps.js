@@ -40,6 +40,30 @@ export const clearMaps = () => async dispatch => {
     dispatch(clear())
 }
 
+export const createMap = (name, type, system_id, size, seed) => async dispatch => {
+    console.log(system_id)
+    const res = await csrfFetch(`/api/maps/createMap`, {
+        method: 'POST',
+        body: JSON.stringify({
+            name,
+            type,
+            system_id,
+            size,
+            map_seed: seed,
+        })
+    })
+    // const data = await res.json()
+    // dispatch(systemMaps(data))
+    return res
+}
+
+export const removeMap = (mapId) => async dispatch => {
+    const res = await csrfFetch(`/api/maps/removeMap/${mapId}`, {method: 'DELETE'})
+    // const data = await res.json()
+    // dispatch(systemMaps(data))
+    return res
+}
+
 
 const mapReducer = (state = {}, action) => {
     let newState = {...state};
@@ -49,6 +73,7 @@ const mapReducer = (state = {}, action) => {
             newState.map = action.payload
             return newState
         case (USER_MAPS):
+            console.log(action.payload)
             newState.systemMaps = {}
             action.payload.forEach(map => {
                 newState.systemMaps[map.id] = map
