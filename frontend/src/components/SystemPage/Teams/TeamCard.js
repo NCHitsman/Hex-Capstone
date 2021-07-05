@@ -63,7 +63,7 @@ const TeamCard = ({team, user, systemUsers, systemId}) => {
                     <option value={''} defaultValue disabled hidden>
                         Select a User
                     </option>
-                    {systemUsers.map((user, i) => {
+                    {Object.values(systemUsers).map((user, i) => {
                         if (!team.players[user.user_id]) {
                             return (
                                 <option key={i} value={user.user_id}>{user.User.username}</option>
