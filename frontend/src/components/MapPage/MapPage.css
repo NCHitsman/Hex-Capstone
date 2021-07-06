@@ -4,9 +4,9 @@
     background-color: black;
 }
 
-.createmap__parent__cont{
+.mappage__parent__cont{
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
 }
 
 .mapform__cont{

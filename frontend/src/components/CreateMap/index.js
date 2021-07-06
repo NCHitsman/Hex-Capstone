@@ -6,6 +6,7 @@ import { useState, memo } from 'react'
 import { createMap } from '../../store/maps'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { OrbitControls } from '@react-three/drei'
 
 
 const CreateMap = () => {
@@ -49,6 +50,7 @@ const CreateMap = () => {
                     camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 30, 0], rotation: [-(Math.PI / 2.0), 0.0, 0.0] }}
                 >
                     <ambientLight />
+                    <OrbitControls />
                     {/* <gridHelper args={[50,50]}/> */}
                     <pointLight position={[10, 10, 10]} />
                     {mapArray.map((xArray, xIndex) => {

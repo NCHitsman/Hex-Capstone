@@ -16,11 +16,11 @@
 }
 
 body{
-    background-color: #949494;
+    background-color: gray;
 }
 
 .mapcanvas {
     max-width: 43.5%;
-    min-height: calc(100vh - 50px - 145px);
-    background-color: #949494;
+    min-height: calc(100vh - 50px - 40px);
+    background-color: gray;
 }

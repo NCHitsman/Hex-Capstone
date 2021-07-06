@@ -30,7 +30,7 @@ const MapPage = () => {
 
     return (
         <>
-            <div className='createmap__parent__cont'>
+            <div className='mappage__parent__cont'>
                 <Canvas
                     className="mapcanvas"
                     camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 30, 0], rotation: [-(Math.PI / 2.0), 0.0, 0.0] }}

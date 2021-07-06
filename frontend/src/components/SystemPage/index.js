@@ -12,7 +12,7 @@ import Teams from './Teams/Teams'
 import { getTeams, getTeamPlayers } from "../../store/teams"
 import CreateTeamForm from './CreateTeamForm/CreateTeamForm'
 
-const SystemPage = ({ user, maps, systems, session }) => {
+const SystemPage = ({ user, maps, systems, session, teams }) => {
     const { systemId } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -32,12 +32,6 @@ const SystemPage = ({ user, maps, systems, session }) => {
         .then(() => setLoadedPlayers(true))
     }, [dispatch, systemId, user.id])
 
-    const currentSystem = useSelector(state => state.systems.system)
-    const systemMaps = useSelector(state => state.maps.systemMaps)
-    const systemUsers = useSelector(state => state.systems.systemUsers)
-    const permissionLevel = useSelector(state => state.session.permission?.level)
-    const teams = useSelector(state => state.teams)
-
     const inviteUserHandler = () => {
         dispatch(inviteUser(invitee, level, systemId))
             .then(res => {
@@ -50,31 +44,30 @@ const SystemPage = ({ user, maps, systems, session }) => {
     }
 
     const leaveSystemClickHandler = () => {
-        dispatch(leaveSystem(user.id, currentSystem.id))
+        dispatch(leaveSystem(user.id, systems.system.id))
         dispatch(getInvitedSystems(user.id))
         history.push('/')
     }
 
-
     return (
         <div>
-            {systemMaps && currentSystem && systemUsers && teams.players && permissionLevel && loadedPlayers ?
-                permissionLevel ?
+            {maps.systemMaps && systems.system && systems.systemUsers && teams.players && session.permission.level && loadedPlayers ?
+                session.permission.level ?
                     <div className='systemPage__parent__cont'>
                         <div className='systemCard__cont'>
                             <div className='systemCard__cont__title'>
-                                Worlds in {currentSystem?.name}:
+                                Worlds in {systems.system?.name}:
                             </div>
 
-                            {permissionLevel <= 2 && <button
+                            {session.permission.level <= 2 && <button
                                 onClick={() => showRemove ? setShowRemove(false) : setShowRemove(true)}
                             >Edit:</button>}
 
-                            {Object.values(systemMaps).map((map, i) => (
+                            {Object.values(maps.systemMaps).map((map, i) => (
                                 <MapCard key={i} map={map} showRemove={showRemove} systemId={systemId}/>
                             ))}
 
-                            {permissionLevel <= 2 ? <button
+                            {session.permission.level <= 2 ? <button
                                 onClick={() => history.push('/createMap')}
                             >Create New Map</button>
                                 :
@@ -85,13 +78,13 @@ const SystemPage = ({ user, maps, systems, session }) => {
                             <div>.</div>
                             <div>.</div>
 
-                            <SystemUsers systemUsers={systemUsers} system={currentSystem} showRemove={showRemove} currentUser={user} />
+                            <SystemUsers systemUsers={systems.systemUsers} system={systems.system} showRemove={showRemove} currentUser={user} />
 
                             <div>.</div>
                             <div>.</div>
                             <div>.</div>
 
-                            {permissionLevel <= 2 &&
+                            {session.permission.level <= 2 &&
                                 <>
                                     <div>{error}</div>
                                     <label>Invite User:
@@ -116,7 +109,7 @@ const SystemPage = ({ user, maps, systems, session }) => {
                                     <div>.</div>
                                     <div>.</div>
 
-                                    <CreateTeamForm user={user} system={currentSystem}/>
+                                    <CreateTeamForm user={user} system={systems.system}/>
 
 
                                     <div>.</div>
@@ -125,12 +118,12 @@ const SystemPage = ({ user, maps, systems, session }) => {
                                 </>
                             }
 
-                            {user.id !== currentSystem.owner_id &&
+                            {user.id !== systems.system.owner_id &&
                                 <button
                                     onClick={() => leaveSystemClickHandler()}
                                 >Leave System</button>}
                         </div>
-                        {teams.players && <Teams teams={teams} user={user} systemUsers={systemUsers} systemId={currentSystem.id}/>}
+                        {teams.players && <Teams teams={teams} user={user} systemUsers={systems.systemUsers} systemId={systems.system.id}/>}
                     </div>
                     :
                     <div>DO NOT HAVE PERMISSION</div>
@@ -141,4 +134,4 @@ const SystemPage = ({ user, maps, systems, session }) => {
     )
 }
 
-export default connect(state => ({ maps: state.maps, systems: state.systems, session: state.session }))(SystemPage)
+export default connect(state => ({ maps: state.maps, systems: state.systems, session: state.session, teams: state.teams }))(SystemPage)
