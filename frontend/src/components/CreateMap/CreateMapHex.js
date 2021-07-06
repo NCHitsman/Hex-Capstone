@@ -35,7 +35,6 @@ const CreateMapHex = ({ pos, x, y, hexClickHandler, action }) => {
                     setHover(false)
                 }}
                 onClick={() => {
-                    console.log(x,y)
                     switch (action.type) {  // * ACTION TYPE SWITCH FOR SETTING BASE COLOR AND CLICKED
                         case ('[RMV]'):
                             setColor('#1C1C1C')

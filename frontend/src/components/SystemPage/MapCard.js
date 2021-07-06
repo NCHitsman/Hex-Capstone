@@ -11,7 +11,7 @@ const MapCard = ({ map, showRemove, systemId }) => {
         <div
             className='card'
             onClick={(e) => {
-                if (e.target.id !== map.id) history.push(`/map/${map.id}`
+                if (e.target.id !== map.id) history.push(`/system/${systemId}/map/${map.id}`
                 )
             }}
         >

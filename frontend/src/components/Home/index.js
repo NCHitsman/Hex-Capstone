@@ -1,4 +1,4 @@
-import { useSelector, connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { getUserSystems, clearCurrentSystem, clearSystemUsers, getInvitedSystems } from '../../store/systems'
@@ -15,7 +15,7 @@ const Home = ({ user, systems }) => {
         dispatch(getUserSystems(user.id))
         dispatch(getInvitedSystems(user.id))
         dispatch(clearCurrentSystem())
-        dispatch(clearSystemUsers())
+        dispatch(clearSystemUsers())//todo CREATE TEAM CLEANUP
         dispatch(clearMaps())
     }, [dispatch, user])
 

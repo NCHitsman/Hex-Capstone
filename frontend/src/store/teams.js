@@ -115,6 +115,11 @@ const teamReducer = (state = {}, action) => {
             })
             return newState
         case DELETE_TEAM:
+            let playerIds = Object.keys(newState[action.payload].players)
+            playerIds.forEach(playerId => {
+                console.log(newState.players[playerId])
+                delete newState.players[playerId]
+            })
             delete newState[action.payload]
             return newState
         case REMOVE_USER:
@@ -131,7 +136,6 @@ const teamReducer = (state = {}, action) => {
         case CREATE_TEAM:
             newState[action.payload[0].id] = action.payload[0]
             newState[action.payload[0].id].players = {}
-            newState[action.payload[0].id].players[action.payload[1].userId] = action.payload[1]
             return newState
         default:
             return state

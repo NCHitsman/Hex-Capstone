@@ -30,11 +30,11 @@ function App() {
           <Route exact path='/system/:systemId'>
             <SystemPage user={user} />
           </Route>
+          <Route exact path='/system/:systemId/map/:mapId'>
+            <MapPage />
+          </Route>
           <Route exact path='/createMap'>
             <CreateMap />
-          </Route>
-          <Route exact path='/map/:mapId'>
-            <MapPage />
           </Route>
           <Route exact path='/'>
             <Home user={user} />

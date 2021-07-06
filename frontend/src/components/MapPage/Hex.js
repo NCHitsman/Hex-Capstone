@@ -4,8 +4,7 @@ const Hex = ({hexObject, pos, x, y, hexClickHandler, action }) => {
 
     const mesh = useRef()
     const [hovered, setHover] = useState(false);
-    const [color, setColor] = useState('#949494')
-    const [clicked, setClicked] = useState(false)
+    const [color, setColor] = useState('gray')
     const [hoveredColor, setHoveredColor] = useState('green')
 
 

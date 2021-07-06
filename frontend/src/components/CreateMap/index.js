@@ -51,7 +51,6 @@ const CreateMap = () => {
                 >
                     <ambientLight />
                     <OrbitControls />
-                    {/* <gridHelper args={[50,50]}/> */}
                     <pointLight position={[10, 10, 10]} />
                     {mapArray.map((xArray, xIndex) => {
                         y += 1.51

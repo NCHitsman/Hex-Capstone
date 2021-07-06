@@ -12,12 +12,12 @@ import Teams from './Teams/Teams'
 import { getTeams, getTeamPlayers } from "../../store/teams"
 import CreateTeamForm from './CreateTeamForm/CreateTeamForm'
 
-const SystemPage = ({ user, maps, systems, session, teams }) => {
+const SystemPage = ({ user, maps, systems, session, teams, level }) => {
     const { systemId } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
     const [invitee, setInvitee] = useState('')
-    const [level, setLevel] = useState('4')
+    const [NewUserLevel, setNewUserLevel] = useState('4')
     const [error, setError] = useState('')
     const [loadedPlayers, setLoadedPlayers] = useState(false)
     const [showRemove, setShowRemove] = useState(false)
@@ -33,7 +33,7 @@ const SystemPage = ({ user, maps, systems, session, teams }) => {
     }, [dispatch, systemId, user.id])
 
     const inviteUserHandler = () => {
-        dispatch(inviteUser(invitee, level, systemId))
+        dispatch(inviteUser(invitee, NewUserLevel, systemId))
             .then(res => {
                 if (res === 'NOT FOUND' || res === 'ALREADY INVITED') {
                     setError(res)
@@ -51,15 +51,15 @@ const SystemPage = ({ user, maps, systems, session, teams }) => {
 
     return (
         <div>
-            {maps.systemMaps && systems.system && systems.systemUsers && teams.players && session.permission.level && loadedPlayers ?
-                session.permission.level ?
+            {maps.systemMaps && systems.system && systems.systemUsers && teams.players && level && loadedPlayers ?
+                level ?
                     <div className='systemPage__parent__cont'>
                         <div className='systemCard__cont'>
                             <div className='systemCard__cont__title'>
                                 Worlds in {systems.system?.name}:
                             </div>
 
-                            {session.permission.level <= 2 && <button
+                            {level <= 2 && <button
                                 onClick={() => showRemove ? setShowRemove(false) : setShowRemove(true)}
                             >Edit:</button>}
 
@@ -67,7 +67,7 @@ const SystemPage = ({ user, maps, systems, session, teams }) => {
                                 <MapCard key={i} map={map} showRemove={showRemove} systemId={systemId}/>
                             ))}
 
-                            {session.permission.level <= 2 ? <button
+                            {level <= 2 ? <button
                                 onClick={() => history.push('/createMap')}
                             >Create New Map</button>
                                 :
@@ -84,7 +84,7 @@ const SystemPage = ({ user, maps, systems, session, teams }) => {
                             <div>.</div>
                             <div>.</div>
 
-                            {session.permission.level <= 2 &&
+                            {level <= 2 &&
                                 <>
                                     <div>{error}</div>
                                     <label>Invite User:
@@ -95,7 +95,7 @@ const SystemPage = ({ user, maps, systems, session, teams }) => {
                                     </label>
                                     <select
                                         value={level}
-                                        onChange={(e) => setLevel(e.target.value)}
+                                        onChange={(e) => setNewUserLevel(e.target.value)}
                                     >
                                         <option value='4'>Viewer</option>
                                         <option value='3'>Editor</option>
@@ -134,4 +134,10 @@ const SystemPage = ({ user, maps, systems, session, teams }) => {
     )
 }
 
-export default connect(state => ({ maps: state.maps, systems: state.systems, session: state.session, teams: state.teams }))(SystemPage)
+export default connect(state => ({
+    maps: state.maps,
+    systems: state.systems,
+    session: state.session,
+    teams: state.teams,
+    level: state.session?.permission?.level
+}))(SystemPage)
