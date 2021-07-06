@@ -101,7 +101,10 @@ const teamReducer = (state = {}, action) => {
 
     switch (action.type){
         case GET_TEAMS:
-            action.payload.forEach(team => newState[team.id] = team)
+            action.payload.forEach(team => {
+                newState[team.id] = team
+                newState[team.id].players = {}
+            })
             return newState
         case GET_PLAYERS:
             newState.players = {}

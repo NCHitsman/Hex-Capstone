@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { deleteTeam, removeFromTeam, addUserToTeam } from "../../../store/teams"
 import factionSwitch from "./factionSwitch"
 import { useDispatch } from 'react-redux'
@@ -9,7 +9,11 @@ const TeamCard = ({ team, user, systemUsers, systemId, players }) => {
     const [edit, setEdit] = useState(false)
     const [addUser, setAddUser] = useState('')
     const [addUserRole, setAddUserRole] = useState(false)
-    const owner = user.id === team.owner_id
+    const [ownerOrCaptain, setOwnerOrCaptain] = useState(false)
+
+    useEffect(() => {
+        setOwnerOrCaptain(user.id === team.owner_id || team.players[user.id]?.captain)
+    }, [team, user])
 
     const [faction, color] = factionSwitch(team.faction)
 
@@ -30,14 +34,14 @@ const TeamCard = ({ team, user, systemUsers, systemId, players }) => {
 
     return (
         <div className='teamcard__cont' style={{ backgroundColor: color }}>
-            {owner &&
+            {ownerOrCaptain &&
                 <button
                     onClick={() => edit ? setEdit(false) : setEdit(true)}
                 >Edit</button>
             }
             <div>{team.name}</div>
             <div>{faction}</div>
-            <div>{team.points}</div>
+            {/* <div>{team.points}</div> */}
 
             <div>.</div>
             <div>.</div>

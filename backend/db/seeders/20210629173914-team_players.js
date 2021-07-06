@@ -12,8 +12,8 @@ module.exports = {
         updatedAt: new Date()
       },{
         user_id: 2,
-        team_id: 1,
-        captain: false,
+        team_id: 2,
+        captain: true,
         system_id: 1,
         createdAt: new Date(),
         updatedAt: new Date()

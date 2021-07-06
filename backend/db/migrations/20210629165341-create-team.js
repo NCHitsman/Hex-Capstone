@@ -18,7 +18,7 @@ module.exports = {
         references: { model: 'Systems' },
         onDelete: 'CASCADE',
       },
-      owner_id: {
+      captain_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'Users' }

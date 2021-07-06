@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { connect, useDispatch, useSelector } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { getSystem, getSystemUsers, inviteUser, getInvitedSystems, leaveSystem } from "../../store/systems"
 import { getSystemMaps } from "../../store/maps"
 import MapCard from "./MapCard"
@@ -59,7 +59,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                 Worlds in {systems.system?.name}:
                             </div>
 
-                            {level <= 2 && <button
+                            {level <= 1 && <button
                                 onClick={() => showRemove ? setShowRemove(false) : setShowRemove(true)}
                             >Edit:</button>}
 
@@ -67,7 +67,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                 <MapCard key={i} map={map} showRemove={showRemove} systemId={systemId}/>
                             ))}
 
-                            {level <= 2 ? <button
+                            {level <= 1 ? <button
                                 onClick={() => history.push('/createMap')}
                             >Create New Map</button>
                                 :
@@ -84,7 +84,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                             <div>.</div>
                             <div>.</div>
 
-                            {level <= 2 &&
+                            {level <= 1 &&
                                 <>
                                     <div>{error}</div>
                                     <label>Invite User:
@@ -97,9 +97,8 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                         value={level}
                                         onChange={(e) => setNewUserLevel(e.target.value)}
                                     >
-                                        <option value='4'>Viewer</option>
-                                        <option value='3'>Editor</option>
-                                        <option value='2'>Co-Owner</option>
+                                        <option value='3'>Player</option>
+                                        <option value='2'>Captain</option>
                                     </select>
                                     <button
                                         onClick={() => inviteUserHandler()}
