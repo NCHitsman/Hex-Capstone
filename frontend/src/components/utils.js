@@ -1,6 +1,16 @@
+export const factionSwitch = (faction) => {
+    switch (faction) {
+        case '[NCR]':
+            return ['Necrons', 'lightgreen']
+        case '[SOB]':
+            return ['Sisters of Battle', 'pink']
+        default:
+            return ['not set', 'white']
+    }
+}
 
 
-const FactionOptions = () => {
+export const FactionOptions = () => {
     const factions = [
         ['Necrons', '[NCR]'],
         ['Sisters of Battle', '[SOB]']
@@ -16,6 +26,3 @@ const FactionOptions = () => {
         </>
     )
 }
-
-
-export default FactionOptions

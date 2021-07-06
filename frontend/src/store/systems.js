@@ -194,13 +194,11 @@ const systemReducer = (state = {}, action) => {
             newState.system = action.payload
             return newState
         case (SYSTEM_USERS):
-            newState.systemUsers={}
-            action.payload.forEach(user => {
-                newState.systemUsers[user.user_id] = user
-            })
+            newState.systemUsers=action.payload
             return newState
         case (REMOVE_USER):
-            delete newState.systemUsers[action.payload]
+            const removedUser = newState.systemUsers.reduce((acum, cur, inx) => cur.user_id === action.payload ? inx : acum)
+            newState.systemUsers.splice(removedUser, 1)
             return newState
         case (ACCEPT_INVITE):
             newState.invitedSystems[action.payload.id] = action.payload

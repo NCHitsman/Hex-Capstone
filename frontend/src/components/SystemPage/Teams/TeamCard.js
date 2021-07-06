@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { deleteTeam, removeFromTeam, addUserToTeam } from "../../../store/teams"
-import factionSwitch from "./factionSwitch"
+import { factionSwitch } from "../../utils"
 import { useDispatch } from 'react-redux'
 
 
-const TeamCard = ({ team, user, systemUsers, systemId, players }) => {
+const TeamCard = ({ team, user, systemUsers, system, players }) => {
     const dispatch = useDispatch()
     const [edit, setEdit] = useState(false)
     const [addUser, setAddUser] = useState('')
@@ -12,7 +12,7 @@ const TeamCard = ({ team, user, systemUsers, systemId, players }) => {
     const [ownerOrCaptain, setOwnerOrCaptain] = useState(false)
 
     useEffect(() => {
-        setOwnerOrCaptain(user.id === team.owner_id || team.players[user.id]?.captain)
+        setOwnerOrCaptain(user.id === system.owner_id || team.players[user.id]?.captain)
     }, [team, user])
 
     const [faction, color] = factionSwitch(team.faction)
@@ -27,10 +27,11 @@ const TeamCard = ({ team, user, systemUsers, systemId, players }) => {
 
     const addUserClickHandler = () => {
         if (addUser) {
-            dispatch(addUserToTeam(addUser, addUserRole, team.id, systemId))
+            dispatch(addUserToTeam(addUser, addUserRole, team.id, system.id))
             setAddUser('')
         }
     }
+
 
     return (
         <div className='teamcard__cont' style={{ backgroundColor: color }}>

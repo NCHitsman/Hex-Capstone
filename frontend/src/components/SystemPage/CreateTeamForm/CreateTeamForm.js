@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { createTeam } from "../../../store/teams"
-import FactionOptions from "./FactionOptions"
+import { FactionOptions } from "../../utils"
 
 
 const CreateTeamForm = ({user, system}) => {

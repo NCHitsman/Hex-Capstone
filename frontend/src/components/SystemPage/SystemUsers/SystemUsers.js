@@ -2,10 +2,12 @@ import { removeUser } from "../../../store/systems"
 import { useDispatch } from "react-redux"
 import './SystemUsers.css'
 import { getTeamPlayers, getTeams } from "../../../store/teams"
+import { factionSwitch } from "../../utils"
 
 
-const SystemUsers = ({ systemUsers, system, showRemove, currentUser }) => {
+const SystemUsers = ({ systemUsers, system, showRemove, currentUser, teams }) => {
     const dispatch = useDispatch()
+
 
     const removeUserClickHandler = (userId, i) => {
         dispatch(removeUser(userId, system.id, i))
@@ -16,19 +18,21 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser }) => {
     const permissionTitle = (level) => {
         switch (level) {
             case 1:
-                return 'Owner'
+                return `Owner`
             case 2:
-                return 'Captain'
+                return `Captain`
             default:
-                return 'Player'
+                return `Player`
         }
     }
 
     return (
         <div className='systemUsers__parent__cont'>
             <div className='systemUsers__cont__title'>System Users:</div>
-            {Object.values(systemUsers).map((user, i) => (
-                <div className='card' key={i}>
+            {Object.values(systemUsers).map((user, i) => {
+                const team = teams[teams.players[user.user_id].team_id]
+                return (
+                <div style={{backgroundColor: factionSwitch(team.faction)[1]}} className='card' key={i}>
                     <div>{user.User.username}</div>
 
                     {
@@ -45,7 +49,7 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser }) => {
                         <div>PENDING</div>
                     }
                 </div>
-            ))}
+            )})}
         </div>
     )
 }
