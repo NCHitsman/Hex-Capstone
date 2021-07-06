@@ -30,9 +30,9 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser, teams }) =>
         <div className='systemUsers__parent__cont'>
             <div className='systemUsers__cont__title'>System Users:</div>
             {Object.values(systemUsers).map((user, i) => {
-                const team = teams[teams.players[user.user_id].team_id]
+                const team = teams[teams.players[user.user_id]?.team_id]
                 return (
-                <div style={{backgroundColor: factionSwitch(team.faction)[1]}} className='card' key={i}>
+                <div style={{backgroundColor: team ? factionSwitch(team.faction)[1] : 'lightgray'}} className='card' key={i}>
                     <div>{user.User.username}</div>
 
                     {

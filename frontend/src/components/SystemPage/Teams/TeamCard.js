@@ -13,7 +13,7 @@ const TeamCard = ({ team, user, systemUsers, system, players }) => {
 
     useEffect(() => {
         setOwnerOrCaptain(user.id === system.owner_id || team.players[user.id]?.captain)
-    }, [team, user])
+    }, [team, user, system.owner_id])
 
     const [faction, color] = factionSwitch(team.faction)
 

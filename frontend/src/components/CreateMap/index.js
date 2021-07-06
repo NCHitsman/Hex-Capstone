@@ -6,7 +6,7 @@ import { useState, memo } from 'react'
 import { createMap } from '../../store/maps'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { OrbitControls } from '@react-three/drei'
+// import { OrbitControls } from '@react-three/drei'
 
 
 const CreateMap = () => {
@@ -36,9 +36,8 @@ const CreateMap = () => {
     }
 
     const MapSubmitHandler = () => {
-        console.log(system)
         dispatch(createMap(mapName, mapType, system.id, 25, mapArray))
-        .then(() => history.push(`/system/${system.id}`))
+        .then((res) => {history.push(`/system/${system.id}/map/${res}`)})
     }
 
 
@@ -50,7 +49,7 @@ const CreateMap = () => {
                     camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 30, 0], rotation: [-(Math.PI / 2.0), 0.0, 0.0] }}
                 >
                     <ambientLight />
-                    <OrbitControls />
+                    {/* <OrbitControls /> */}
                     <pointLight position={[10, 10, 10]} />
                     {mapArray.map((xArray, xIndex) => {
                         y += 1.51

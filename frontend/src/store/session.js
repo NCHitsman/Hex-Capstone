@@ -4,6 +4,7 @@ const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 const PERMISSION = 'session/PERMISSION'
 const CLEAR = 'session/CLEAR'
+const CLEAR_PERM = 'session/CLEAR_PERM'
 
 const setUser = (user) => {
   return {
@@ -25,6 +26,10 @@ const permissions = (permission) => ({
 
 const clear = () => ({
   type: CLEAR
+})
+
+const clearPerm = () => ({
+  type: CLEAR_PERM
 })
 
 export const login = (user) => async (dispatch) => {
@@ -80,25 +85,29 @@ export const getPermission = (userId, systemId) => async (dispatch) => {
   return res
 }
 
+export const clearPermission = () => async dispatch => {
+  dispatch(clearPerm())
+}
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
-  let newState;
+  let newState = {...state};
   switch (action.type) {
     case SET_USER:
-      newState = Object.assign({}, state);
       newState.user = action.payload;
       return newState;
     case REMOVE_USER:
-      newState = Object.assign({}, state);
       newState.user = null;
       return newState;
     case PERMISSION:
-      newState = Object.assign({}, state);
       newState.permission = action.payload
       return newState
     case CLEAR:
       newState = {}
+      return newState
+    case CLEAR_PERM:
+      delete newState.permission
       return newState
     default:
       return state;

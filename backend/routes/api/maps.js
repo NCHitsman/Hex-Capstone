@@ -23,8 +23,8 @@ router.get('/system/:systemId', asyncHandler(async(req, res) => {
 }))
 
 router.post('/createMap', asyncHandler(async(req, res) => {
-    const map = await Map.create(req.body)
-    res.json(map)
+    const {id} = await Map.create(req.body)
+    res.json(id)
 }))
 
 router.delete('/removeMap/:mapId', asyncHandler(async(req, res) => {

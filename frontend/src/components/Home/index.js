@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { getUserSystems, clearCurrentSystem, clearSystemUsers, getInvitedSystems } from '../../store/systems'
 import { clearMaps } from '../../store/maps'
+import { clearTeams } from '../../store/teams'
+import { clearPermission } from '../../store/session'
 import SystemCard from './SystemCard'
 import './Home.css'
 import NewSystemForm from './NewSystemForm'
@@ -15,8 +17,10 @@ const Home = ({ user, systems }) => {
         dispatch(getUserSystems(user.id))
         dispatch(getInvitedSystems(user.id))
         dispatch(clearCurrentSystem())
-        dispatch(clearSystemUsers())//todo CREATE TEAM CLEANUP
+        dispatch(clearSystemUsers())
         dispatch(clearMaps())
+        dispatch(clearTeams())
+        dispatch(clearPermission())
     }, [dispatch, user])
 
     return (

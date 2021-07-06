@@ -7,6 +7,7 @@ const DELETE_TEAM = 'teams/DELETE_TEAM'
 const REMOVE_USER = 'teams/REMOVE_USER'
 const ADD_TEAM_PLAYER = 'teams/ADD_TEAM_PLAYER'
 const CREATE_TEAM = 'teams/CREATE_TEAM'
+const CLEAR = 'teams/CLEAR'
 
 const getSystemTeams = (teams) => ({
     type: GET_TEAMS,
@@ -36,6 +37,10 @@ const addUserTeam = (teamPlayer) => ({
 const createATeam = (team) => ({
     type: CREATE_TEAM,
     payload: team
+})
+
+const clear = () => ({
+    type: CLEAR
 })
 
 export const getTeams = (systemId) => async dispatch  => {
@@ -96,6 +101,10 @@ export const createTeam = (name, faction, system_id, owner_id) => async dispatch
     return res
 }
 
+export const clearTeams = () => async dispatch => {
+    dispatch(clear())
+}
+
 const teamReducer = (state = {}, action) => {
     let newState = {...state}
 
@@ -140,6 +149,9 @@ const teamReducer = (state = {}, action) => {
         case CREATE_TEAM:
             newState[action.payload.id] = action.payload
             newState[action.payload.id].players = {}
+            return newState
+        case CLEAR:
+            newState = {}
             return newState
         default:
             return state

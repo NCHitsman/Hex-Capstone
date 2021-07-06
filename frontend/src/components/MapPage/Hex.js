@@ -3,9 +3,9 @@ import { useRef, useState, memo, useEffect } from "react"
 const Hex = ({hexObject, pos, x, y, hexClickHandler, action }) => {
 
     const mesh = useRef()
-    const [hovered, setHover] = useState(false);
+    const [hovered] = useState(false);
     const [color, setColor] = useState('gray')
-    const [hoveredColor, setHoveredColor] = useState('green')
+    const [hoveredColor] = useState('green')
 
 
     console.log('render')
@@ -17,7 +17,7 @@ const Hex = ({hexObject, pos, x, y, hexClickHandler, action }) => {
                     setColor('white')
             }
         }
-    }, [setColor])
+    }, [setColor, hexObject.t])
 
 
     return (

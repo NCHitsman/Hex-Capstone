@@ -41,7 +41,6 @@ export const clearMaps = () => async dispatch => {
 }
 
 export const createMap = (name, type, system_id, size, seed) => async dispatch => {
-    console.log(system_id)
     const res = await csrfFetch(`/api/maps/createMap`, {
         method: 'POST',
         body: JSON.stringify({
@@ -52,9 +51,10 @@ export const createMap = (name, type, system_id, size, seed) => async dispatch =
             map_seed: seed,
         })
     })
-    // const data = await res.json()
+    const data = await res.json()
+    console.log(data)
     // dispatch(systemMaps(data))
-    return res
+    return data
 }
 
 export const removeMap = (mapId) => async dispatch => {
