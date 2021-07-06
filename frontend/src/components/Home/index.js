@@ -19,25 +19,22 @@ const Home = ({ user, systems }) => {
         dispatch(clearMaps())
     }, [dispatch, user])
 
-    const currentSystems = useSelector(state => state.systems.userSystems)
-    const invitedSystems = useSelector(state => state.systems.invitedSystems)
-
     return (
         <div>
-            {currentSystems ?
+            {systems.userSystems && systems.invitedSystems ?
                 <div className='systemCard__cont'>
                     <div className='systemCard__cont__title'>
                         Your Systems:
                     </div>
-                    {currentSystems && Object.values(currentSystems).map((system, i) => (
+                    {Object.values(systems.userSystems).map((system, i) => (
                         <SystemCard key={i} system={system} user={user} />
                     ))}
                     <div>
                         <NewSystemForm user={user} />
                     </div>
                     <div className='systemCard__cont__title'>Invited Systems:</div>
-                    {invitedSystems && Object.keys(invitedSystems).length > 0 &&
-                        Object.values(invitedSystems).map((system, i) => (
+                    {Object.keys(systems.invitedSystems).length > 0 &&
+                        Object.values(systems.invitedSystems).map((system, i) => (
                             <SystemCard key={i} system={system.System} user={user} pend={system.status === '[ACPT]' ? false : true} />
                         ))}
                 </div>

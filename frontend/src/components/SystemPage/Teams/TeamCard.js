@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { deleteTeam, removeFromTeam, addUserToTeam } from "../../../store/teams"
 import factionSwitch from "./factionSwitch"
-import { connect, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 
 const TeamCard = ({team, user, systemUsers, systemId}) => {
@@ -92,4 +92,4 @@ const TeamCard = ({team, user, systemUsers, systemId}) => {
     )
 }
 
-export default connect(state => ({ teams: state.teams }))(TeamCard)
+export default TeamCard
