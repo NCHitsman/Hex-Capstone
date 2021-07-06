@@ -6,36 +6,21 @@ module.exports = {
       {
         user_id: 1,
         team_id: 1,
+        captain: true,
         system_id: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },{
         user_id: 2,
         team_id: 1,
+        captain: false,
         system_id: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },{
         user_id: 3,
         team_id: 1,
-        system_id: 1,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },{
-        user_id: 1,
-        team_id: 2,
-        system_id: 1,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },{
-        user_id: 1,
-        team_id: 3,
-        system_id: 1,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },{
-        user_id: 1,
-        team_id: 4,
+        captain: false,
         system_id: 1,
         createdAt: new Date(),
         updatedAt: new Date()

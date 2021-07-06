@@ -4,10 +4,11 @@ import factionSwitch from "./factionSwitch"
 import { useDispatch } from 'react-redux'
 
 
-const TeamCard = ({team, user, systemUsers, systemId}) => {
+const TeamCard = ({ team, user, systemUsers, systemId, players }) => {
     const dispatch = useDispatch()
     const [edit, setEdit] = useState(false)
     const [addUser, setAddUser] = useState('')
+    const [addUserRole, setAddUserRole] = useState(false)
     const owner = user.id === team.owner_id
 
     const [faction, color] = factionSwitch(team.faction)
@@ -22,17 +23,17 @@ const TeamCard = ({team, user, systemUsers, systemId}) => {
 
     const addUserClickHandler = () => {
         if (addUser) {
-            dispatch(addUserToTeam(addUser, team.id, systemId))
+            dispatch(addUserToTeam(addUser, addUserRole, team.id, systemId))
             setAddUser('')
         }
     }
 
     return (
-        <div className='teamcard__cont' style={{backgroundColor: color}}>
+        <div className='teamcard__cont' style={{ backgroundColor: color }}>
             {owner &&
-            <button
-            onClick={() => edit ? setEdit(false) : setEdit(true)}
-            >Edit</button>
+                <button
+                    onClick={() => edit ? setEdit(false) : setEdit(true)}
+                >Edit</button>
             }
             <div>{team.name}</div>
             <div>{faction}</div>
@@ -42,51 +43,63 @@ const TeamCard = ({team, user, systemUsers, systemId}) => {
             <div>.</div>
             <div>.</div>
 
-            {team.players && Object.values(team.players).map((player,i) => (
-                <div key={i} style={{display: 'flex'}}>
-                    <div>{player.User.username}</div>
+            {team.players && Object.values(team.players).map((player, i) => (
+                <div key={i} style={{ display: 'flex' }}>
+                    <div>{player.User.username} - {player.captain ? 'Captain' : 'Player'}</div>
                     {edit && player.user_id !== user.id && <button
-                    onClick={() => removeUserClickHandler(player.user_id)}
+                        onClick={() => removeUserClickHandler(player.user_id)}
                     >Remove</button>}
                 </div>
             ))}
             {edit &&
-            <>
-                <div>.</div>
-                <div>.</div>
-                <div>.</div>
+                <>
+                    <div>.</div>
+                    <div>.</div>
+                    <div>.</div>
 
-                <select
-                value={addUser}
-                onChange={(e) => setAddUser(e.target.value)}
-                >
-                    <option value={''} defaultValue disabled hidden>
-                        Select a User
-                    </option>
-                    {Object.values(systemUsers).map((user, i) => {
-                        if (!team.players[user.user_id]) {
-                            return (
-                                <option key={i} value={user.user_id}>{user.User.username}</option> //TODO ADD CAPTAIN OPTION
-                            )
-                        }
-                        return null
-                    })}
-                </select>
+                    <label>
+                        User:
+                        <select
+                            value={addUser}
+                            onChange={(e) => setAddUser(e.target.value)}
+                        >
+                            <option value={''} defaultValue disabled hidden>
+                                Select a User
+                            </option>
+                            {Object.values(systemUsers).map((user, i) => {
+                                if (!players[user.user_id]) {
+                                    return (
+                                        <option key={i} value={user.user_id}>{user.User.username}</option> //TODO ADD CAPTAIN OPTION
+                                    )
+                                }
+                                return null
+                            })}
+                        </select>
+                    </label>
 
-                <button
-                onClick={() => addUserClickHandler()}
-                >
-                    Add User
-                </button>
+                    <label>
+                        Role:
+                        <select value={addUserRole} onChange={(e) => setAddUserRole(e.target.value)}>
+                            <option value={false}>Player</option>
+                            <option value={true}>Captain</option>
+                        </select>
+                    </label>
 
-                <div>.</div>
-                <div>.</div>
-                <div>.</div>
 
-                <button
-                onClick={() => deleteClickHandler()}
-                >Delete</button>
-            </>
+                    <button
+                        onClick={() => addUserClickHandler()}
+                    >
+                        Add User
+                    </button>
+
+                    <div>.</div>
+                    <div>.</div>
+                    <div>.</div>
+
+                    <button
+                        onClick={() => deleteClickHandler()}
+                    >Delete</button>
+                </>
             }
         </div>
     )

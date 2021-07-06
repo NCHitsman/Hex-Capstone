@@ -19,6 +19,10 @@ module.exports = {
         references: { model: 'Teams' },
         onDelete: 'CASCADE',
       },
+      captain: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+      },
       system_id: {
         type: Sequelize.INTEGER,
         allowNull: false,

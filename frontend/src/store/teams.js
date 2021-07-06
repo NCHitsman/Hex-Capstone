@@ -33,9 +33,9 @@ const addUserTeam = (teamPlayer) => ({
     payload: teamPlayer
 })
 
-const createATeam = (teamAndTeamPlayer) => ({
+const createATeam = (team) => ({
     type: CREATE_TEAM,
-    payload: teamAndTeamPlayer
+    payload: team
 })
 
 export const getTeams = (systemId) => async dispatch  => {
@@ -65,12 +65,13 @@ export const removeFromTeam = (userId, teamId) => async dispatch => {
     return res
 }
 
-export const addUserToTeam = (userId, teamId, systemId) => async dispatch => {
+export const addUserToTeam = (userId, roleBoolean, teamId, systemId) => async dispatch => {
     const res = await csrfFetch(`/api/systems/addUserTeam`, {
         method:'POST',
         body: JSON.stringify({
             user_id: userId,
             team_id: teamId,
+            captain: roleBoolean,
             system_id: systemId
         })
     })
@@ -134,8 +135,8 @@ const teamReducer = (state = {}, action) => {
             newState.players[action.payload.user_id] = action.payload
             return newState
         case CREATE_TEAM:
-            newState[action.payload[0].id] = action.payload[0]
-            newState[action.payload[0].id].players = {}
+            newState[action.payload.id] = action.payload
+            newState[action.payload.id].players = {}
             return newState
         default:
             return state

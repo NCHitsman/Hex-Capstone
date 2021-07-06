@@ -213,10 +213,8 @@ router.post('/addUserTeam', asyncHandler(async(req, res) => {
 
 router.post('/createTeam', asyncHandler(async(req, res) => {
     const {id} = await Team.create(req.body)
-    let x = await Team_Player.create({user_id: req.body.owner_id, team_id: id, system_id: req.body.system_id})
-    const teamPlayer = await Team_Player.findByPk(x.id, {include: User})
     const team = await Team.findByPk(id)
-    res.json([team, teamPlayer])
+    res.json(team)
 }))
 
 module.exports = router;

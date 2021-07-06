@@ -123,7 +123,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                     onClick={() => leaveSystemClickHandler()}
                                 >Leave System</button>}
                         </div>
-                        {teams.players && <Teams teams={teams} user={user} systemUsers={systems.systemUsers} systemId={systems.system.id}/>}
+                        {teams.players && <Teams teams={teams} user={user} systemUsers={systems.systemUsers} systemId={systems.system.id} players={teams.players}/>}
                     </div>
                     :
                     <div>DO NOT HAVE PERMISSION</div>
