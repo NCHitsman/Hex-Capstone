@@ -49,37 +49,38 @@ const MapPage = ({ teams, user, players, system, map }) => {
 
 
     const hexClickHandler = (x, y, hexObject) => {
+        console.log(action.type)
         switch (action.type) {
-            case '[CRTL]':
+            case '[CTRL]':
                 mapArray[x][y] = { c: action.body.faction, t: hexObject.t }
                 setMapArray(mapArray)
-                return factionSwitch(action.body.faction)[1]
+                return [action.body.faction, factionSwitch(action.body.faction)[1]]
             case '[CMD]':
                 mapArray[x][y] = { c: hexObject.c, t: '<CMD>' }
                 setMapArray(mapArray)
-                console.log(mapArray)
                 return '<CMD>'
             case '[PWR]':
                 mapArray[x][y] = { c: hexObject.c, t: '<PWR>' }
                 setMapArray(mapArray)
-                console.log(mapArray)
                 return '<PWR>'
             case '[SLD]':
                 mapArray[x][y] = { c: hexObject.c, t: '<SLD>' }
                 setMapArray(mapArray)
-                console.log(mapArray)
                 return '<SLD>'
             case '[MAN]':
                 mapArray[x][y] = { c: hexObject.c, t: '<MAN>' }
                 setMapArray(mapArray)
-                console.log(mapArray)
                 return '<MAN>'
+            case '[CLR]':
+                mapArray[x][y] = { c: null, t: '<BLK>' }
+                setMapArray(mapArray)
+                return
             default:
                 return
         }
     }
 
-
+    console.log(mapArray)
 
     return (
         <>
@@ -158,17 +159,17 @@ const MapPage = ({ teams, user, players, system, map }) => {
 
                         <button
                             onClick={() => {
-                                action.type === '[CRTL]' ?
+                                action.type === '[CTRL]' ?
                                     setAction({ type: null, body: {} })
                                     :
                                     setAction({
-                                        type: '[CRTL]', body: {
+                                        type: '[CTRL]', body: {
                                             faction: currentTeam.faction,
                                             color: factionSwitch(currentTeam.faction)[1]
                                         }
                                     })
                             }}
-                        >Add Control For '{currentTeam.name}'</button>
+                        >Add Territory For '{currentTeam.name}'</button>
 
 
                         <button
@@ -205,9 +206,18 @@ const MapPage = ({ teams, user, players, system, map }) => {
                         >Manufactorum</button>
 
                         <button
-                        onClick={() => {
-                            dispatch(saveMapChanges(map.id, mapArray))
-                        }}
+                            onClick={() => {
+                                action.type === '[CLR]' ?
+                                    setAction({ type: null, body: {} })
+                                    :
+                                    setAction({ type: '[CLR]', body: {} })
+                            }}
+                        >Clear Square</button>
+
+                        <button
+                            onClick={() => {
+                                dispatch(saveMapChanges(map.id, mapArray))
+                            }}
                         >Save Changes</button>
                     </div>}
 
