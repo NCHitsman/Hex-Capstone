@@ -37,7 +37,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
             teams &&
             players &&
             !currentTeam &&
-            setCurrentTeam(teams[teams.players[user.id].team_id])
+            setCurrentTeam(teams[teams.players[user.id]?.team_id])
         system &&
             setOwnerOrCaptain(system.owner_id === user.id
                 || players[user.id].captain)
@@ -99,11 +99,11 @@ const MapPage = ({ teams, user, players, system, map }) => {
         }
     }
 
-
+    console.log(action)
 
     return (
         <>
-            {currentTeam && <div className='mappage__parent__cont'>
+            <div className='mappage__parent__cont'>
                 <Canvas
                     className="mapcanvas"
                     camera={{
@@ -115,7 +115,6 @@ const MapPage = ({ teams, user, players, system, map }) => {
                     }}
                 >
                     {/* <ambientLight /> */}
-                    {/* <gridHelper args={[50,50]}/> */}
                     {/* <pointLight position={[10, 10, 10]} /> */}
                     <OrbitControls enableRotate={false} />
                     {map?.map_seed.map((xArray, xArrayIndex) => {
@@ -148,8 +147,8 @@ const MapPage = ({ teams, user, players, system, map }) => {
                 </Canvas>
 
 
-                {system &&
-                    ownerOrCaptain &&
+                {currentTeam && system &&
+                    ownerOrCaptain ?
                     <div className='mapcontrols__cont'>
 
                         <div>Controls:</div>
@@ -184,12 +183,12 @@ const MapPage = ({ teams, user, players, system, map }) => {
                                     :
                                     setAction({
                                         type: '[CTRL]', body: {
-                                            faction: currentTeam.faction,
-                                            color: factionSwitch(currentTeam.faction)[1]
+                                            faction: currentTeam?.faction,
+                                            color: factionSwitch(currentTeam?.faction)[1]
                                         }
                                     })
                             }}
-                        >Add Territory For '{currentTeam.name}'</button>
+                        >Add Territory For '{currentTeam?.name}'</button>
 
 
                         <button
@@ -239,11 +238,10 @@ const MapPage = ({ teams, user, players, system, map }) => {
                                 dispatch(saveMapChanges(map.id, mapArray))
                             }}
                         >Save Changes</button>
-                    </div>}
-
-
-                <div>{currentTeam.name}</div>
-            </div>}
+                    </div>
+                    :
+                    <div>There are no Teams</div>}
+            </div>
         </>
     )
 }

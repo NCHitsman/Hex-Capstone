@@ -17,7 +17,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [invitee, setInvitee] = useState('')
-    const [NewUserLevel, setNewUserLevel] = useState('4')
+    const [NewUserLevel, setNewUserLevel] = useState('3')
     const [error, setError] = useState('')
     const [loadedPlayers, setLoadedPlayers] = useState(false)
     const [showRemove, setShowRemove] = useState(false)
@@ -94,7 +94,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                         ></input>
                                     </label>
                                     <select
-                                        value={level}
+                                        value={NewUserLevel}
                                         onChange={(e) => setNewUserLevel(e.target.value)}
                                     >
                                         <option value='3'>Player</option>

@@ -72,7 +72,7 @@ const TeamCard = ({ team, user, systemUsers, system, players }) => {
                                 Select a User
                             </option>
                             {Object.values(systemUsers).map((user, i) => {
-                                if (!players[user.user_id]) {
+                                if (!players[user.user_id] && user.status === '[ACPT]') {
                                     return (
                                         <option key={i} value={user.user_id}>{user.User.username}</option> //TODO ADD CAPTAIN OPTION
                                     )

@@ -1,7 +1,7 @@
 import { useState, memo, useEffect } from "react"
 import { factionSwitch } from "../utils"
 
-const Hex = ({ hexObject, pos, x, y, hexClickHandler, action, ref }) => {
+const Hex = ({ hexObject, pos, x, y, hexClickHandler, action}) => {
 
     const [hovered, setHovered] = useState(false)
     const [color, setColor] = useState('black')
@@ -18,6 +18,7 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action, ref }) => {
         }
     }, [setColor, hexObject])
 
+    console.log('render')
 
     return (
         <>
