@@ -64,6 +64,16 @@ export const removeMap = (mapId) => async dispatch => {
     return res
 }
 
+export const saveMapChanges = (mapId, mapSeed) => async dispatch => {
+    const res = await csrfFetch(`/api/maps/update/${mapId}`, {
+        method: 'PATCH',
+        body: JSON.stringify(mapSeed)
+    })
+    const data = await res.json()
+    dispatch(getAMap(data))
+    return res
+}
+
 
 const mapReducer = (state = {}, action) => {
     let newState = {...state};

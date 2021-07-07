@@ -1,13 +1,11 @@
-import { useRef, useState, memo, useEffect } from "react"
-import { factionSwitch } from "../utils";
+import { useState, memo, useEffect } from "react"
+import { factionSwitch } from "../utils"
 
-const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
+const Hex = ({ hexObject, pos, x, y, hexClickHandler, action, ref }) => {
 
-    const mesh = useRef()
     const [hovered, setHovered] = useState(false)
     const [color, setColor] = useState('black')
-
-    console.log('render')
+    const [type, setType] = useState(hexObject.t)
 
     useEffect(() => {
         if (hexObject.t) {
@@ -15,11 +13,11 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
         }
     }, [setColor, hexObject.t])
 
+    console.log(hexObject.t)
 
     return (
         <>
             <mesh
-                ref={mesh}
                 position={pos}
                 onPointerOver={() => {
                     if (action.type === '[CRTL]' && hexObject.t) {
@@ -30,51 +28,73 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                     setHovered(false)
                 }}
                 onClick={() => {
-                    setColor(hexClickHandler(x, y, hexObject.t))
+                    switch (action.type) {
+                        case ('[CRTL]'):
+                            setColor(hexClickHandler(x, y, hexObject))
+                            break
+                        case ('[CMD]'):
+                            setType(hexClickHandler(x, y, hexObject))
+                            break
+                        case ('[PWR]'):
+                            setType(hexClickHandler(x, y, hexObject))
+                            break
+                        case ('[SLD]'):
+                            setType(hexClickHandler(x, y, hexObject))
+                            break
+                        case ('[MAN]'):
+                            setType(hexClickHandler(x, y, hexObject))
+                            break
+                        default:
+                            return null
+                    }
                 }}
             >
                 <cylinderBufferGeometry args={[0.92, 0.92, 0.001, 6]} />
                 <meshBasicMaterial color={
                     hovered ?
-                    action.body.color ?
-                    action.body.color :
-                    'green' :
-                    color} />
+                        'green' :
+                        hexObject.c ?
+                            factionSwitch(hexObject.c)[1] :
+                            color} />
             </mesh>
 
 
-            {hexObject.t === '<CMD>' && <mesh  //TODO FINISH THESE
+            {type === '<CMD>' && <mesh  //TODO FINISH THESE
                 position={pos}
             >
-                <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 4]} />
-                <meshBasicMaterial color={'black'} />
+                <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 3]} />
+                <meshBasicMaterial color={'red'} />
             </mesh>}
 
 
-            {hexObject.t === '<PWR>' && <mesh
+            {type === '<PWR>' && <mesh
                 position={pos}
+                rotateX={1.8}
             >
                 <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 4]} />
                 <meshBasicMaterial color={'orange'} />
             </mesh>}
 
 
-            {hexObject.t === '<SLD>' && <mesh
+            {type === '<SLD>' && <mesh
                 position={pos}
             >
-                <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 4]} />
-                <meshBasicMaterial color={'orange'} />
+                <cylinderBufferGeometry args={[0.45, 0.45, 0.1, 64]} />
+                <meshBasicMaterial color={'blue'} />
             </mesh>}
 
 
-            {hexObject.t === '<MAN>' && <mesh
+            {type === '<MAN>' && <mesh
                 position={pos}
             >
-                <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 4]} />
-                <meshBasicMaterial color={'orange'} />
+                <boxBufferGeometry args={[0.9, 0.1, 0.6]} />
+                <meshBasicMaterial color={'#AA4465'} />
             </mesh>}
         </>
     )
 }
 
-export default memo(Hex, (prevProps, nextProps) => prevProps.action === nextProps.action ? true : false)
+export default memo(Hex,
+    (prevProps, nextProps) => prevProps.action === nextProps.action
+        ? true
+        : false)

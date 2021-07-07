@@ -34,5 +34,13 @@ router.delete('/removeMap/:mapId', asyncHandler(async(req, res) => {
     res.json(mapId)
 }))
 
+router.patch('/update/:mapId', asyncHandler(async(req, res) => {
+    const {mapId} = req.params
+    const map = await Map.findByPk(mapId)
+    map.map_seed = req.body
+    await map.save()
+    res.json(map)
+}))
+
 
 module.exports = router;
