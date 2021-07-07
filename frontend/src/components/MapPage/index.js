@@ -49,7 +49,6 @@ const MapPage = ({ teams, user, players, system, map }) => {
 
 
     const hexClickHandler = (x, y, hexObject) => {
-        console.log(action.type)
         switch (action.type) {
             case '[CTRL]':
                 mapArray[x][y] = { c: action.body.faction, t: hexObject.t }
@@ -80,7 +79,27 @@ const MapPage = ({ teams, user, players, system, map }) => {
         }
     }
 
-    console.log(mapArray)
+
+    const actionTypeText = () => {
+        switch (action.type) {
+            case '[CTRL]':
+                return 'Click a hex to change territory...'
+            case '[CMD]':
+                return 'Click a hex to add a Command Bastion...'
+            case '[PWR]':
+                return 'Click a hex to add a Power Station...'
+            case '[SLD]':
+                return 'Click a hex to add a Shield Generator...'
+            case '[MAN]':
+                return 'Click a hex to add a Manufactorum...'
+            case '[CLR]':
+                return 'Click a hex to clear it...'
+            default:
+                return 'Choose from the options below to edit the map hexes...'
+        }
+    }
+
+
 
     return (
         <>
@@ -135,6 +154,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
 
                         <div>Controls:</div>
 
+                        <div>{actionTypeText()}</div>
 
                         {system.owner_id === user.id &&
                             <select
