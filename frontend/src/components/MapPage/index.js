@@ -8,14 +8,17 @@ import { useEffect, useState } from "react"
 import Hex from "./Hex"
 import { Canvas } from '@react-three/fiber'
 import './MapPage.css'
+import { factionSwitch } from "../utils"
+import { OrbitControls } from '@react-three/drei'
 
 
 const MapPage = ({teams, user, players, system, map}) => {
     const dispatch = useDispatch()
     const { systemId, mapId } = useParams()
-    const [action] = useState({ type: null, body: {} })
+    const [action, setAction] = useState({ type: null, body: {} })
     const [currentTeam, setCurrentTeam] = useState()
     const [ownerOrCaptain, setOwnerOrCaptain] = useState(false)
+    const [mapArray, setMapArray] = useState()
 
     let x = -21.92
     let y = -19.63
@@ -25,25 +28,34 @@ const MapPage = ({teams, user, players, system, map}) => {
         dispatch(getSystem(systemId))
         dispatch(getMap(mapId))
         dispatch(getTeams(systemId))
-        dispatch(getTeamPlayers(systemId))
+        .then(()=>dispatch(getTeamPlayers(systemId)))
         dispatch(getPermission(systemId, user.id))
     }, [dispatch, mapId, systemId, user.id])
 
     useEffect(() => {
-        teams &&
         user &&
+        teams &&
         players &&
         setCurrentTeam(teams[teams.players[user.id].team_id])
-
-        currentTeam &&
         system &&
-        setOwnerOrCaptain(system.owner_id === user.id || currentTeam.captain_id === user.id)
+        setOwnerOrCaptain(system.owner_id === user.id || players[user.id].captain)
+        map &&
+        setMapArray(map.map_seed)
+    }, [setCurrentTeam, teams, user, players, system, map])
 
-    }, [setCurrentTeam, teams, user, players, system, currentTeam])
 
-
-    const hexClickHandler = (x, y) => {
+    const hexClickHandler = (x, y, t) => {
+        switch (action.type) {
+            case '[CRTL]':
+                mapArray[x][y] = {c: action.body.faction, t}
+                setMapArray(mapArray)
+                console.log(mapArray)
+                return factionSwitch(action.body.faction)[1]
+            default:
+                return
+        }
     }
+
 
 
     return (
@@ -56,6 +68,7 @@ const MapPage = ({teams, user, players, system, map}) => {
                     {/* <ambientLight /> */}
                     {/* <gridHelper args={[50,50]}/> */}
                     {/* <pointLight position={[10, 10, 10]} /> */}
+                    <OrbitControls />
                     {map?.map_seed.map((xArray, xArrayIndex) => {
                         y += 1.51
 
@@ -85,10 +98,14 @@ const MapPage = ({teams, user, players, system, map}) => {
                 </Canvas>
 
 
-                {ownerOrCaptain && <div className='mapcontrols__cont'>
+                {system && ownerOrCaptain && <div className='mapcontrols__cont'>
                     <div>Controls:</div>
 
-                    <select>
+                    {system.owner_id === user.id &&
+                    <select
+                    value={currentTeam}
+                    onChange={(e) => setCurrentTeam(e.target.value)}
+                    >
                         {Object.entries(teams).map(([key, team]) => {
                             if (key !== 'players') {
                                 return (
@@ -98,19 +115,24 @@ const MapPage = ({teams, user, players, system, map}) => {
                                 return null
                             }
                         })}
-                    </select>
+                    </select>}
 
-                    <button>Add Control For '{currentTeam.name}'</button>
+                    <button
+                    onClick={() => {
+                        action.type === '[CRTL]' ?
+                        setAction({ type: null, body: {} })
+                        :
+                        setAction({ type: '[CRTL]', body: {faction: currentTeam.faction, color: factionSwitch(currentTeam.faction)[1]} })
+                    }}
+                    >Add Control For '{currentTeam.name}'</button>
                     <button>Command Bastion</button>
                     <button>Power Station</button>
                     <button>Shield Generator</button>
                     <button>Manufactorum</button>
-                    <button>Hive City</button>
                 </div>}
 
 
                 <div>{currentTeam.name}</div>
-                <div>{setOwnerOrCaptain ? 'true':'false'}</div>
             </div>}
         </>
     )

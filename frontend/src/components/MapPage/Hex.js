@@ -1,21 +1,17 @@
 import { useRef, useState, memo, useEffect } from "react"
+import { factionSwitch } from "../utils";
 
-const Hex = ({hexObject, pos, x, y, hexClickHandler, action }) => {
+const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
 
     const mesh = useRef()
-    const [hovered] = useState(false);
-    const [color, setColor] = useState('gray')
-    const [hoveredColor] = useState('green')
-
+    const [hovered, setHovered] = useState(false)
+    const [color, setColor] = useState('black')
 
     console.log('render')
 
     useEffect(() => {
         if (hexObject.t) {
-            switch (hexObject.t){
-                default:
-                    setColor('white')
-            }
+            setColor('white')
         }
     }, [setColor, hexObject.t])
 
@@ -26,19 +22,57 @@ const Hex = ({hexObject, pos, x, y, hexClickHandler, action }) => {
                 ref={mesh}
                 position={pos}
                 onPointerOver={() => {
-                    // setHover(true)
+                    if (action.type === '[CRTL]' && hexObject.t) {
+                        setHovered(true)
+                    }
                 }}
                 onPointerOut={() => {
-                    // setHover(false)
+                    setHovered(false)
                 }}
                 onClick={() => {
-                    console.log(hexObject)
-                    // hexClickHandler(x, y)
+                    setColor(hexClickHandler(x, y, hexObject.t))
                 }}
             >
-                <cylinderBufferGeometry attach='geometry' args={[0.92, 0.92, 0.001, 6]} />
-                <meshBasicMaterial color={ hovered ? hoveredColor : color} />
+                <cylinderBufferGeometry args={[0.92, 0.92, 0.001, 6]} />
+                <meshBasicMaterial color={
+                    hovered ?
+                    action.body.color ?
+                    action.body.color :
+                    'green' :
+                    color} />
             </mesh>
+
+
+            {hexObject.t === '<CMD>' && <mesh  //TODO FINISH THESE
+                position={pos}
+            >
+                <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 4]} />
+                <meshBasicMaterial color={'black'} />
+            </mesh>}
+
+
+            {hexObject.t === '<PWR>' && <mesh
+                position={pos}
+            >
+                <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 4]} />
+                <meshBasicMaterial color={'orange'} />
+            </mesh>}
+
+
+            {hexObject.t === '<SLD>' && <mesh
+                position={pos}
+            >
+                <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 4]} />
+                <meshBasicMaterial color={'orange'} />
+            </mesh>}
+
+
+            {hexObject.t === '<MAN>' && <mesh
+                position={pos}
+            >
+                <cylinderBufferGeometry args={[0.5, 0.5, 0.1, 4]} />
+                <meshBasicMaterial color={'orange'} />
+            </mesh>}
         </>
     )
 }

@@ -33,6 +33,7 @@ const CreateMap = () => {
                 mapArray[x][y] = {t: '<BLK>', c: null}
                 setMapArray(mapArray)
         }
+        console.log(mapArray)
     }
 
     const MapSubmitHandler = () => {
@@ -99,6 +100,7 @@ const CreateMap = () => {
                     <button
                     onClick={() => MapSubmitHandler()}
                     >Create Map</button>
+
                 </div>
             </div>
             :
