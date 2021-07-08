@@ -2,30 +2,49 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormPage from '../LoginFormPage';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <div className='WelcomeTextCont'>
+          <div className='WelcomeText' >Welcome Commander {sessionUser.username}
+            <style>
+              @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Staatliches&display=swap');
+            </style>
+          </div>
+        </div>
+        <ProfileButton user={sessionUser} />
+      </>
     );
   } else {
     sessionLinks = (
       <>
-        <LoginFormPage />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <div className='LogOutSignUpButtonCont'>
+          <NavLink className='LogOutSignUpButton' to="/signup">SIGN UP
+            <style>
+              @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+            </style>
+          </NavLink>
+        </div>
       </>
     );
   }
 
   return (
     <div className='nav__cont'>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
+      <div className='HomeLinkCont'>
+        <NavLink className='HomeLink' exact to="/">Planetary Empires
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+          </style>
+        </NavLink>
+      </div>
+      {isLoaded && sessionLinks}
     </div>
   );
 }

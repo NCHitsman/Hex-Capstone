@@ -1,14 +1,82 @@
 .nav__cont {
-    background-color: lightblue;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    padding-top: 25px;
-    padding-bottom: 25px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid #FCA311;
+  border-radius: 5px;
 }
 
-.profile-dropdown {
-    position: absolute;
-    left: 70%;
+.HomeLink {
+  font-size: 45px;
+  text-decoration: none;
+  color: #E5E5E5;
+  margin-left: 25px;
+  font-family: Staatliches;
+}
+
+.LogOutSignUpButton {
+  margin-right: 25px;
+  font-size: 18px;
+  color: black;
+  background-color: #E5E5E5;
+  border-radius: 5px;
+  border: 1px solid gray;
+  text-decoration: none;
+  font-family: 'Open Sans';
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.HomeLinkCont {
+  min-width: 18%;
+}
+
+.LogOutSignUpButtonCont {
+  display: flex;
+  min-width: 18%;
+  justify-content: flex-end;
+}
+
+.WelcomeText {
+  font-size: 30px;
+  font-family: Cairo;
+  color: lightgreen;
+  overflow: hidden;
+  border-right: 0.15em solid lightgreen;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: lightgreen;
+  }
+}
+
+.LogInFormCont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 64%;
 }

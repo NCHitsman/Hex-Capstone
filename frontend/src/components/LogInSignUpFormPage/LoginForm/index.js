@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
+import * as sessionActions from '../../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
+import './LoginForm.css'
 
-function LoginFormPage() {
+function LoginForm() {
   const history = useHistory()
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -27,31 +28,33 @@ function LoginFormPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Username or Email
+    <form className='LogInForm' onSubmit={handleSubmit}>
+      <div className='LogInFormErrors'>
+        {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+      </div>
+      <label className='LogInFormLabel'>
+        Username or Email:
         <input
+          className='LogInFormInput'
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
       </label>
-      <label>
-        Password
+      <label className='LogInFormLabel'>
+        Password:
         <input
+          className='LogInFormInput'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button className='LogInFormButton' type="submit">Log In</button>
     </form>
   );
 }
 
-export default LoginFormPage;
+export default LoginForm;

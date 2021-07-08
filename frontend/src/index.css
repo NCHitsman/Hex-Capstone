@@ -16,11 +16,17 @@
 }
 
 body{
-    background-color: gray;
+    background-color: #14213D;
 }
 
 .mapcanvas {
     max-width: 43.5%;
     min-height: calc(100vh - 50px - 40px);
-    background-color: gray;
+    background-color: #14213D;
+}
+
+.PageContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

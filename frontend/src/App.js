@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
+import SignupForm from "./components/LogInSignUpFormPage/SignupForm";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from './components/Home'
@@ -22,24 +22,29 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && user && (
-        <Switch>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path='/system/:systemId'>
-            <SystemPage user={user} />
-          </Route>
-          <Route exact path='/system/:systemId/map/:mapId'>
-            <MapPage />
-          </Route>
-          <Route exact path='/createMap'>
-            <CreateMap />
-          </Route>
-          <Route exact path='/'>
-            <Home user={user} />
-          </Route>
-        </Switch>
+      {isLoaded && (
+        <div className='PageContent'>
+          <Switch>
+            <Route exact path="/signup">
+              <SignupForm />
+            </Route>
+            {user &&
+              <>
+                <Route exact path='/system/:systemId'>
+                  <SystemPage user={user} />
+                </Route>
+                <Route exact path='/system/:systemId/map/:mapId'>
+                  <MapPage />
+                </Route>
+                <Route exact path='/createMap'>
+                  <CreateMap />
+                </Route>
+                <Route exact path='/'>
+                  <Home user={user} />
+                </Route>
+              </>}
+          </Switch>
+        </div>
       )}
     </>
   );
