@@ -12,11 +12,11 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         {/* <div className='WelcomeTextCont'> */}
-          {/* <div className='WelcomeText' >Welcome Commander {sessionUser.username} */}
-            <style>
-              @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Staatliches&display=swap');
-            </style>
-          {/* </div> */}
+        {/* <div className='WelcomeText' >Welcome Commander {sessionUser.username} */}
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Staatliches&display=swap');
+        </style>
+        {/* </div> */}
         {/* </div> */}
         <ProfileButton user={sessionUser} />
       </>
@@ -25,6 +25,11 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <div className='LogOutSignUpButtonCont'>
+          <NavLink className='LogOutSignUpButton' to="/login">LOG IN
+            <style>
+              @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+            </style>
+          </NavLink>
           <NavLink className='LogOutSignUpButton' to="/signup">SIGN UP
             <style>
               @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');

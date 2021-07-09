@@ -16,17 +16,24 @@ const LogInSignUpFormPage = ({ page }) => {
         <div className='PageParentLogInSignUpForm'>
             <div className='ParentFormCont'>
                 <div className='ParentSwitchButtonCont'>
-                    <div className={signUpActive ? 'ParentSwitchButtonContLeft active' : 'ParentSwitchButtonContLeft'}>
+                    <div
+                        onClick={() => {
+                            setCurrentPage('signup')
+                            setSignUpActive(true)
+                            setLogInActive(false)
+                        }}
+                        className={signUpActive ? 'ParentSwitchButtonContLeft active' : 'ParentSwitchButtonContLeft'}>
                         <div
                             className={signUpActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
-                            onClick={() => {
-                                setCurrentPage('signup')
-                                setSignUpActive(true)
-                                setLogInActive(false)
-                            }}
                         >SIGN UP</div>
                     </div>
-                    <div className={logInActive ? 'ParentSwitchButtonContRight active' : 'ParentSwitchButtonContRight'}>
+                    <div
+                        onClick={() => {
+                            setCurrentPage('login')
+                            setLogInActive(true)
+                            setSignUpActive(false)
+                        }}
+                        className={logInActive ? 'ParentSwitchButtonContRight active' : 'ParentSwitchButtonContRight'}>
                         <div
                             className={logInActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
                             onClick={() => {

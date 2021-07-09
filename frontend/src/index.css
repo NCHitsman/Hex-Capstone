@@ -1,47 +1,74 @@
 /* TODO Add site wide styles */
 
 .card {
-    background-color: #14213D;
-    min-width: 80%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 36px;
-    color: #E5E5E5;
+  background-color: #14213d;
+  min-width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 36px;
+  color: #e5e5e5;
 }
 
 .card:hover {
-    color: #FCA311;
+  color: #fca311;
 }
 
-body{
-    background-color: #14213D;
-    margin: 0px;
+body {
+  background-color: #14213d;
+  margin: 0px;
 }
 
 .mapcanvas {
-    max-width: 43.5%;
-    min-height: calc(100vh - 50px - 40px);
-    background-color: #14213D;
+  max-width: 43.5%;
+  min-height: calc(100vh - 50px - 40px);
+  background-color: #14213d;
 }
 
-.PageContent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.PageContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.BackgroundImage{
-    height: 1080px;
-    width: 1920px;
-    position: fixed;
-    top: 0em;
-    left: .03em;
-    z-index: -1;
+.BackgroundImage {
+  height: 1080px;
+  width: 1920px;
+  position: fixed;
+  top: 0em;
+  left: 0.03em;
+  z-index: -1;
+}
+
+.LoadingText {
+  font-family: Staatliches;
+  font-size: 500px;
+  text-align: center;
+}
+
+.LoadingTextCont {
+  min-height: calc(100vh - 50px - 75px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+    width: 1em;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 5px;
 }
