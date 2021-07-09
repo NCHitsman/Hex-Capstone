@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import './LoginForm.css'
+import '../LogInSignUpForm.css'
 
 function LoginForm() {
   const history = useHistory()
@@ -28,31 +28,31 @@ function LoginForm() {
   }
 
   return (
-    <form className='LogInForm' onSubmit={handleSubmit}>
-      <div className='LogInFormErrors'>
+    <form className='FormCont' onSubmit={handleSubmit}>
+      <div style={{ display: errors.length ? 'block' : 'none' }} className='FormErrors'>
         {errors.map((error, idx) => <div key={idx}>{error}</div>)}
       </div>
-      <label className='LogInFormLabel'>
+      <label className='FormLabel'>
         Username or Email:
         <input
-          className='LogInFormInput'
+          className='FormInput'
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
       </label>
-      <label className='LogInFormLabel'>
+      <label className='FormLabel'>
         Password:
         <input
-          className='LogInFormInput'
+          className='FormInput'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <button className='LogInFormButton' type="submit">Log In</button>
+      <button className='FormButton' type="submit">Log In</button>
     </form>
   );
 }

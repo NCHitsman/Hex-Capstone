@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../../store/session";
-import './SignUpForm.css'
+import '../LogInSignUpForm.css'
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -29,57 +29,52 @@ function SignupForm() {
   };
 
   return (
-    <div className='SignUpFormCont'>
-      <form className='SignUpForm' onSubmit={handleSubmit}>
-        <div className='SignUpFormTitle'>
-          Sign Up
+      <form className='FormCont' onSubmit={handleSubmit}>
+        <div style={{ display: errors.length ? 'block' : 'none' }} className='FormErrors'>
+          {errors.map((error, idx) => <div key={idx}>{error}</div>)}
         </div>
-        <ul style={{ display: errors.length ? 'block' : 'none' }}>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <label className='SignUpFormLabel'>
+        <label className='FormLabel'>
           Email:
           <input
-            className='SignUpFormInput'
+            className='FormInput'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
-        <label className='SignUpFormLabel'>
+        <label className='FormLabel'>
           Username:
           <input
-            className='SignUpFormInput'
+            className='FormInput'
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </label>
-        <label className='SignUpFormLabel'>
+        <label className='FormLabel'>
           Password:
           <input
-            className='SignUpFormInput'
+            className='FormInput'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <label className='SignUpFormLabel'>
+        <label className='FormLabel'>
           Confirm Password:
           <input
-            className='SignUpFormInput'
+            className='FormInput'
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
-        <button className='SignUpFormButton' type="submit">Sign Up</button>
+        <button className='FormButton' type="submit">Sign Up</button>
       </form>
-    </div>
   );
 }
 

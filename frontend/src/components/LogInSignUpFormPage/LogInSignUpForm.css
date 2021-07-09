@@ -1,0 +1,136 @@
+.PageParentLogInSignUpForm{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: calc(100vh - 50px - 35px);
+    align-items: center;
+}
+
+
+.ParentFormCont{
+    background-color: #E5E5E5;
+    max-width: 28%;
+    min-width: 28%;
+    max-height: calc(100vh - 50px - 75px);
+    border: 15px double #FCA311;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5%;
+}
+
+.ParentSwitchButtonCont{
+    min-height: 100px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    border-radius: 50px;
+}
+
+.ParentSwitchButtonContLeft{
+    width: 175px;
+    height: 100px;
+    background-color: #14213D;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ParentSwitchButtonContRight{
+    width: 175px;
+    height: 100px;
+    background-color: #14213D;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid gray;
+}
+
+.ParentSwitchButtonContLeft.active{
+    border-bottom: 3px solid #FCA311;
+}
+
+.ParentSwitchButtonContRight.active{
+    border-bottom: 3px solid #FCA311;
+}
+
+.ParentSwitchButton{
+    font-family: Staatliches;
+    font-size: 46px;
+    margin-right: 20px;
+    margin-left: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.ParentSwitchButton:hover{
+    color: #FCA311
+}
+
+.ParentSwitchButton.active {
+    color: #FCA311;
+}
+
+
+.FormCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: calc(100vh - 50px - 300px);
+    align-items: center;
+    width: 100%;
+    margin-bottom: 7%;
+}
+
+.FormLabel{
+    color: black;
+    font-family: 'Open Sans';
+    font-size: 20px;
+    max-width: 90%;
+}
+
+.FormInput{
+    margin-left: 15px;
+    font-size: 20px;
+    font-family: 'Open Sans';
+    border-radius: 5px;
+}
+
+.FormButton{
+    font-size: 28px;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-decoration: none;
+    font-family: 'Open Sans';
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 1px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.FormErrors{
+    font-size: 20px;
+    font-family: 'Open Sans';
+    color: red;
+    max-width: 20%;
+    text-align: center;
+}
+
+.formSideImage{
+    height: 1080px;
+    width: 1920px;
+    position: fixed;
+    left: .03em;
+    z-index: -1;
+}
