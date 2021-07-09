@@ -1,13 +1,19 @@
+.CreateMapPageParentCont{
+    width: 100%;
+    display: flex;
+}
+
 
 .createmap__parent__cont{
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
 
-.mapcontrols__cont{
+/* .mapcontrols__cont{
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 50px - 45px);
     justify-content: space-evenly;
     align-items: center;
-}
+} */

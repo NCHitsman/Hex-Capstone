@@ -1,13 +1,14 @@
+.MapPageParentCont{
+    width: 100%;
+    display: flex;
+}
+
 .MapCanvas {
     max-width: 43.5%;
     min-height: calc(100vh - 50px - 145px);
     background-color: black;
 }
 
-.mappage__parent__cont{
-    display: flex;
-    /* justify-content: space-evenly; */
-}
 
 .mapform__cont{
     display: flex;

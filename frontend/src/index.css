@@ -1,7 +1,7 @@
 /* TODO Add site wide styles */
 
 .card {
-    background-color: pink;
+    background-color: #14213D;
     min-width: 80%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -12,7 +12,12 @@
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 36px;
+    color: #E5E5E5;
+}
+
+.card:hover {
+    color: #FCA311;
 }
 
 body{
@@ -30,4 +35,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.BackgroundImage{
+    height: 1080px;
+    width: 1920px;
+    position: fixed;
+    top: 0em;
+    left: .03em;
+    z-index: -1;
 }

@@ -1,4 +1,4 @@
-.nav__cont {
+.NavCont {
   background-color: #14213D;
   display: flex;
   justify-content: space-between;
@@ -8,7 +8,43 @@
   padding-bottom: 5px;
   border: 1px solid #FCA311;
   border-radius: 5px;
+  margin: 2px;
 }
+
+.NavLinkParentCont{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
+
+.NavLink{
+  color: #E5E5E5;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Staatliches;
+  font-size: 30px;
+}
+
+.NavLink:hover{
+  color: #FCA311;
+}
+
+.NavLinkCont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+  border-right: 1px solid gray;
+  padding-right: 60px;
+  padding-left: 60px;
+}
+
+.NavLinkCont.Features{
+  border-left: 1px solid gray;
+  padding-left: 60px;
+}
+
 
 .HomeLink {
   font-size: 45px;
@@ -16,11 +52,16 @@
   color: #E5E5E5;
   margin-left: 25px;
   font-family: Staatliches;
+  margin-right: 60px;
+}
+
+.HomeLink:hover{
+  color: #FCA311;
 }
 
 .LogOutSignUpButton {
-  margin-right: 25px;
-  font-size: 18px;
+  margin-right: 60px;
+  font-size: 24px;
   color: black;
   background-color: #E5E5E5;
   border-radius: 5px;

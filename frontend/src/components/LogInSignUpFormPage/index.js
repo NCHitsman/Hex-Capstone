@@ -14,37 +14,37 @@ const LogInSignUpFormPage = ({ page }) => {
 
     return (
         <div className='PageParentLogInSignUpForm'>
-        <div className='ParentFormCont'>
-            <div className='ParentSwitchButtonCont'>
-                <div className={signUpActive ? 'ParentSwitchButtonContLeft active' : 'ParentSwitchButtonContLeft'}>
-                    <div
-                        className={signUpActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
-                        onClick={() => {
-                            setCurrentPage('signup')
-                            setSignUpActive(true)
-                            setLogInActive(false)
-                        }}
-                    >SIGN UP</div>
+            <div className='ParentFormCont'>
+                <div className='ParentSwitchButtonCont'>
+                    <div className={signUpActive ? 'ParentSwitchButtonContLeft active' : 'ParentSwitchButtonContLeft'}>
+                        <div
+                            className={signUpActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
+                            onClick={() => {
+                                setCurrentPage('signup')
+                                setSignUpActive(true)
+                                setLogInActive(false)
+                            }}
+                        >SIGN UP</div>
+                    </div>
+                    <div className={logInActive ? 'ParentSwitchButtonContRight active' : 'ParentSwitchButtonContRight'}>
+                        <div
+                            className={logInActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
+                            onClick={() => {
+                                setCurrentPage('login')
+                                setLogInActive(true)
+                                setSignUpActive(false)
+                            }}
+                        >Log In</div>
+                    </div>
                 </div>
-                <div className={logInActive ? 'ParentSwitchButtonContRight active' : 'ParentSwitchButtonContRight'}>
-                    <div
-                        className={logInActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
-                        onClick={() => {
-                            setCurrentPage('login')
-                            setLogInActive(true)
-                            setSignUpActive(false)
-                        }}
-                    >Log In</div>
-                </div>
-            </div>
-            {currentPage === 'login' ?
-                <LoginForm />
-                :
-                <SignupForm />
-            }
+                {currentPage === 'login' ?
+                    <LoginForm />
+                    :
+                    <SignupForm />
+                }
 
-        </div>
-        <img className='formSideImage' src={formSideImage} alt='x'></img>
+            </div>
+            <img className='BackgroundImage' src={formSideImage} alt='Mars, Cradle of the Mechanicum - Warhammer 40,000© by Joacim Holm; https://www.artstation.com/artwork/WKd69G'></img>
         </div>
     )
 }

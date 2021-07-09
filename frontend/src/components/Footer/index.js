@@ -4,7 +4,6 @@ const Footer = () => {
 
     return (
         <div className='FooterCont'>
-            <div>Hi</div>
         </div>
     )
 }

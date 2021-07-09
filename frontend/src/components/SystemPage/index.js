@@ -50,7 +50,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
     }
 
     return (
-        <div>
+        <div className='SystemPageParentCont'>
             {maps.systemMaps && systems.system && systems.systemUsers && teams.players && level && loadedPlayers ?
                 level ?
                     <div className='systemPage__parent__cont'>

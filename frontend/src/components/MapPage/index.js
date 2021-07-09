@@ -102,8 +102,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
     console.log(action)
 
     return (
-        <>
-            <div className='mappage__parent__cont'>
+            <div className='MapPageParentCont'>
                 <Canvas
                     className="mapcanvas"
                     camera={{
@@ -242,7 +241,6 @@ const MapPage = ({ teams, user, players, system, map }) => {
                     :
                     <div>There are no Teams</div>}
             </div>
-        </>
     )
 }
 

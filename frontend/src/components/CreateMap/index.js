@@ -33,7 +33,6 @@ const CreateMap = () => {
                 mapArray[x][y] = {t: '<BLK>', c: null}
                 setMapArray(mapArray)
         }
-        console.log(mapArray)
     }
 
     const MapSubmitHandler = () => {
@@ -43,7 +42,7 @@ const CreateMap = () => {
 
 
     return (
-        <>
+        <div className='CreateMapPageParentCont'>
             {system ? <div className='createmap__parent__cont'>
                 <Canvas
                     className="mapcanvas"
@@ -106,7 +105,7 @@ const CreateMap = () => {
             :
             history.push('/')
             }
-        </>
+        </div>
     )
 }
 

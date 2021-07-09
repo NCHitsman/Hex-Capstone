@@ -8,6 +8,7 @@ import { clearPermission } from '../../store/session'
 import SystemCard from './SystemCard'
 import './Home.css'
 import NewSystemForm from './NewSystemForm'
+import backgroundImage from '../../images/shipoutofwarpbackground.png'
 
 
 const Home = ({ user, systems }) => {
@@ -24,8 +25,9 @@ const Home = ({ user, systems }) => {
     }, [dispatch, user])
 
     return (
-        <div>
+        <div className='HomeParentCont'>
             {systems.userSystems && systems.invitedSystems ?
+                <div>
                 <div className='systemCard__cont'>
                     <div className='systemCard__cont__title'>
                         Your Systems:
@@ -42,7 +44,8 @@ const Home = ({ user, systems }) => {
                             <SystemCard key={i} system={system.System} user={user} pend={system.status === '[ACPT]' ? false : true} />
                         ))}
                 </div>
-
+                <img className='BackgroundImage' src={backgroundImage} alt='Warhammer 40K Nebula© by jordi van hees; https://www.artstation.com/artwork/W294dN' />
+                </div>
                 :
                 <div>Loading...</div>
             }

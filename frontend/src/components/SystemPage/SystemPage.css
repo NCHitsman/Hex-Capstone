@@ -1,3 +1,7 @@
+.SystemPageParentCont{
+    width: 100%;
+}
+
 .systemPage__parent__cont{
     display: flex;
     min-width: 100%;
