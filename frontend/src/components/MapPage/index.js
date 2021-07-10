@@ -10,7 +10,7 @@ import { Canvas } from '@react-three/fiber'
 import './MapPage.css'
 import { factionSwitch } from "../utils"
 import { OrbitControls } from '@react-three/drei'
-
+import backgroundImage from '../../images/orkattack.png'
 
 const MapPage = ({ teams, user, players, system, map }) => {
     const dispatch = useDispatch()
@@ -19,6 +19,13 @@ const MapPage = ({ teams, user, players, system, map }) => {
     const [currentTeam, setCurrentTeam] = useState(null)
     const [ownerOrCaptain, setOwnerOrCaptain] = useState(false)
     const [mapArray, setMapArray] = useState()
+
+    const [loaded, setLoaded] = useState(false)
+    useEffect(() => {
+        setTimeout(() => {
+            setLoaded(true)
+        }, 1000)
+    })
 
     let x = -21.92
     let y = -19.63
@@ -99,148 +106,184 @@ const MapPage = ({ teams, user, players, system, map }) => {
         }
     }
 
-    console.log(mapArray)
-
     return (
-            <div className='MapPageParentCont'>
-                <Canvas
-                    className="mapcanvas"
-                    camera={{
-                        fov: 75,
-                        near: 0.1,
-                        far: 1000,
-                        position: [0, 30, 0],
-                        rotation: [-(Math.PI / 2.0), 0.0, 0.0]
-                    }}
-                >
-                    {/* <ambientLight /> */}
-                    {/* <pointLight position={[10, 10, 10]} /> */}
-                    <OrbitControls enableRotate={false} />
-                    {map?.map_seed.map((xArray, xArrayIndex) => {
-                        y += 1.51
+        <>
+            {teams && players && system && user && loaded && map ? <div className='MapPageParentCont'>
+                <div className='CanvasCont'>
+                    <Canvas
+                        className="mapcanvas"
+                        camera={{
+                            fov: 75,
+                            near: 0.1,
+                            far: 1000,
+                            position: [0, 25.5, 0],
+                            rotation: [-(Math.PI / 2.0), 0.0, 0.0]
+                        }}
+                    >
+                        {/* <ambientLight /> */}
+                        {/* <pointLight position={[10, 10, 10]} /> */}
+                        <OrbitControls enableRotate={false} />
+                        {map?.map_seed.map((xArray, xArrayIndex) => {
+                            y += 1.51
 
-                        if (eachOther) {
-                            x = -22.22
-                            eachOther = false
-                        } else {
-                            x = -23.11
-                            eachOther = true
-                        }
+                            if (eachOther) {
+                                x = -22.22
+                                eachOther = false
+                            } else {
+                                x = -23.11
+                                eachOther = true
+                            }
 
-                        return (
-                            xArray.map((hexObject, yArrayIndex) => {
-                                x += 1.74
-                                return (
-                                    <Hex
-                                        hexObject={hexObject}
-                                        key={xArrayIndex + yArrayIndex
-                                            + x + y}
-                                        pos={[x, 0.3, y]}
-                                        x={xArrayIndex}
-                                        y={yArrayIndex}
-                                        hexClickHandler={hexClickHandler}
-                                        action={action} />
-                                )
-                            }))
-                    })}
-                </Canvas>
+                            return (
+                                xArray.map((hexObject, yArrayIndex) => {
+                                    x += 1.74
+                                    return (
+                                        <Hex
+                                            hexObject={hexObject}
+                                            key={xArrayIndex + yArrayIndex
+                                                + x + y * Math.random()}
+                                            pos={[x, 0.3, y]}
+                                            x={xArrayIndex}
+                                            y={yArrayIndex}
+                                            hexClickHandler={hexClickHandler}
+                                            action={action} />
+                                    )
+                                }))
+                        })}
+                    </Canvas>
+                </div>
 
-
-                {currentTeam && system &&
-                    ownerOrCaptain ?
-                    <div className='mapcontrols__cont'>
-
-                        <div>Controls:</div>
-
-                        <div>{actionTypeText()}</div>
-
-                        {system.owner_id === user.id &&
-                            <select
-                                onChange={(e) => {
-                                    setCurrentTeam(teams[e.target.value])
-                                    setAction({ type: null, body: {} })
-                                }}
-                            >
-                                {Object.entries(teams).map(([key, team]) => {
-                                    if (key !== 'players') {
-                                        return (
-                                            <option key={team.name} value={team.id}>
-                                                {team.name}
-                                            </option>
-                                        )
-                                    } else {
-                                        return null
-                                    }
-                                })}
-                            </select>}
+                <div className='MapInfoCont'>
 
 
-                        <button
-                            onClick={() => {
-                                action.type === '[CTRL]' ?
-                                    setAction({ type: null, body: {} })
-                                    :
-                                    setAction({
-                                        type: '[CTRL]', body: {
-                                            faction: currentTeam?.faction,
-                                            color: factionSwitch(currentTeam?.faction)[1]
-                                        }
-                                    })
-                            }}
-                        >Add Territory For '{currentTeam?.name}'</button>
-
-
-                        <button
-                            onClick={() => {
-                                action.type === '[CMD]' ?
-                                    setAction({ type: null, body: {} })
-                                    :
-                                    setAction({ type: '[CMD]', body: {} })
-                            }}
-                        >Command Bastion</button>
-                        <button
-                            onClick={() => {
-                                action.type === '[PWR]' ?
-                                    setAction({ type: null, body: {} })
-                                    :
-                                    setAction({ type: '[PWR]', body: {} })
-                            }}
-                        >Power Station</button>
-                        <button
-                            onClick={() => {
-                                action.type === '[SLD]' ?
-                                    setAction({ type: null, body: {} })
-                                    :
-                                    setAction({ type: '[SLD]', body: {} })
-                            }}
-                        >Shield Generator</button>
-                        <button
-                            onClick={() => {
-                                action.type === '[MAN]' ?
-                                    setAction({ type: null, body: {} })
-                                    :
-                                    setAction({ type: '[MAN]', body: {} })
-                            }}
-                        >Manufactorum</button>
-
-                        <button
-                            onClick={() => {
-                                action.type === '[CLR]' ?
-                                    setAction({ type: null, body: {} })
-                                    :
-                                    setAction({ type: '[CLR]', body: {} })
-                            }}
-                        >Clear Square</button>
-
-                        <button
-                            onClick={() => {
-                                dispatch(saveMapChanges(map.id, mapArray))
-                            }}
-                        >Save Changes</button>
+                    <div className='MapNameTypeCont'>
+                        <div className='MapName'>{map.name}</div>
+                        <div className='MapType'>{
+                            map.type === '[PLT]' ?
+                                'Planet' :
+                                map.type === '[MON]' ?
+                                    'Moon' :
+                                    map.type === '[AST]' ?
+                                        'Asteroid' :
+                                        'Ship'
+                        }</div>
                     </div>
-                    :
-                    <div>There are no Teams</div>}
+
+                    {currentTeam && system &&
+                        ownerOrCaptain ?
+                        <div className='MapControlsCont'>
+
+                            <div className='ActionTypeTextCont'>
+                                <div className='ActionTypeText'>{actionTypeText()}</div>
+                            </div>
+
+
+                            <div className='MapControlsInnerCont'>
+
+                                {system.owner_id === user.id &&
+                                    <select
+                                        className='TeamSelect'
+                                        onChange={(e) => {
+                                            setCurrentTeam(teams[e.target.value])
+                                            setAction({ type: null, body: {} })
+                                        }}
+                                    >
+                                        {Object.entries(teams).map(([key, team], i) => {
+                                            if (key !== 'players') {
+                                                return (
+                                                    <option key={i} value={team.id}>
+                                                        {team.name}
+                                                    </option>
+                                                )
+                                            } else {
+                                                return null
+                                            }
+                                        })}
+                                    </select>}
+
+
+                                <button
+                                    className='MapControlButton'
+                                    onClick={() => {
+                                        action.type === '[CTRL]' ?
+                                            setAction({ type: null, body: {} })
+                                            :
+                                            setAction({
+                                                type: '[CTRL]', body: {
+                                                    faction: currentTeam?.faction,
+                                                    color: factionSwitch(currentTeam?.faction)[1]
+                                                }
+                                            })
+                                    }}
+                                >Add Territory For '{currentTeam?.name}'</button>
+
+
+                                <button
+                                    className='MapControlButton'
+                                    onClick={() => {
+                                        action.type === '[CMD]' ?
+                                            setAction({ type: null, body: {} })
+                                            :
+                                            setAction({ type: '[CMD]', body: {} })
+                                    }}
+                                >Command Bastion</button>
+                                <button
+                                    className='MapControlButton'
+                                    onClick={() => {
+                                        action.type === '[PWR]' ?
+                                            setAction({ type: null, body: {} })
+                                            :
+                                            setAction({ type: '[PWR]', body: {} })
+                                    }}
+                                >Power Station</button>
+                                <button
+                                    className='MapControlButton'
+                                    onClick={() => {
+                                        action.type === '[SLD]' ?
+                                            setAction({ type: null, body: {} })
+                                            :
+                                            setAction({ type: '[SLD]', body: {} })
+                                    }}
+                                >Shield Generator</button>
+                                <button
+                                    className='MapControlButton'
+                                    onClick={() => {
+                                        action.type === '[MAN]' ?
+                                            setAction({ type: null, body: {} })
+                                            :
+                                            setAction({ type: '[MAN]', body: {} })
+                                    }}
+                                >Manufactorum</button>
+
+                                <button
+                                    className='MapControlButton'
+                                    onClick={() => {
+                                        action.type === '[CLR]' ?
+                                            setAction({ type: null, body: {} })
+                                            :
+                                            setAction({ type: '[CLR]', body: {} })
+                                    }}
+                                >Clear Square</button>
+
+                                <button
+                                    className='MapControlButton'
+                                    onClick={() => {
+                                        dispatch(saveMapChanges(map.id, mapArray))
+                                    }}
+                                >Save Changes</button>
+                            </div>
+                        </div>
+                        :
+                        <div>There are no Teams</div>}
+                </div>
             </div>
+                :
+                <div className='LoadingTextCont'>
+                    <div className='LoadingText systemPage'>Loading...</div>
+                </div>
+            }
+            <img className='BackgroundImage' src={backgroundImage} alt='Unknown Artist' />
+        </>
     )
 }
 

@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
           <NavLink className='NavLink' to='/features'>Features</NavLink>
         </div>
         <div className='NavLinkCont'>
-          <NavLink className='NavLink' to='/howtoplay'>How To Play</NavLink>
+          <div className='NavLink' onClick={() => window.open('https://img.fireden.net/tg/image/1559/17/1559178030443.pdf')} >How To Play</div>
         </div>
         <div className='NavLinkCont'>
           <NavLink className='NavLink' to='/mapGallery'>Map Gallery</NavLink>

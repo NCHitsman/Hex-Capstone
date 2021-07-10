@@ -26,9 +26,12 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
 
     const [loaded, setLoaded] = useState(false)
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setLoaded(true)
         }, 1000)
+        return () => {
+            clearTimeout(timeout)
+        }
     })
 
     useEffect(() => {
@@ -86,7 +89,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
 
                                 <div className='MapCardButtonCont create'>
                                     {level <= 1 ? <button
-                                        style={{border: Object.values(maps.systemMaps).length ? 'border: 1px solid black;' : '3px solid red'}}
+                                        style={{border: Object.values(maps.systemMaps).length ? 'border: 1px solid black' : '3px solid red'}}
                                         className='MapCardCreateNewWorldButton'
                                         onClick={() => history.push('/createMap')}
                                     >Create New Map</button>
@@ -175,7 +178,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                     <div className='LoadingText systemPage'>Loading...</div>
                 </div>
             }
-            <img className='BackgroundImage' src={backgroundImage} alt='' />
+            <img className='BackgroundImage' src={backgroundImage} alt='Warhammer 40K Nebula© by jordi van hees; https://www.artstation.com/artwork/W294dN' />
         </div>
     )
 }

@@ -33,9 +33,22 @@ body {
 }
 
 .mapcanvas {
-  max-width: 43.5%;
-  min-height: calc(100vh - 50px - 40px);
-  background-color: #14213d;
+  max-width: 100%;
+  min-height: calc(100vh - 50px - 80px);
+  background-color: #045676;
+  border-radius: 5px;
+}
+
+.CanvasCont {
+  min-width: 50%;
+  display: flex;
+  background-color: #fca311;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 3px black;
+  min-height: 84%;
+  padding: 0.5%;
+  margin: 0.5%;
 }
 
 .PageContent {
