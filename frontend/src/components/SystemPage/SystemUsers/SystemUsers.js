@@ -34,12 +34,25 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser, teams }) =>
                     const team = teams[teams.players[user.user_id]?.team_id]
                     return (
                         <div style={{ backgroundColor: team ? factionSwitch(team.faction)[1] : 'lightgray' }} className='card systemUserCard' key={i}>
-                            <div>{user.User.username}</div>
+                            <div>{
+                                showRemove ?
+                                    user.User.username.length > 8 ?
+                                        user.User.username[7] === '' ?
+                                            user.User.username.slice(0, 7) + '...' :
+                                            user.User.username.slice(0, 8) + '...' :
+                                        user.User.username :
+                                    user.User.username.length > 16 ?
+                                        user.User.username[15] === '' ?
+                                            user.User.username.slice(0, 15) + '...' :
+                                            user.User.username.slice(0, 16) + '...' :
+                                        user.User.username
+                            }</div>
 
                             {
                                 showRemove && user.User.id !== system.owner_id &&
                                 user.User.id !== currentUser.id &&
                                 <button
+                                    className='SystemUserRemoveButton'
                                     onClick={() => removeUserClickHandler(user.User.id, i)}
                                 >Remove</button>
                             }
@@ -47,7 +60,7 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser, teams }) =>
                             {user.status === '[ACPT]' ?
                                 <div>{permissionTitle(user.level)}</div>
                                 :
-                                <div>PENDING</div>
+                                <div>Pending</div>
                             }
                         </div>
                     )

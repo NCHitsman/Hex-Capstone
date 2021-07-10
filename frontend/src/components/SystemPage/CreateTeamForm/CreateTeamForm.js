@@ -4,7 +4,7 @@ import { createTeam } from "../../../store/teams"
 import { FactionOptions } from "../../utils"
 
 
-const CreateTeamForm = ({user, system}) => {
+const CreateTeamForm = ({ user, system }) => {
     const dispatch = useDispatch()
     const [teamName, setTeamName] = useState('')
     const [faction, setFaction] = useState('')
@@ -16,29 +16,31 @@ const CreateTeamForm = ({user, system}) => {
     }
 
     return (
-        <>
-            <div>Create Team:</div>
-            <label>
-                Name:
-                <input
+        <div className='InviteUserCreateTeamFormCont'>
+            <div></div>
+            <div className='InviteUserCreateTeamFormTitle'>Create Team:</div>
+            <input
+                className='InviteUserCreateTeamFormInput'
                 type='text'
                 value={teamName}
                 onChange={(e) => setTeamName(e.target.value)}
-                ></input>
-            </label>
+            ></input>
             <select
-            value={faction}
-            onChange={(e) => setFaction(e.target.value)}
+                className='InviteUserCreateTeamFormSelect'
+                value={faction}
+                onChange={(e) => setFaction(e.target.value)}
             >
                 <option value={''} defaultValue disabled hidden>
-                Select A Faction
+                    Select A Faction
                 </option>
                 <FactionOptions />
             </select>
             <button
-            onClick={() => createTeamFormSubmitHandler()}
+                className='InviteUserCreateTeamFormButton'
+                onClick={() => createTeamFormSubmitHandler()}
             >Submit</button>
-        </>
+            <div></div>
+        </div>
     )
 }
 

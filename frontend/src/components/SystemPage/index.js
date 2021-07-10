@@ -117,16 +117,16 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
 
 
                                 {level <= 1 &&
-                                    <div className='InviteUserFormCont'>
-                                        <div className='InviteUserFormError'>{error}</div>
-                                        <label className='InviteUserFormTitle'>Invite User:</label>
+                                    <div className='InviteUserCreateTeamFormCont'>
+                                        <div className='InviteUserCreateTeamFormError'>{error}</div>
+                                        <label className='InviteUserCreateTeamFormTitle'>Invite User:</label>
                                         <input
-                                            className='InviteUserFormInput'
+                                            className='InviteUserCreateTeamFormInput'
                                             value={invitee}
                                             onChange={(e) => setInvitee(e.target.value)}
                                         ></input>
                                         <select
-                                            className='InviteUserFormSelect'
+                                            className='InviteUserCreateTeamFormSelect'
                                             value={NewUserLevel}
                                             onChange={(e) => setNewUserLevel(e.target.value)}
                                         >
@@ -134,7 +134,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                             <option value='2'>Captain</option>
                                         </select>
                                         <button
-                                            className='InviteUserFormButton'
+                                            className='InviteUserCreateTeamFormButton'
                                             onClick={() => inviteUserHandler()}
                                         >Invite</button>
                                         <div></div>
@@ -142,16 +142,20 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                 }
                             </div>
 
+                            <div className='TeamFlexCont'>
 
-                            {teams.players && <Teams
-                                teams={teams}
-                                user={user}
-                                systemUsers={systems.systemUsers}
-                                system={systems.system}
-                                players={teams.players} />
-                            }
+                                {teams.players && <Teams
+                                    teams={teams}
+                                    user={user}
+                                    systemUsers={systems.systemUsers}
+                                    system={systems.system}
+                                    players={teams.players}
+                                    edit={showRemove}
+                                     />
+                                }
 
-                            <CreateTeamForm user={user} system={systems.system} />
+                                <CreateTeamForm user={user} system={systems.system} />
+                            </div>
                         </div>
 
 
