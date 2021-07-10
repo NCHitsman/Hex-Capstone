@@ -18,7 +18,6 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
         }
     }, [setColor, hexObject])
 
-    console.log('render')
 
     return (
         <>
@@ -97,7 +96,7 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                 position={pos}
             >
                 <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<CMD>') ? [0.55, 0.55, 0.1, 4] : [0, 0, 0]} />
-                <meshBasicMaterial color={type === '<CMD>' ? action.type === '[CLR]' ? extraHovered ? 'white' : 'red' : 'red' : extraHovered ? 'red' : color} />
+                <meshBasicMaterial color={type === '<CMD>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#323334' : '#323334' : extraHovered ? '#323334' : color} />
             </mesh>}
 
 
@@ -106,7 +105,7 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                 rotation-x={Math.PI}
             >
                 <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<PWR>') ? [0.6, 0.6, 0.1, 3] : [0, 0, 0]} />
-                <meshBasicMaterial color={type === '<PWR>' ? action.type === '[CLR]' ? extraHovered ? 'white' : 'orange' : 'orange' : extraHovered ? 'orange' : color} />
+                <meshBasicMaterial color={type === '<PWR>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#FFCE47' : '#FFCE47' : extraHovered ? '#FFCE47' : color} />
             </mesh>}
 
 
@@ -114,7 +113,7 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                 position={pos}
             >
                 <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<SLD>') ? [0.5, 0.5, 0.1, 64] : [0, 0, 0]} />
-                <meshBasicMaterial color={type === '<SLD>' ? action.type === '[CLR]' ? extraHovered ? 'white' : 'blue' : 'blue' : extraHovered ? 'blue' : color} />
+                <meshBasicMaterial color={type === '<SLD>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#188C7C' : '#188C7C' : extraHovered ? '#188C7C' : color} />
             </mesh>}
 
 
@@ -122,7 +121,7 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                 position={pos}
             >
                 <boxBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<MAN>') ? [0.95, 0.2, 0.6] : [0, 0, 0]} />
-                <meshBasicMaterial color={type === '<MAN>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#AA4465' : '#AA4465' : extraHovered ? '#AA4465' : color} />
+                <meshBasicMaterial color={type === '<MAN>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#5A202E' : '#5A202E' : extraHovered ? '#5A202E' : color} />
             </mesh>}
         </>
     )

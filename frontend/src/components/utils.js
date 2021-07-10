@@ -1,19 +1,19 @@
 export const factionSwitch = (faction) => {
     switch (faction) {
         case '[IMP]':
-            return ['Imperium', 'gray']
+            return ['Imperium', '#9297A0']
         case '[CHA]':
-            return ['Chaos', 'darkred']
+            return ['Chaos', '#D00000']
         case '[NCR]':
-            return ['Necrons', 'lightgreen']
+            return ['Necrons', '#495A52']
         case '[ALD]':
-            return ['Aeldari', 'lightblue']
+            return ['Aeldari', '#85FFFB']
         case '[NID]':
-            return ['Tyranids', 'purple']
+            return ['Tyranids', '#AC72AB']
         case '[ORK]':
-            return ['Orks', 'green']
+            return ['Orks', '#91BC24']
         case '[TAU]':
-            return ['Tau', 'orange']
+            return ['Tau', '#EE6644']
         default:
             return ['not set', 'white']
     }

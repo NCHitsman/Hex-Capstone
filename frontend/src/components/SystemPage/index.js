@@ -59,6 +59,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
         history.push('/')
     }
 
+
     return (
         <div className='SystemPageFlex'>
             {loaded && maps.systemMaps && systems.system && systems.systemUsers && teams.players && level && loadedPlayers ?
@@ -85,6 +86,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
 
                                 <div className='MapCardButtonCont create'>
                                     {level <= 1 ? <button
+                                        style={{border: Object.values(maps.systemMaps).length ? 'border: 1px solid black;' : '3px solid red'}}
                                         className='MapCardCreateNewWorldButton'
                                         onClick={() => history.push('/createMap')}
                                     >Create New Map</button>
@@ -159,7 +161,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                 />
                                 }
 
-                                {level <= 2 && <CreateTeamForm user={user} system={systems.system} />}
+                                {level <= 2 && <CreateTeamForm user={user} system={systems.system} teams={Object.values(teams).length > 1}/>}
                             </div>
                         </div>
 

@@ -4,7 +4,7 @@ import { createTeam } from "../../../store/teams"
 import { FactionOptions } from "../../utils"
 
 
-const CreateTeamForm = ({ user, system }) => {
+const CreateTeamForm = ({ user, system, teams }) => {
     const dispatch = useDispatch()
     const [teamName, setTeamName] = useState('')
     const [faction, setFaction] = useState('')
@@ -16,7 +16,7 @@ const CreateTeamForm = ({ user, system }) => {
     }
 
     return (
-        <div className='InviteUserCreateTeamFormCont'>
+        <div style={{border: teams ? 'none' : '3px solid red'}} className='InviteUserCreateTeamFormCont'>
             <div></div>
             <div className='InviteUserCreateTeamFormTitle'>Create Team:</div>
             <input

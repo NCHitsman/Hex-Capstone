@@ -99,7 +99,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
         }
     }
 
-    console.log(action)
+    console.log(mapArray)
 
     return (
             <div className='MapPageParentCont'>
