@@ -1,9 +1,202 @@
-.SystemPageParentCont{
-    width: 100%;
+.SystemPageFlex {
+  display: flex;
+  min-width: 100%;
+  justify-content: space-evenly;
+  height: 100%;
 }
 
-.systemPage__parent__cont{
-    display: flex;
-    min-width: 100%;
-    justify-content: space-evenly;
+.SystemPageParentCont {
+  background-color: #e5e5e5;
+  max-height: calc(100vh - 50px - 75px);
+  min-height: calc(100vh - 50px - 75px);
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  min-width: 90%;
+  border-radius: 10px;
+  border: 15px double #fca311;
+  margin-bottom: 7px;
+}
+
+.MapCardCont {
+  min-width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.MapCardTilte {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 48px;
+  font-family: Staatliches;
+}
+
+.UserTeamFlexCont {
+  display: flex;
+  max-width: 90%;
+  justify-content: space-between;
+  min-width: 90%;
+  min-height: 74%;
+}
+
+.MapCardTitleCont {
+  display: flex;
+  min-width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MapCardTitleEditButton {
+  font-family: "Open Sans";
+  font-size: 24px;
+  border-radius: 5px;
+  padding-right: 3%;
+  padding-left: 3%;
+  padding-bottom: 3px;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px gray;
+  margin-right: 3px;
+}
+
+.MapCardTitleEditButton.remove {
+  box-shadow: 1px 1px 5px gray;
+  margin-top: 3px;
+}
+
+.MapCardCreateNewWorldButton {
+  font-family: "Open Sans";
+  font-size: 24px;
+  border-radius: 5px;
+  padding-right: 3%;
+  padding-left: 3%;
+  padding-bottom: 3px;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px gray;
+  margin-right: 3px;
+}
+
+.MapCardButtonCont {
+  min-width: 28%;
+  display: flex;
+  align-items: center;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+.MapCardButtonCont.edit {
+  justify-content: flex-end;
+}
+
+.LoadingText.systemPage {
+  color: #fca311;
+}
+
+.MapsCont {
+  min-width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+  padding: 5px;
+  background-color: #fca311;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 10px gray;
+}
+
+.card.mapCard {
+  max-width: 20.5%;
+  min-width: 20.5%;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
+}
+
+.UserFlexCont {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  max-height: 90%;
+}
+
+.SystemUsersCont {
+  min-height: 100%;
+}
+
+.SystemUsersTitle {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 48px;
+  font-family: Staatliches;
+  min-width: 100%;
+  max-height: 10%;
+}
+
+.SystemUsersParentCont {
+  min-height: 100%;
+}
+
+.SystemUserCardCont {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  overflow: auto;
+  padding: 5px;
+  background-color: #fca311;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 10px gray;
+  min-height: 84%;
+  margin-bottom: 1%;
+  padding: 1%;
+}
+
+.card.systemUserCard {
+  max-width: 45%;
+  min-width: 45%;
+  color: black;
+}
+
+.card.systemUserCard:hover {
+  color: #fca311;
+}
+
+.InviteUserFormCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.InviteUserFormTitle {
+  font-size: 36px;
+  font-family: Staatliches;
+}
+
+.InviteUserFormInput {
+  font-size: 18px;
+  font-family: "Open Sans";
+  border-radius: 5px;
+}
+
+.InviteUserFormSelect {
+  font-size: 18px;
+  font-family: "Open Sans";
+  border-radius: 5px;
+}
+
+.InviteUserFormButton {
+  font-size: 26px;
+  border-radius: 5px;
+  font-family: Staatliches;
+}
+
+.InviteUserFormError {
+  font-size: 20px;
+  font-family: "Open Sans";
 }

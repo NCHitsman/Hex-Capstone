@@ -100,12 +100,13 @@
   padding-bottom: 3px;
   cursor: pointer;
   box-shadow: 3px 3px 5px gray;
+  margin-right: 3px;
 }
 
 .SystemCardContTitleEditButton.clicked{
   box-shadow: 1px 1px 5px gray;
-  margin-bottom: 1px;
-  margin-left: 1px;
+  margin-top: 3px;
+  margin-right: 1px;
 }
 
 .SystemCardButton{

@@ -11,6 +11,8 @@ import './SystemPage.css'
 import Teams from './Teams/Teams'
 import { getTeams, getTeamPlayers } from "../../store/teams"
 import CreateTeamForm from './CreateTeamForm/CreateTeamForm'
+import backgroundImage from '../../images/shipwarp2background.png'
+
 
 const SystemPage = ({ user, maps, systems, session, teams, level }) => {
     const { systemId } = useParams()
@@ -22,14 +24,21 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
     const [loadedPlayers, setLoadedPlayers] = useState(false)
     const [showRemove, setShowRemove] = useState(false)
 
+    const [loaded, setLoaded] = useState(false)
+    useEffect(() => {
+        setTimeout(() => {
+            setLoaded(true)
+        }, 1000)
+    })
+
     useEffect(() => {
         dispatch(getSystem(systemId))
         dispatch(getSystemMaps(systemId))
         dispatch(getSystemUsers(systemId))
         dispatch(getPermission(user.id, systemId))
         dispatch(getTeams(systemId))
-        .then(() => dispatch(getTeamPlayers(systemId)))
-        .then(() => setLoadedPlayers(true))
+            .then(() => dispatch(getTeamPlayers(systemId)))
+            .then(() => setLoadedPlayers(true))
     }, [dispatch, systemId, user.id])
 
     const inviteUserHandler = () => {
@@ -39,7 +48,8 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                     setError(res)
                 } else {
                     setInvitee('')
-                }})
+                }
+            })
         setError('')
     }
 
@@ -50,90 +60,119 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
     }
 
     return (
-        <div className='SystemPageParentCont'>
-            {maps.systemMaps && systems.system && systems.systemUsers && teams.players && level && loadedPlayers ?
+        <div className='SystemPageFlex'>
+            {loaded && maps.systemMaps && systems.system && systems.systemUsers && teams.players && level && loadedPlayers ?
                 level ?
-                    <div className='systemPage__parent__cont'>
-                        <div className='systemCard__cont'>
-                            <div className='systemCard__cont__title'>
-                                Worlds in {systems.system?.name}:
+                    <div className='SystemPageParentCont'>
+
+
+
+
+                        <div className='MapCardCont'>
+
+                            <div className='MapCardTitleCont'>
+
+                                <div className='MapCardButtonCont edit'>
+                                    {level <= 1 && <button
+                                        className={showRemove ? 'MapCardTitleEditButton remove' : 'MapCardTitleEditButton'}
+                                        onClick={() => showRemove ? setShowRemove(false) : setShowRemove(true)}
+                                    >Edit</button>}
+                                </div>
+
+                                <div className='MapCardTilte'>
+                                    Worlds in {systems.system?.name}:
+                                </div>
+
+                                <div className='MapCardButtonCont create'>
+                                    {level <= 1 ? <button
+                                        className='MapCardCreateNewWorldButton'
+                                        onClick={() => history.push('/createMap')}
+                                    >Create New Map</button>
+                                        :
+                                        <div>.</div>
+                                    }
+                                </div>
+
                             </div>
 
-                            {level <= 1 && <button
-                                onClick={() => showRemove ? setShowRemove(false) : setShowRemove(true)}
-                            >Edit:</button>}
+                            <div className='MapsCont'>
+                                {Object.values(maps.systemMaps).map((map, i) => (
+                                    <MapCard key={i} map={map} showRemove={showRemove} systemId={systemId} />
+                                ))}
+                            </div>
 
-                            {Object.values(maps.systemMaps).map((map, i) => (
-                                <MapCard key={i} map={map} showRemove={showRemove} systemId={systemId}/>
-                            ))}
+                        </div>
 
-                            {level <= 1 ? <button
-                                onClick={() => history.push('/createMap')}
-                            >Create New Map</button>
-                                :
-                                <div>.</div>
-                            }
 
-                            <div>.</div>
-                            <div>.</div>
-                            <div>.</div>
 
-                            <SystemUsers systemUsers={systems.systemUsers} system={systems.system} showRemove={showRemove} currentUser={user} teams={teams}/>
 
-                            <div>.</div>
-                            <div>.</div>
-                            <div>.</div>
+                        <div className='UserTeamFlexCont'>
 
-                            {level <= 1 &&
-                                <>
-                                    <div>{error}</div>
-                                    <label>Invite User:
+
+                            <div className='UserFlexCont'>
+
+
+                                <SystemUsers systemUsers={systems.systemUsers} system={systems.system} showRemove={showRemove} currentUser={user} teams={teams} />
+
+
+
+                                {level <= 1 &&
+                                    <div className='InviteUserFormCont'>
+                                        <div className='InviteUserFormError'>{error}</div>
+                                        <label className='InviteUserFormTitle'>Invite User:</label>
                                         <input
+                                            className='InviteUserFormInput'
                                             value={invitee}
                                             onChange={(e) => setInvitee(e.target.value)}
                                         ></input>
-                                    </label>
-                                    <select
-                                        value={NewUserLevel}
-                                        onChange={(e) => setNewUserLevel(e.target.value)}
-                                    >
-                                        <option value='3'>Player</option>
-                                        <option value='2'>Captain</option>
-                                    </select>
-                                    <button
-                                        onClick={() => inviteUserHandler()}
-                                    >Invite</button>
+                                        <select
+                                            className='InviteUserFormSelect'
+                                            value={NewUserLevel}
+                                            onChange={(e) => setNewUserLevel(e.target.value)}
+                                        >
+                                            <option value='3'>Player</option>
+                                            <option value='2'>Captain</option>
+                                        </select>
+                                        <button
+                                            className='InviteUserFormButton'
+                                            onClick={() => inviteUserHandler()}
+                                        >Invite</button>
+                                        <div></div>
+                                    </div>
+                                }
+                            </div>
 
-                                    <div>.</div>
-                                    <div>.</div>
-                                    <div>.</div>
 
-                                    <CreateTeamForm user={user} system={systems.system}/>
-
-
-                                    <div>.</div>
-                                    <div>.</div>
-                                    <div>.</div>
-                                </>
+                            {teams.players && <Teams
+                                teams={teams}
+                                user={user}
+                                systemUsers={systems.systemUsers}
+                                system={systems.system}
+                                players={teams.players} />
                             }
 
-                            {user.id !== systems.system.owner_id &&
-                                <button
-                                    onClick={() => leaveSystemClickHandler()}
-                                >Leave System</button>}
+                            <CreateTeamForm user={user} system={systems.system} />
                         </div>
-                        {teams.players && <Teams
-                        teams={teams}
-                        user={user}
-                        systemUsers={systems.systemUsers}
-                        system={systems.system}
-                        players={teams.players}/>}
+
+
+
+                        {user.id !== systems.system.owner_id &&
+                            <button
+                                onClick={() => leaveSystemClickHandler()}
+                            >Leave System</button>
+                        }
+
+
+
                     </div>
                     :
                     <div>DO NOT HAVE PERMISSION</div>
                 :
-                <div>Loading...</div>
+                <div className='LoadingTextCont'>
+                    <div className='LoadingText systemPage'>Loading...</div>
+                </div>
             }
+            <img className='BackgroundImage' src={backgroundImage} alt='' />
         </div>
     )
 }

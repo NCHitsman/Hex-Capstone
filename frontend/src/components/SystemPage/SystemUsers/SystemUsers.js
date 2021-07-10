@@ -27,30 +27,33 @@ const SystemUsers = ({ systemUsers, system, showRemove, currentUser, teams }) =>
     }
 
     return (
-        <div className='systemUsers__parent__cont'>
-            <div className='systemUsers__cont__title'>System Users:</div>
-            {Object.values(systemUsers).map((user, i) => {
-                const team = teams[teams.players[user.user_id]?.team_id]
-                return (
-                <div style={{backgroundColor: team ? factionSwitch(team.faction)[1] : 'lightgray'}} className='card' key={i}>
-                    <div>{user.User.username}</div>
+        <>
+            <div className='SystemUsersTitle'>System Users:</div>
+            <div className='SystemUserCardCont'>
+                {Object.values(systemUsers).map((user, i) => {
+                    const team = teams[teams.players[user.user_id]?.team_id]
+                    return (
+                        <div style={{ backgroundColor: team ? factionSwitch(team.faction)[1] : 'lightgray' }} className='card systemUserCard' key={i}>
+                            <div>{user.User.username}</div>
 
-                    {
-                        showRemove && user.User.id !== system.owner_id &&
-                        user.User.id !== currentUser.id &&
-                        <button
-                            onClick={() => removeUserClickHandler(user.User.id, i)}
-                        >Remove</button>
-                    }
+                            {
+                                showRemove && user.User.id !== system.owner_id &&
+                                user.User.id !== currentUser.id &&
+                                <button
+                                    onClick={() => removeUserClickHandler(user.User.id, i)}
+                                >Remove</button>
+                            }
 
-                    {user.status === '[ACPT]' ?
-                        <div>{permissionTitle(user.level)}</div>
-                        :
-                        <div>PENDING</div>
-                    }
-                </div>
-            )})}
-        </div>
+                            {user.status === '[ACPT]' ?
+                                <div>{permissionTitle(user.level)}</div>
+                                :
+                                <div>PENDING</div>
+                            }
+                        </div>
+                    )
+                })}
+            </div>
+        </>
     )
 }
 

@@ -9,14 +9,27 @@ const MapCard = ({ map, showRemove, systemId }) => {
 
     return (
         <div
-            className='card'
+            className='card mapCard'
             onClick={(e) => {
                 if (e.target.id !== map.id) history.push(`/system/${systemId}/map/${map.id}`
                 )
             }}
         >
-            <div>{map.name}</div>
+            <div>{
+            showRemove ?
+            map.name.length > 14 ?
+            map.name[13] === ' ' ?
+            map.name.slice(0,13) + '...' :
+            map.name.slice(0,14) + '...' :
+            map.name
+            :
+            map.name.length > 17 ?
+            map.name[16] === ' ' ?
+            map.name.slice(0,16) + '...' :
+            map.name.slice(0,17) + '...' :
+            map.name}</div>
             {showRemove && <button
+                className='SystemCardButton'
                 id={map.id}
                 onClick={(e) => {
                     e.stopPropagation()
