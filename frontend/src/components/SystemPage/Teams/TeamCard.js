@@ -57,7 +57,7 @@ const TeamCard = ({ team, user, systemUsers, system, players, edit }) => {
 
 
                     } - {player.captain ? 'Captain' : 'Player'}</div>
-                    {edit && player.user_id !== user.id && <div
+                    {edit && <div
                         className='TeamCardRemoveUserButton'
                         onClick={() => removeUserClickHandler(player.user_id)}
                     >X</div>}

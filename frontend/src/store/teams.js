@@ -43,28 +43,28 @@ const clear = () => ({
     type: CLEAR
 })
 
-export const getTeams = (systemId) => async dispatch  => {
+export const getTeams = (systemId) => async dispatch => {
     const res = await csrfFetch(`/api/systems/teams/${systemId}`)
     const data = await res.json()
     dispatch(getSystemTeams(data))
     return res
 }
 
-export const getTeamPlayers = (systemId) => async dispatch  => {
+export const getTeamPlayers = (systemId) => async dispatch => {
     const res = await csrfFetch(`/api/systems/teamPlayers/${systemId}`)
     const data = await res.json()
     dispatch(getPlayers(data))
     return res
 }
 
-export const deleteTeam = (teamId) => async dispatch  => {
-    await csrfFetch(`/api/systems/deleteTeam/${teamId}`, {method:'DELETE'})
+export const deleteTeam = (teamId) => async dispatch => {
+    await csrfFetch(`/api/systems/deleteTeam/${teamId}`, { method: 'DELETE' })
     dispatch(deleteATeam(teamId))
     return teamId
 }
 
 export const removeFromTeam = (userId, teamId) => async dispatch => {
-    const res = await csrfFetch(`/api/systems/removeUserTeam/${userId}/${teamId}`, {method:'DELETE'})
+    const res = await csrfFetch(`/api/systems/removeUserTeam/${userId}/${teamId}`, { method: 'DELETE' })
     const data = await res.json()
     dispatch(removeUser(userId, teamId, data))
     return res
@@ -72,7 +72,7 @@ export const removeFromTeam = (userId, teamId) => async dispatch => {
 
 export const addUserToTeam = (userId, roleBoolean, teamId, systemId) => async dispatch => {
     const res = await csrfFetch(`/api/systems/addUserTeam`, {
-        method:'POST',
+        method: 'POST',
         body: JSON.stringify({
             user_id: userId,
             team_id: teamId,
@@ -87,7 +87,7 @@ export const addUserToTeam = (userId, roleBoolean, teamId, systemId) => async di
 
 export const createTeam = (name, faction, system_id, owner_id) => async dispatch => {
     const res = await csrfFetch(`/api/systems/createTeam`, {
-        method:'POST',
+        method: 'POST',
         body: JSON.stringify({
             name,
             system_id,
@@ -106,23 +106,22 @@ export const clearTeams = () => async dispatch => {
 }
 
 const teamReducer = (state = {}, action) => {
-    let newState = {...state}
+    let newState = { ...state }
 
-    switch (action.type){
+    switch (action.type) {
         case GET_TEAMS:
             action.payload.forEach(team => {
                 newState[team.id] = team
-                newState[team.id].players = {}
+                newState[team.id].players = []
             })
             return newState
         case GET_PLAYERS:
             newState.players = {}
             action.payload.forEach(player => {
-                newState[player.team_id].players ?
-                newState[player.team_id].players[player.user_id] = player
-                :
-                newState[player.team_id].players = {};
-                newState[player.team_id].players[player.user_id] = player
+                player.captain ?
+                    newState[player.team_id].players.unshift(player)
+                    :
+                    newState[player.team_id].players.push(player)
 
                 newState.players[player.user_id] = player
             })
@@ -137,13 +136,20 @@ const teamReducer = (state = {}, action) => {
             return newState
         case REMOVE_USER:
             delete newState.players[action.payload[0]]
-            newState[action.payload[1]].players = {}
+            newState[action.payload[1]].players = []
             action.payload[2].forEach(player => {
-                newState[action.payload[1]].players[player.user_id] = player
+                player.captain ?
+                newState[player.team_id].players.unshift(player)
+                :
+                newState[player.team_id].players.push(player)
             })
             return newState
         case ADD_TEAM_PLAYER:
-            newState[action.payload.team_id].players[action.payload.user_id] = action.payload
+            action.payload.captain ?
+                newState[action.payload.team_id].players.unshift(action.payload)
+                :
+                newState[action.payload.team_id].players.push(action.payload)
+
             newState.players[action.payload.user_id] = action.payload
             return newState
         case CREATE_TEAM:
