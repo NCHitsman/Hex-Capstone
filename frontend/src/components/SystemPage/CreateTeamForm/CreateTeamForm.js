@@ -20,6 +20,7 @@ const CreateTeamForm = ({ user, system }) => {
             <div></div>
             <div className='InviteUserCreateTeamFormTitle'>Create Team:</div>
             <input
+                placeholder='Team Name'
                 className='InviteUserCreateTeamFormInput'
                 type='text'
                 value={teamName}

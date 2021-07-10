@@ -170,10 +170,7 @@
   min-width: 45%;
   color: black;
   font-size: 26px;
-}
-
-.card.systemUserCard:hover {
-  color: #fca311;
+  cursor: auto;
 }
 
 .InviteUserCreateTeamFormCont {
@@ -247,7 +244,7 @@
   min-height: 100%;
 }
 
-.TeamCard{
+.TeamCard {
   min-width: 28.5%;
   min-height: 100%;
   margin-top: 10px;
@@ -260,18 +257,21 @@
   margin-left: 1%;
 }
 
-.TeamCardName{
+.TeamCardName {
   font-size: 32px;
   font-family: "Open Sans";
   border-bottom: 2px solid black;
+  min-width: 75%;
 }
 
-.TeamCardFaction{
+.TeamCardFaction {
   font-size: 24px;
   font-family: "Open Sans";
+  border-bottom: 1px solid black;
+  margin-bottom: 3px;
 }
 
-.TeamEditButton{
+.TeamEditButton {
   font-family: "Open Sans";
   font-size: 16px;
   cursor: pointer;
@@ -279,15 +279,56 @@
   padding-right: 7px;
 }
 
-.TeamCardRemoveUserButton{
+.TeamCardRemoveUserButton {
   cursor: pointer;
   color: red;
   font-size: 18px;
   font-family: "Open Sans";
 }
 
-.TeamCardPlayerName{
+.TeamCardPlayerName {
   font-size: 22px;
   display: flex;
   justify-content: space-between;
+}
+
+.TeamOptionsCont {
+  min-height: 32%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.TeamOptionsUserSelect {
+  font-family: "Open Sans";
+  font-size: 18px;
+}
+
+.TeamOptionsRoleSelect {
+  font-family: "Open Sans";
+  font-size: 18px;
+}
+
+.TeamOptionsSubmit {
+  font-family: "Open Sans";
+  font-size: 16px;
+}
+
+.TeamCardDelete {
+  margin-top: 5%;
+  border-bottom: 2px solid black;
+  min-width: 25%;
+  font-size: 18px;
+}
+
+.TeamCardPlayerNameCont{
+  min-height: 80%;
+  overflow: auto;
+  padding: 1%;
+}
+
+.TeamCardPlayerNameCont.edit{
+  max-height: 47%;
+  min-height: 47%;
 }

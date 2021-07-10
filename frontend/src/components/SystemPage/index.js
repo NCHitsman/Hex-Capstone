@@ -89,9 +89,13 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                         onClick={() => history.push('/createMap')}
                                     >Create New Map</button>
                                         :
-                                        <div>.</div>
+                                        <button
+                                        className='MapCardCreateNewWorldButton'
+                                        onClick={() => leaveSystemClickHandler()}
+                                    >Leave System</button>
                                     }
                                 </div>
+
 
                             </div>
 
@@ -121,6 +125,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                         <div className='InviteUserCreateTeamFormError'>{error}</div>
                                         <label className='InviteUserCreateTeamFormTitle'>Invite User:</label>
                                         <input
+                                            placeholder='Username'
                                             className='InviteUserCreateTeamFormInput'
                                             value={invitee}
                                             onChange={(e) => setInvitee(e.target.value)}
@@ -151,20 +156,12 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                     system={systems.system}
                                     players={teams.players}
                                     edit={showRemove}
-                                     />
+                                />
                                 }
 
-                                <CreateTeamForm user={user} system={systems.system} />
+                                {level <= 2 && <CreateTeamForm user={user} system={systems.system} />}
                             </div>
                         </div>
-
-
-
-                        {user.id !== systems.system.owner_id &&
-                            <button
-                                onClick={() => leaveSystemClickHandler()}
-                            >Leave System</button>
-                        }
 
 
 
