@@ -32,7 +32,7 @@ const About = () => {
                 className='AboutCanvas'
                 style={{ backgroundColor: 'black' }}
                 camera={{
-                    fov: 90,
+                    fov: 75,
                     near: 0.1,
                     far: 20000,
                     position: [50, 50, 0],
