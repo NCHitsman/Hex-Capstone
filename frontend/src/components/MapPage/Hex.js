@@ -4,20 +4,18 @@ import { factionSwitch } from "../utils"
 const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
 
     const [hovered, setHovered] = useState(false)
-    const [color, setColor] = useState('black')
+    const [color, setColor] = useState('white')
     const [type, setType] = useState(hexObject.t)
     const [control, setControl] = useState(hexObject.c)
     const [extraHovered, setExtraHovered] = useState(false)
 
     useEffect(() => {
-        if (hexObject.t) {
-            setColor('white')
-        }
         if (hexObject.c) {
             setColor(factionSwitch(hexObject.c)[1])
         }
     }, [setColor, hexObject])
 
+    console.log('render')
 
     return (
         <>
@@ -82,7 +80,7 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                     }
                 }}
             >
-                <cylinderBufferGeometry args={[0.92, 0.92, 0.001, 6]} />
+                <cylinderBufferGeometry args={[0.92, 0.92, 0.01, 6]} />
                 <meshBasicMaterial color={
                     hovered ?
                         factionSwitch(action.body.faction)[1] :
@@ -93,35 +91,35 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
 
 
             {(type === '<CMD>' || action.type === '[CMD]') && <mesh  //TODO FINISH THESE
-                position={pos}
+                position={[pos[0], pos[1] + 0.05, pos[2]]}
             >
-                <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<CMD>') ? [0.55, 0.55, 0.1, 4] : [0, 0, 0]} />
                 <meshBasicMaterial color={type === '<CMD>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#323334' : '#323334' : extraHovered ? '#323334' : color} />
+                <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<CMD>') ? [0.55, 0.55, 0.1, 4] : [0, 0, 0]} />
             </mesh>}
 
 
             {(type === '<PWR>' || action.type === '[PWR]') && <mesh
-                position={[pos[0], 0.3, pos[2] + 0.07]}
+                position={[pos[0], pos[1]+ 0.05, pos[2] + 0.07]}
                 rotation-x={Math.PI}
             >
-                <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<PWR>') ? [0.6, 0.6, 0.1, 3] : [0, 0, 0]} />
                 <meshBasicMaterial color={type === '<PWR>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#FFCE47' : '#FFCE47' : extraHovered ? '#FFCE47' : color} />
+                <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<PWR>') ? [0.6, 0.6, 0.1, 3] : [0, 0, 0]} />
             </mesh>}
 
 
             {(type === '<SLD>' || action.type === '[SLD]') && <mesh
-                position={pos}
+                position={[pos[0], pos[1] + 0.05, pos[2]]}
             >
-                <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<SLD>') ? [0.5, 0.5, 0.1, 64] : [0, 0, 0]} />
                 <meshBasicMaterial color={type === '<SLD>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#188C7C' : '#188C7C' : extraHovered ? '#188C7C' : color} />
+                <cylinderBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<SLD>') ? [0.5, 0.5, 0.1, 64] : [0, 0, 0]} />
             </mesh>}
 
 
             {(type === '<MAN>' || action.type === '[MAN]') && <mesh
-                position={pos}
+                position={[pos[0], pos[1] + 0.05, pos[2]]}
             >
-                <boxBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<MAN>') ? [0.95, 0.2, 0.6] : [0, 0, 0]} />
                 <meshBasicMaterial color={type === '<MAN>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#5A202E' : '#5A202E' : extraHovered ? '#5A202E' : color} />
+                <boxBufferGeometry args={(hexObject.t === '<BLK>' || hexObject.t === '<MAN>') ? [0.95, 0.1, 0.6] : [0, 0, 0]} />
             </mesh>}
         </>
     )

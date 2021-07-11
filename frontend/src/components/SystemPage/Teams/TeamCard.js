@@ -31,7 +31,7 @@ const TeamCard = ({ team, user, systemUsers, system, players, edit }) => {
         <div className='TeamCard' style={{ backgroundColor: color }}>
 
             <div className='TeamCardName'>{
-                team.name.length > 10 ?
+                team.name.length > 12 ?
                     team.name[9] === ' ' ?
                         team.name.slice(0, 11) + '...' :
                         team.name.slice(0, 10) + '...' :

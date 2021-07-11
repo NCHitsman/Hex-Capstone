@@ -9,6 +9,7 @@ import CreateMap from "./components/CreateMap";
 import MapPage from "./components/MapPage";
 import LogInSignUpFormPage from "./components/LogInSignUpFormPage";
 import Footer from './components/Footer'
+import Splashpage from './components/Splashpage'
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function App() {
               <Route exact path='/login'>
                 <LogInSignUpFormPage page={'login'} />
               </Route>
-              {user &&
+              {user ?
                 <>
                   <Route exact path='/system/:systemId'>
                     <SystemPage user={user} />
@@ -47,7 +48,12 @@ function App() {
                   <Route exact path='/'>
                     <Home user={user} />
                   </Route>
-                </>}
+                </>
+                :
+                <Route exact path='/'>
+                  <Splashpage />
+                </Route>
+              }
             </Switch>
           </div>
           {/* <Footer /> */}

@@ -230,7 +230,7 @@
 .TeamCardCont {
   max-width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-content: flex-start;
   overflow: auto;
   padding: 5px;
@@ -261,7 +261,7 @@
 }
 
 .TeamCardName {
-  font-size: 32px;
+  font-size: 30px;
   font-family: "Open Sans";
   border-bottom: 2px solid black;
   min-width: 75%;

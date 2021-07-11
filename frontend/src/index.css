@@ -55,7 +55,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: calc(100vh - 50px - 40px);
 }
 
 .BackgroundImage {
@@ -92,4 +92,11 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     border-radius: 5px;
+}
+
+.gif{
+  max-width: 764.8px;
+  max-height: 369.2px;
+  border: 2px solid black;
+  border-radius: 5px;
 }

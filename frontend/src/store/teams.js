@@ -154,7 +154,7 @@ const teamReducer = (state = {}, action) => {
             return newState
         case CREATE_TEAM:
             newState[action.payload.id] = action.payload
-            newState[action.payload.id].players = {}
+            newState[action.payload.id].players = []
             return newState
         case CLEAR:
             newState = {}

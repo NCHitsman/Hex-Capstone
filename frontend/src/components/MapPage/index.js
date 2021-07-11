@@ -19,6 +19,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
     const [currentTeam, setCurrentTeam] = useState(null)
     const [ownerOrCaptain, setOwnerOrCaptain] = useState(false)
     const [mapArray, setMapArray] = useState()
+    const [threeD, setThreeD] = useState(false)
 
     const [loaded, setLoaded] = useState(false)
     useEffect(() => {
@@ -116,13 +117,13 @@ const MapPage = ({ teams, user, players, system, map }) => {
                             fov: 75,
                             near: 0.1,
                             far: 1000,
-                            position: [0, 25.5, 0],
+                            position: [0, 15, 0],
                             rotation: [-(Math.PI / 2.0), 0.0, 0.0]
                         }}
                     >
                         {/* <ambientLight /> */}
                         {/* <pointLight position={[10, 10, 10]} /> */}
-                        <OrbitControls enableRotate={false} />
+                        <OrbitControls enableRotate={threeD} />
                         {map?.map_seed.map((xArray, xArrayIndex) => {
                             y += 1.51
 
@@ -137,20 +138,29 @@ const MapPage = ({ teams, user, players, system, map }) => {
                             return (
                                 xArray.map((hexObject, yArrayIndex) => {
                                     x += 1.74
-                                    return (
-                                        <Hex
-                                            hexObject={hexObject}
-                                            key={xArrayIndex + yArrayIndex
-                                                + x + y * Math.random()}
-                                            pos={[x, 0.3, y]}
-                                            x={xArrayIndex}
-                                            y={yArrayIndex}
-                                            hexClickHandler={hexClickHandler}
-                                            action={action} />
-                                    )
+                                    if (hexObject.t) {
+                                        return (
+                                            <Hex
+                                                hexObject={hexObject}
+                                                key={xArrayIndex + yArrayIndex
+                                                    + x + y * Math.random()}
+                                                pos={[x, 0.3, y]}
+                                                x={xArrayIndex}
+                                                y={yArrayIndex}
+                                                hexClickHandler={hexClickHandler}
+                                                action={action}/>
+                                        )
+                                    }
+                                    return null
                                 }))
                         })}
                     </Canvas>
+                    <button
+                        className='MapThreeDButton'
+                        onClick={() => threeD ? setThreeD(false) : setThreeD(true)}
+                    >
+                        {threeD ? 'Change to 2d' : 'Change to 3d'}
+                    </button>
                 </div>
 
                 <div className='MapInfoCont'>
@@ -169,7 +179,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
                         }</div>
                     </div>
 
-                    {currentTeam && system &&
+                    {system &&
                         ownerOrCaptain ?
                         <div className='MapControlsCont'>
 
@@ -180,7 +190,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
 
                             <div className='MapControlsInnerCont'>
 
-                                {system.owner_id === user.id &&
+                                {currentTeam && system.owner_id === user.id &&
                                     <select
                                         className='TeamSelect'
                                         onChange={(e) => {
@@ -202,7 +212,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
                                     </select>}
 
 
-                                <button
+                                {currentTeam && <button
                                     className='MapControlButton'
                                     onClick={() => {
                                         action.type === '[CTRL]' ?
@@ -215,7 +225,7 @@ const MapPage = ({ teams, user, players, system, map }) => {
                                                 }
                                             })
                                     }}
-                                >Add Territory For '{currentTeam?.name}'</button>
+                                >Add Territory For '{currentTeam?.name}'</button>}
 
 
                                 <button
