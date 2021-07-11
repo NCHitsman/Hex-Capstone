@@ -7,9 +7,9 @@
 
 .SystemPageParentCont {
   background-color: #e5e5e5;
-  max-height: calc(100vh - 50px - 75px);
-  min-height: calc(100vh - 50px - 75px);
-  margin-top: 5px;
+  max-height: 800px;
+  min-height: 800px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

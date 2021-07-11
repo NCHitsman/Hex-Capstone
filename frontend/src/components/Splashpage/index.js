@@ -9,22 +9,26 @@ const Splashpage = () => {
         <div className='SplashPageMainParent'>
             <div className='SplashPageInfoCont'>
                 <div className='SplashPageTextCont'>
-                    <div>
+                    <div className='SplashPageTitle'>
                         Welcome To Planetary Empires
                     </div>
-                    <div>
+                    <div className='SplashPageDetail'>
                         A Warhammer 40k Narrative Companion Game
                     </div>
-                    <div>
-                        Planetary Empires is an expansion game for Warhammer 40,000 released
-                        by Games Workshop. The game rules and accompanying map board and pieces
-                        allow you to wage a campaign across a planetary-size landscape. It is
-                        designed to help you run evocative, narrative-driven campaign.
+                    <div className='SplashPageTextContLeft'>
+                        <div className='SplashPageText'>
+                            Planetary Empires is an expansion game for Warhammer 40,000 released
+                            by Games Workshop. The game rules and accompanying map board and pieces
+                            allow you to wage a campaign across a planetary-size landscape. It is
+                            designed to help you run evocative, narrative-driven campaign.
+                        </div>
                     </div>
-                    <div>
-                        This site helps you organize players, systems, and maps, allowing you to run
-                        a Planetary Empires game all in one place! Create an account, make a System, invite your
-                        friends, and make multiple Maps to play on!
+                    <div className='SplashPageTextContRight'>
+                        <div className='SplashPageText'>
+                            This site helps you organize players, systems, and maps, allowing you to run
+                            a Planetary Empires game all in one place! Create an account, make a System, invite your
+                            friends, and make multiple Maps to play on!
+                        </div>
                     </div>
                 </div>
                 <div className='gifCont'>

@@ -53,6 +53,15 @@ function LoginForm() {
         />
       </label>
       <button className='FormButton' type="submit">Log In</button>
+      <button
+        onClick={() => {
+          dispatch(sessionActions.login({ credential: 'demo1@user.io', password: 'password' }))
+            .then(res => history.push('/'))
+        }
+        }
+        className='FormButton'
+        type='button'
+        >Demo User</button>
     </form>
   );
 }

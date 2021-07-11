@@ -1,12 +1,12 @@
 import './CreateMap.css'
 import { Canvas } from '@react-three/fiber'
-import CreateMapHex from './CreateMapHex'
+import { OrbitControls } from '@react-three/drei'
 import { range } from 'lodash'
+import CreateMapHex from './CreateMapHex'
 import { useState, memo } from 'react'
 import { createMap } from '../../store/maps'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { OrbitControls } from '@react-three/drei'
 import backgroundImage from '../../images/SpaceMarines.png'
 
 const CreateMap = () => {

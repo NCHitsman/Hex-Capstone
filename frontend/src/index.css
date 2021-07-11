@@ -34,7 +34,7 @@ body {
 
 .mapcanvas {
   max-width: 100%;
-  min-height: calc(100vh - 50px - 80px);
+  min-height: 800px;
   background-color: #045676;
   border-radius: 5px;
 }
@@ -55,7 +55,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 50px - 40px);
+  height: 840px;
+  position: relative;
 }
 
 .BackgroundImage {
@@ -95,8 +96,8 @@ body {
 }
 
 .gif{
-  max-width: 764.8px;
-  max-height: 369.2px;
+  max-width: 1274.66666667px;
+  max-height: 615.333333333;
   border: 2px solid black;
   border-radius: 5px;
 }

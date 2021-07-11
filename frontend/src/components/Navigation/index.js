@@ -48,7 +48,7 @@ function Navigation({ isLoaded }) {
           <NavLink className='NavLink' to='/faq'>FAQ</NavLink>
         </div>
         <div className='NavLinkCont'>
-          <NavLink className='NavLink' to='/about'>About</NavLink>
+          <NavLink className='NavLink' to='/about'>About Me</NavLink>
         </div>
       </div>
       {isLoaded && sessionLinks}

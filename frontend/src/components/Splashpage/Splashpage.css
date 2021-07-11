@@ -1,45 +1,86 @@
 .SplashPageMainParent {
   min-width: 100%;
-  min-height: 100%;
+  max-height: 100%;
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   align-items: center;
 }
 
 .SplashPageInfoCont {
-  min-width: 45%;
-  max-width: 45%;
+  /* min-width: 45%;
+  max-width: 45%; */
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border: 15px double #fca311;
-  border-radius: 5px;
-  box-shadow: 2px 2px 10px gray;
-  margin-bottom: 1%;
-  padding: 1%;
-  margin-right: 3%;
+  justify-content: space-evenly;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  /* background-color: white; */
+  /* border: 15px double #fca311; */
+  /* border-radius: 5px; */
+  /* box-shadow: 2px 2px 10px gray; */
+  /* overflow: auto; */
+  /* margin-bottom: 1%; */
+  /* margin-right: 3%; */
+  max-height: 820px;
+  /* margin-top: 1%; */
 }
 
 .gifCont {
   background-color: #fca311;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 3.5%;
+  padding: 1%;
   box-shadow: 2px 2px 10px gray;
+  margin-bottom: 2.5%;
 }
 
 .SplashPageTextCont {
-  min-width: 45%;
-  max-width: 45%;
+  min-width: 25%;
+  max-width: 25%;
+  min-height: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   background-color: #fca311;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 3.5%;
+  padding: 1%;
   box-shadow: 2px 2px 10px gray;
+  margin-bottom: 2.5%;
+}
+
+.SplashPageTitle{
+    font-size: 42px;
+    font-family: Staatliches;
+    border-bottom: 1px solid black;
+}
+
+.SplashPageDetail{
+    font-size: 28px;
+    font-family: Staatliches;
+}
+
+.SplashPageText{
+    font-size: 22px;
+    font-family: "Open Sans";
+    margin-top: 5%;
+    max-width: 70%;
+    text-align: center;
+    background-color: #14213d;
+    padding: 2%;
+    border-radius: 5px;
+    color: white;
+    padding: 5%;
+}
+
+.SplashPageTextContLeft{
+    min-width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.SplashPageTextContRight{
+    min-width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }

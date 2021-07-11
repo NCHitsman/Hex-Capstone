@@ -10,6 +10,7 @@ import MapPage from "./components/MapPage";
 import LogInSignUpFormPage from "./components/LogInSignUpFormPage";
 import Footer from './components/Footer'
 import Splashpage from './components/Splashpage'
+import About from "./components/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
               </Route>
               <Route exact path='/login'>
                 <LogInSignUpFormPage page={'login'} />
+              </Route>
+              <Route exact path='/about'>
+                <About />
               </Route>
               {user ?
                 <>
