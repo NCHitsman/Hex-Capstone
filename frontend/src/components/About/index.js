@@ -1,5 +1,5 @@
 import './About.css'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { range } from 'lodash'
 import { useState } from 'react'
@@ -32,18 +32,18 @@ const About = () => {
                 className='AboutCanvas'
                 style={{ backgroundColor: 'black' }}
                 camera={{
-                    fov: 75,
+                    fov: 90,
                     near: 0.1,
-                    far: 10000,
-                    position: [2500, 500, 0],
+                    far: 20000,
+                    position: [50, 50, 0],
                 }}
             >
                 <ambientLight />
-                <OrbitControls />
-                <mesh>
-                    <cylinderBufferGeometry args={[1500, 1500, 2000, 16]} />
+                <OrbitControls/>
+                {/* <mesh>
+                    <boxBufferGeometry args={[2000, 2000, 2000]} />
                     <meshBasicMaterial wireframe={true} />
-                </mesh>
+                </mesh> */}
                 {range(2000).map((a, i) => {
                     let size = (Math.random() * 2) + 2
                     let x;

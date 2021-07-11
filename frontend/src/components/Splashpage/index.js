@@ -35,7 +35,10 @@ const Splashpage = () => {
                     <img className='gif' src={gif} alt='Example Usage of App' />
                 </div>
             </div>
-            <img className='BackgroundImage' src={backgroundImage} alt='Warhammer 40K Nebula© by jordi van hees; https://www.artstation.com/artwork/W294dN' />
+            <img
+            className='BackgroundImage'
+            src={backgroundImage}
+            alt='Gather the troops© by Eddy González Dávila; https://www.artstation.com/artwork/OolJ3K' />
         </div>
     )
 }

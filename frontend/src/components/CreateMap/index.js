@@ -125,7 +125,10 @@ const CreateMap = () => {
                 :
                 history.push('/')
             }
-            <img className='BackgroundImage' src={backgroundImage} alt='Unknown Artist' />
+            <img
+            className='BackgroundImage'
+            src={backgroundImage}
+            alt='THE CRUSADE FLEETS© by Phil Moss; https://www.artstation.com/phil-moss' />
         </div>
     )
 }

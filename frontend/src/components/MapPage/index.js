@@ -292,7 +292,10 @@ const MapPage = ({ teams, user, players, system, map }) => {
                     <div className='LoadingText systemPage'>Loading...</div>
                 </div>
             }
-            <img className='BackgroundImage' src={backgroundImage} alt='Unknown Artist' />
+            <img
+            className='BackgroundImage'
+            src={backgroundImage}
+            alt='Warzone Orkz 2© by Sergei Panin; https://www.artstation.com/artwork/W2wbOQ' />
         </>
     )
 }

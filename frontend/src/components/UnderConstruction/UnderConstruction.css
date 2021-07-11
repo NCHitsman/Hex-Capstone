@@ -1,0 +1,20 @@
+.ConstructionCont{
+    width: 100%;
+    height: 820px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ConstructionTitle{
+    font-size: 200px;
+    font-family: Staatliches;
+    color: white;
+}
+
+.ConstructionText{
+    font-size: 46px;
+    font-family: 'Open Sans';
+    color: white;
+}

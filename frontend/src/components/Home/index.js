@@ -77,7 +77,10 @@ const Home = ({ user, systems }) => {
                     <div className='LoadingText'>Loading...</div>
                 </div>
             }
-            <img className='BackgroundImage' src={backgroundImage} alt='Warhammer 40K Nebula© by jordi van hees; https://www.artstation.com/artwork/W294dN' />
+            <img
+            className='BackgroundImage'
+            src={backgroundImage}
+            alt='Warhammer 40K Nebula© by jordi van hees; https://www.artstation.com/artwork/W294dN' />
         </div>
     )
 }
