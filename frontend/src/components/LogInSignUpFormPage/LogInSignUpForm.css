@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  min-height: calc(100vh - 50px - 35px);
+  min-height: 800px;
   align-items: center;
 }
 
@@ -10,7 +10,7 @@
   background-color: #e5e5e5;
   max-width: 28%;
   min-width: 28%;
-  max-height: calc(100vh - 50px - 75px);
+  max-height: 800px;
   border: 15px double #fca311;
   border-radius: 15px;
   display: flex;
@@ -83,10 +83,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  min-height: calc(100vh - 50px - 300px);
+  min-height: 600px;
   align-items: center;
   width: 100%;
-  margin-bottom: 7%;
 }
 
 .FormLabel {
@@ -123,6 +122,6 @@
   font-size: 20px;
   font-family: "Open Sans";
   color: red;
-  max-width: 20%;
+  max-width: 80%;
   text-align: center;
 }

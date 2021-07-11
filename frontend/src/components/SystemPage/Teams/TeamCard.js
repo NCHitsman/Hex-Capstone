@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { deleteTeam, removeFromTeam, addUserToTeam } from "../../../store/teams"
 import { factionSwitch } from "../../utils"
 import { useDispatch } from 'react-redux'

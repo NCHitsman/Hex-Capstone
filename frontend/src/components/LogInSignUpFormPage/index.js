@@ -5,12 +5,10 @@ import SignupForm from './SignupForm'
 import formSideImage from '../../images/formpagemars.png'
 
 const LogInSignUpFormPage = ({ page }) => {
-    console.log(page === 'signup')
     const [currentPage, setCurrentPage] = useState(page)
     const [signUpActive, setSignUpActive] = useState(page === 'signup' ? true : false)
     const [logInActive, setLogInActive] = useState(page === 'login' ? true : false)
 
-    console.log(signUpActive)
 
     return (
         <div className='PageParentLogInSignUpForm'>

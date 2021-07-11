@@ -47,29 +47,21 @@ function App() {
               <Route exact path='/faq'>
                 <UnderConstruction />
               </Route>
-              {user ?
-                <>
-                  <Route exact path='/system/:systemId'>
-                    <SystemPage user={user} />
-                  </Route>
-                  <Route exact path='/system/:systemId/map/:mapId'>
-                    <MapPage />
-                  </Route>
-                  <Route exact path='/createMap'>
-                    <CreateMap />
-                  </Route>
-                  <Route exact path='/'>
-                    <Home user={user} />
-                  </Route>
-                  <Route>
-                    <Redirect to='/' />
-                  </Route>
-                </>
-                :
-                <Route exact path='/'>
-                  <Splashpage />
-                </Route>
-              }
+              {user && <Route exact path='/system/:systemId'>
+                <SystemPage user={user} />
+              </Route>}
+              {user && <Route exact path='/system/:systemId/map/:mapId'>
+                <MapPage />
+              </Route>}
+              {user && <Route exact path='/createMap'>
+                <CreateMap />
+              </Route>}
+              {user && <Route exact path='/'>
+                <Home user={user} />
+              </Route>}
+              <Route exact path='/'>
+                <Splashpage />
+              </Route>
               <Route>
                 <Redirect to='/' />
               </Route>

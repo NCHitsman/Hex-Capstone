@@ -129,7 +129,6 @@ const teamReducer = (state = {}, action) => {
         case DELETE_TEAM:
             let playerIds = Object.keys(newState[action.payload].players)
             playerIds.forEach(playerId => {
-                console.log(newState.players[playerId])
                 delete newState.players[playerId]
             })
             delete newState[action.payload]

@@ -14,7 +14,7 @@ import CreateTeamForm from './CreateTeamForm/CreateTeamForm'
 import backgroundImage from '../../images/shipwarp2background.png'
 
 
-const SystemPage = ({ user, maps, systems, session, teams, level }) => {
+const SystemPage = ({ user, maps, systems, teams, level }) => {
     const { systemId } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -35,14 +35,20 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
     })
 
     useEffect(() => {
-        dispatch(getSystem(systemId))
-        dispatch(getSystemMaps(systemId))
-        dispatch(getSystemUsers(systemId))
-        dispatch(getPermission(user.id, systemId))
-        dispatch(getTeams(systemId))
-            .then(() => dispatch(getTeamPlayers(systemId)))
-            .then(() => setLoadedPlayers(true))
-    }, [dispatch, systemId, user.id])
+        dispatch(getSystem(systemId)).then(res => {
+            if (!res) {
+                history.push('/')
+                throw new Error()
+            }
+        }).then(res => {
+            dispatch(getSystemMaps(systemId))
+            dispatch(getSystemUsers(systemId))
+            dispatch(getPermission(user.id, systemId))
+            dispatch(getTeams(systemId))
+                .then(() => dispatch(getTeamPlayers(systemId)))
+                .then(() => setLoadedPlayers(true))
+        }).catch(err => { })
+    }, [dispatch, systemId, user.id, history])
 
     const inviteUserHandler = () => {
         dispatch(inviteUser(invitee, NewUserLevel, systemId))
@@ -65,7 +71,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
 
     return (
         <div className='SystemPageFlex'>
-            {loaded && maps.systemMaps && systems.system && systems.systemUsers && teams.players && level && loadedPlayers ?
+            {loaded && maps.systemMaps && systems.system && systems.systemUsers && teams.players && loadedPlayers ?
                 level ?
                     <div className='SystemPageParentCont'>
 
@@ -89,15 +95,15 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
 
                                 <div className='MapCardButtonCont create'>
                                     {level <= 1 ? <button
-                                        style={{border: Object.values(maps.systemMaps).length ? 'border: 1px solid black' : '3px solid red'}}
+                                        style={{ border: Object.values(maps.systemMaps).length ? 'border: 1px solid black' : '3px solid red' }}
                                         className='MapCardCreateNewWorldButton'
                                         onClick={() => history.push('/createMap')}
                                     >Create New Map</button>
                                         :
                                         <button
-                                        className='MapCardCreateNewWorldButton'
-                                        onClick={() => leaveSystemClickHandler()}
-                                    >Leave System</button>
+                                            className='MapCardCreateNewWorldButton'
+                                            onClick={() => leaveSystemClickHandler()}
+                                        >Leave System</button>
                                     }
                                 </div>
 
@@ -164,7 +170,7 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
                                 />
                                 }
 
-                                {level <= 2 && <CreateTeamForm user={user} system={systems.system} teams={Object.values(teams).length > 1}/>}
+                                {level <= 2 && <CreateTeamForm user={user} system={systems.system} teams={Object.values(teams).length > 1} />}
                             </div>
                         </div>
 
@@ -172,7 +178,9 @@ const SystemPage = ({ user, maps, systems, session, teams, level }) => {
 
                     </div>
                     :
-                    <div>DO NOT HAVE PERMISSION</div>
+                    <div className='LoadingTextCont'>
+                        <div className='PermError'>YOU DO NOT HAVE PERMISSION TO VIEW THIS SYSTEM</div>
+                    </div>
                 :
                 <div className='LoadingTextCont'>
                     <div className='LoadingText systemPage'>Loading...</div>

@@ -4,7 +4,7 @@ import { factionSwitch } from "../utils"
 const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
 
     const [hovered, setHovered] = useState(false)
-    const [color, setColor] = useState('white')
+    const [color, setColor] = useState(factionSwitch(hexObject.c)[1] || 'white')
     const [type, setType] = useState(hexObject.t)
     const [control, setControl] = useState(hexObject.c)
     const [extraHovered, setExtraHovered] = useState(false)
@@ -14,8 +14,6 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
             setColor(factionSwitch(hexObject.c)[1])
         }
     }, [setColor, hexObject])
-
-    console.log('render')
 
     return (
         <>

@@ -4,8 +4,6 @@ const { Map } = require('../../db/models')
 
 const router = express.Router();
 
-console.log(Map)
-
 router.get('/:mapId', asyncHandler(async(req, res) => {
     const {mapId} = req.params
     const map = await Map.findByPk(mapId)

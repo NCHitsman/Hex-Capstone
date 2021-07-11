@@ -29,7 +29,8 @@ function LoginForm() {
 
   return (
     <form className='FormCont' onSubmit={handleSubmit}>
-      <div style={{ display: errors.length ? 'block' : 'none' }} className='FormErrors'>
+      <div style={{ display: errors.length ? 'block' : 'none' }}
+        className='FormErrors'>
         {errors.map((error, idx) => <div key={idx}>{error}</div>)}
       </div>
       <label className='FormLabel'>

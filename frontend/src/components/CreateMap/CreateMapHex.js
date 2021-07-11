@@ -9,8 +9,6 @@ const CreateMapHex = ({ pos, x, y, hexClickHandler, action }) => {
     const [hoveredColor, setHoveredColor] = useState('green')
 
 
-    console.log('render')
-
     return (
         <>
             <mesh

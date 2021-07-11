@@ -72,8 +72,10 @@ const declineAnInvite = (systemId) => ({
 })
 
 export const getSystem = (systemId) => async dispatch => {
-    const res = await csrfFetch(`/api/systems/${systemId}`)
+    const res = await csrfFetch(`/api/systems/${systemId}`).catch((rej) => rej.ok)
+    if (!res) return null
     const data = await res.json()
+    if (!data) return null
     dispatch(getASystem(data))
     return data
 }

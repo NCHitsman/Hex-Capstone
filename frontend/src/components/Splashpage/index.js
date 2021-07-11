@@ -7,7 +7,7 @@ const Splashpage = () => {
 
     return (
         <div className='SplashPageMainParent'>
-            <div className='SplashPageInfoCont'>
+            {gif && <div className='SplashPageInfoCont'>
                 <div className='SplashPageTextCont'>
                     <div className='SplashPageTitle'>
                         Welcome To Planetary Empires
@@ -34,7 +34,7 @@ const Splashpage = () => {
                 <div className='gifCont'>
                     <img className='gif' src={gif} alt='Example Usage of App' />
                 </div>
-            </div>
+            </div>}
             <img
             className='BackgroundImage'
             src={backgroundImage}

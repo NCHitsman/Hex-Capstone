@@ -23,8 +23,10 @@ const clear = () => ({
 
 
 export const getMap = (mapId) => async dispatch => {
-    const res = await csrfFetch(`/api/maps/${mapId}`)
+    const res = await csrfFetch(`/api/maps/${mapId}`).catch((rej) => rej.ok)
+    if (!res) return null
     const data = await res.json()
+    if (!data) return null
     dispatch(getAMap(data))
     return res
 }
@@ -52,15 +54,11 @@ export const createMap = (name, type, system_id, size, seed) => async dispatch =
         })
     })
     const data = await res.json()
-    console.log(data)
-    // dispatch(systemMaps(data))
     return data
 }
 
 export const removeMap = (mapId) => async dispatch => {
-    const res = await csrfFetch(`/api/maps/removeMap/${mapId}`, {method: 'DELETE'})
-    // const data = await res.json()
-    // dispatch(systemMaps(data))
+    const res = await csrfFetch(`/api/maps/removeMap/${mapId}`, { method: 'DELETE' })
     return res
 }
 
@@ -76,14 +74,13 @@ export const saveMapChanges = (mapId, mapSeed) => async dispatch => {
 
 
 const mapReducer = (state = {}, action) => {
-    let newState = {...state};
+    let newState = { ...state };
 
     switch (action.type) {
         case (GET_MAP):
             newState.map = action.payload
             return newState
         case (USER_MAPS):
-            console.log(action.payload)
             newState.systemMaps = {}
             action.payload.forEach(map => {
                 newState.systemMaps[map.id] = map

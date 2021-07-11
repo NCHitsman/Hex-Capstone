@@ -9,7 +9,8 @@
 
 .card {
   background-color: #14213d;
-  min-width: 80%;
+  max-width: 94%;
+  min-width: 94%;
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
