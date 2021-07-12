@@ -20,7 +20,7 @@ const Splashpage = () => {
                             Planetary Empires is an expansion game for Warhammer 40,000 released
                             by Games Workshop. The game rules and accompanying map board and pieces
                             allow you to wage a campaign across a planetary-size landscape. It is
-                            designed to help you run evocative, narrative-driven campaign.
+                            designed to assist you in running evocative, <br /> narrative-driven campaigns.
                         </div>
                     </div>
                     <div className='SplashPageTextContRight'>
@@ -36,9 +36,9 @@ const Splashpage = () => {
                 </div>
             </div>}
             <img
-            className='BackgroundImage'
-            src={backgroundImage}
-            alt='Gather the troops© by Eddy González Dávila; https://www.artstation.com/artwork/OolJ3K' />
+                className='BackgroundImage'
+                src={backgroundImage}
+                alt='Gather the troops© by Eddy González Dávila; https://www.artstation.com/artwork/OolJ3K' />
         </div>
     )
 }
