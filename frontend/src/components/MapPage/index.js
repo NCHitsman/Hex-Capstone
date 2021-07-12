@@ -123,7 +123,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
     return (
         <>
             {teams && players && system && user && loaded && map ?
-                permission ?
+                (permission || system.owner_id === user.id) ?
                     <div className='MapPageParentCont'>
                         <div className='CanvasCont'>
                             <Canvas
