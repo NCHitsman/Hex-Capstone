@@ -26,7 +26,7 @@ const Splashpage = () => {
                     <div className='SplashPageTextContRight'>
                         <div className='SplashPageText'>
                             This site helps you organize players, systems, and maps, allowing you to run
-                            a Planetary Empires game all in one place! Create an account, make a System, invite your
+                            a Planetary Empires game all in one place! Create an account, create a System, invite your
                             friends, and make multiple Maps to play on!
                         </div>
                     </div>
