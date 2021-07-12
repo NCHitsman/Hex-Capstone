@@ -137,8 +137,6 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                                     rotation: [-(Math.PI / 2.0), 0.0, 0.0]
                                 }}
                             >
-                                {/* <ambientLight /> */}
-                                {/* <pointLight position={[10, 10, 10]} /> */}
                                 <OrbitControls enableRotate={threeD} />
                                 {map?.map_seed.map((xArray, xArrayIndex) => {
                                     y += 1.51
@@ -196,7 +194,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                             </div>
 
                             {system &&
-                                ownerOrCaptain ?
+                                ownerOrCaptain &&
                                 <div className='MapControlsCont'>
 
                                     <div className='ActionTypeTextCont'>
@@ -217,7 +215,6 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                                                         setAction({ type: null, body: {} })
                                                     }}
                                                 >
-                                                    {/* <option defaultValue hidden>Pick Team </option> */}
                                                     {Object.entries(teams).map(([key, team], i) => {
                                                         if (key !== 'players') {
                                                             return (
@@ -303,9 +300,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                                             }}
                                         >Save Changes</button>
                                     </div>
-                                </div>
-                                :
-                                <div>There are no Teams</div>}
+                                </div>}
                         </div>
                     </div>
                     :
