@@ -70,30 +70,31 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
 
 
     const hexClickHandler = (x, y, hexObject) => {
+        const newArray = [...mapArray]
         switch (action.type) {
             case '[CTRL]':
-                mapArray[x][y] = { c: action.body.faction, t: hexObject.t }
-                setMapArray(mapArray)
+                newArray[x][y] = { c: action.body.faction, t: hexObject.t }
+                setMapArray(newArray)
                 return [action.body.faction, factionSwitch(action.body.faction)[1]]
             case '[CMD]':
-                mapArray[x][y] = { c: hexObject.c, t: '<CMD>' }
-                setMapArray(mapArray)
+                newArray[x][y] = { c: hexObject.c, t: '<CMD>' }
+                setMapArray(newArray)
                 return '<CMD>'
             case '[PWR]':
-                mapArray[x][y] = { c: hexObject.c, t: '<PWR>' }
-                setMapArray(mapArray)
+                newArray[x][y] = { c: hexObject.c, t: '<PWR>' }
+                setMapArray(newArray)
                 return '<PWR>'
             case '[SLD]':
-                mapArray[x][y] = { c: hexObject.c, t: '<SLD>' }
-                setMapArray(mapArray)
+                newArray[x][y] = { c: hexObject.c, t: '<SLD>' }
+                setMapArray(newArray)
                 return '<SLD>'
             case '[MAN]':
-                mapArray[x][y] = { c: hexObject.c, t: '<MAN>' }
-                setMapArray(mapArray)
+                newArray[x][y] = { c: hexObject.c, t: '<MAN>' }
+                setMapArray(newArray)
                 return '<MAN>'
             case '[CLR]':
-                mapArray[x][y] = { c: null, t: '<BLK>' }
-                setMapArray(mapArray)
+                newArray[x][y] = { c: null, t: '<BLK>' }
+                setMapArray(newArray)
                 return
             default:
                 return
