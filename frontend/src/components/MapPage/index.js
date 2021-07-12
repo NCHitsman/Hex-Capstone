@@ -229,23 +229,23 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                                                         }
                                                     })}
                                                 </select>
-
-
-                                                <button
-                                                    className='MapControlButton'
-                                                    onClick={() => {
-                                                        action.type === '[CTRL]' ?
-                                                            setAction({ type: null, body: {} })
-                                                            :
-                                                            setAction({
-                                                                type: '[CTRL]', body: {
-                                                                    faction: currentTeam?.faction,
-                                                                    color: factionSwitch(currentTeam?.faction)[1]
-                                                                }
-                                                            })
-                                                    }}
-                                                >Add Territory For '{currentTeam ? currentTeam.name : setCurrentTeam(Object.values(teams)[0]) && Object.values(teams)[0].name}'</button>
                                             </>}
+
+
+                                        {(ownerOrCaptain || system.owner_id === user.id) && <button
+                                            className='MapControlButton'
+                                            onClick={() => {
+                                                action.type === '[CTRL]' ?
+                                                    setAction({ type: null, body: {} })
+                                                    :
+                                                    setAction({
+                                                        type: '[CTRL]', body: {
+                                                            faction: currentTeam?.faction,
+                                                            color: factionSwitch(currentTeam?.faction)[1]
+                                                        }
+                                                    })
+                                            }}
+                                        >Add Territory For '{currentTeam ? currentTeam.name : setCurrentTeam(Object.values(teams)[0]) && Object.values(teams)[0].name}'</button>}
 
 
                                         <button
