@@ -24,9 +24,12 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
 
     const [loaded, setLoaded] = useState(false)
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setLoaded(true)
         }, 1000)
+        return () => {
+            clearTimeout(timeout)
+        }
     })
 
     let x = -21.92

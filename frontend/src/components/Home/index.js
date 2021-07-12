@@ -17,9 +17,12 @@ const Home = ({ user, systems }) => {
 
     const [loaded, setLoaded] = useState(false)
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setLoaded(true)
         }, 1000)
+        return () => {
+            clearTimeout(timeout)
+        }
     })
 
     useEffect(() => {
