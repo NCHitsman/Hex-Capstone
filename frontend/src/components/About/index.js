@@ -1,14 +1,22 @@
 import './About.css'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { range } from 'lodash'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 
 const Star = ({ x, y, z, colors, size }) => {
 
+    const star = useRef()
+
+    useFrame((state) => {
+        star.current.position.x += 0.1
+        star.current.position.y += 0.1
+    })
+
     return (
         <mesh
+            ref={star}
             position={[x, y, z]}
         >
             <sphereBufferGeometry args={[size, 32, 32]} />
@@ -39,13 +47,13 @@ const About = () => {
                 }}
             >
                 <ambientLight />
-                <OrbitControls/>
+                <OrbitControls />
                 {/* <mesh>
                     <boxBufferGeometry args={[2000, 2000, 2000]} />
                     <meshBasicMaterial wireframe={true} />
                 </mesh> */}
                 {range(2000).map((a, i) => {
-                    let size = (Math.random() * 2) + 2
+                    let size = (Math.random() * 2) + 1
                     let x;
                     let y;
                     let z;
