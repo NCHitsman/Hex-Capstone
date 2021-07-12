@@ -79,6 +79,7 @@ export const logout = () => async (dispatch) => {
 };
 
 export const getPermission = (userId, systemId) => async (dispatch) => {
+  console.log(userId, systemId)
   const res = await csrfFetch(`/api/users/permission/${userId}/${systemId}`)
   const data = await res.json()
   dispatch(permissions(data))
