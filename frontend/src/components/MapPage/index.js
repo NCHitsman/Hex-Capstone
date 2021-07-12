@@ -55,17 +55,17 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
 
 
     useEffect(() => {
-        if (permission) {
-            user &&
-                teams &&
-                players &&
-                !currentTeam &&
-                setCurrentTeam(teams[teams.players[user.id]?.team_id])
-            system &&
-                setOwnerOrCaptain(system.owner_id === user.id
-                    || players[user.id].captain)
-            map && setMapArray(map.map_seed)
-        }
+        permission && user &&
+            teams &&
+            players &&
+            !currentTeam &&
+            setCurrentTeam(teams[teams.players[user.id]?.team_id])
+
+        system && (permission || system.owner_id === user.id) &&
+            setOwnerOrCaptain(system.owner_id === user.id
+                || players[user.id].captain)
+
+        permission && map && setMapArray(map.map_seed)
     }, [setCurrentTeam, teams, user, players, system, map, currentTeam, permission])
 
 
@@ -120,6 +120,9 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                 return 'Choose from the options below to edit the map hexes...'
         }
     }
+
+    console.log(ownerOrCaptain)
+    system && console.log('test', system.owner_id === user.id)
 
     return (
         <>
