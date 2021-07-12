@@ -207,8 +207,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
 
                                     <div className='MapControlsInnerCont'>
 
-                                        {
-                                            (currentTeam || system.owner_id === user.id) &&
+                                        {system.owner_id === user.id &&
                                             Object.values(teams).length > 1 &&
                                             <>
                                                 <select
