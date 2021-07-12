@@ -1,6 +1,7 @@
 # Planetary Empires
 
 Planetary Empires is an expansion game for Warhammer 40,000 released by Games Workshop. The game rules and accompanying map board and pieces allow you to wage a campaign across a planetary-size landscape. It is designed to help you run evocative, narrative-driven campaign. 
+
 This site helps you organize players, systems, and maps, allowing you to run a Planetary Empires game all in one place! Create an account, make a System, invite your friends, and make multiple Maps to play on!
 
 ![Example Gif](./frontend/src/images/example.gif)
