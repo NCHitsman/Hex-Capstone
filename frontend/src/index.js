@@ -70,9 +70,6 @@ for your about me, the zoom in/out is interesting but there's also an arbitrary 
 the console open?). it should be removed, as it detracts from the fun of the page. it would be neat if there was
 some easter egg upon "zooming in all the way" (i.e., to where it slows down a tonne).
 
-about me: your linkedin and github links NEED to open in _blank target, it's an absolute travesty to open a link
-and have the website you were on vanish.
-
 on the map editor I can't click and drag to place hexagons which is counter-intuitive. I find it funny that I can
 click, drag around, return to the clicked square, and release and it'll place one. same with remove squares.
 

@@ -33,8 +33,12 @@ const About = () => {
         <div className='AboutPageParent'>
             <div className='AboutPageCont'>
                 <div className='AboutName'>Noah Carmichael-Hitsman</div>
-                <a className='AboutLink' href='https://github.com/NCHitsman'>Github</a>
-                <a className='AboutLink' href='https://www.linkedin.com/in/noah-carmichael-hitsman-b024a1203/'>LinkedIn</a>
+                <div className='AboutLink' onClick={() => {
+                    window.open('https://github.com/NCHitsman')
+                }}>Github</div>
+                <div className='AboutLink' onClick={() => {
+                    window.open('https://www.linkedin.com/in/noah-carmichael-hitsman-b024a1203/')
+                }}>LinkedIn</div>
             </div>
             <Canvas
                 className='AboutCanvas'
