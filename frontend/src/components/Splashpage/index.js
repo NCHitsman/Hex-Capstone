@@ -18,7 +18,7 @@ const Splashpage = () => {
                     <div className='SplashPageTextContLeft'>
                         <div className='SplashPageText'>
                             Planetary Empires is an expansion game for Warhammer 40,000 released
-                            by Games Workshop. The game rules and accompanying map board and pieces
+                            by Games Workshop. <br /> <br /> The game rules and accompanying map board and pieces
                             allow you to wage a campaign across a planetary-size landscape. It is
                             designed to assist you in running evocative, <br /> narrative-driven campaigns.
                         </div>
@@ -26,7 +26,8 @@ const Splashpage = () => {
                     <div className='SplashPageTextContRight'>
                         <div className='SplashPageText'>
                             This site helps you organize players, systems, and maps, allowing you to run
-                            a Planetary Empires game all in one place! Create an account, create a System, invite your
+                            a Planetary Empires game all in one place! <br /><br />
+                            Create an account, create a System, invite your
                             friends, and make multiple Maps to play on!
                         </div>
                     </div>

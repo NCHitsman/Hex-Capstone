@@ -56,9 +56,6 @@ of text like that imo, and it could use one or two break lines to introduce whit
 and right seems just perfect, but the padding on the bottom, between "A WARHAMMER 40K NARRATIVE COMPANION GAME"
 and the top box, and between the boxes themselves doesn't match the left/right padding.
 
-your features page is "under construction" so the link is a dead link and just shouldn't exist or should exist
-but be clearly greyed out and unclickable (if the layout needs it to be there for whatever reason)
-
 the how to play nav takes us to a pdf file directly - slightly disconcerting. I would recommend redirecting to
 an internal page that acknowledges the official rule pdf (with a link to it) and summaries them to the best of
 your ability (if you're within your legal rights to). if not, I would recommend the "how to play" becoming a CTA
