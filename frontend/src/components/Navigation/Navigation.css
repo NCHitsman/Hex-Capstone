@@ -8,7 +8,7 @@
   padding-bottom: 5px;
   border: 1px solid #FCA311;
   border-radius: 5px;
-  margin: 2px;
+  margin: 5px;
   position: relative;
   z-index: 2;
 }
@@ -41,13 +41,13 @@
   justify-content: center;
   align-items: center;
   /* background-color: red; */
-  border-right: 1px solid gray;
+  border-right: 2px solid gray;
   padding-right: 60px;
   padding-left: 60px;
 }
 
 .NavLinkCont.Features{
-  border-left: 1px solid gray;
+  border-left: 2px solid gray;
   padding-left: 60px;
 }
 
