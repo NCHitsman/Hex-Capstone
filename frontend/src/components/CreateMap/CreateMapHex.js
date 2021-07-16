@@ -14,7 +14,7 @@ const CreateMapHex = ({ pos, x, y, hexClickHandler, action }) => {
             <mesh
                 ref={mesh}
                 position={pos}
-                onPointerOver={() => {
+                onPointerOver={(e) => {
                     switch (action.type) { // * ACTION TYPE SWITCH FOR SETTING HOVER COLOR
                         case '[RMV]':
                             if (clicked) {
@@ -28,11 +28,23 @@ const CreateMapHex = ({ pos, x, y, hexClickHandler, action }) => {
                                 setHoveredColor('green')
                             }
                     }
+                    if (e.buttons) {
+                        switch (action.type) {  // * ACTION TYPE SWITCH FOR SETTING BASE COLOR AND CLICKED
+                            case ('[RMV]'):
+                                setColor('#1C1C1C')
+                                setClicked(false)
+                                break
+                            default:
+                                setColor('white')
+                                setClicked(true)
+                        }
+                        hexClickHandler(x, y)
+                    }
                 }}
                 onPointerOut={() => {
                     setHover(false)
                 }}
-                onClick={() => {
+                onPointerDown={() => {
                     switch (action.type) {  // * ACTION TYPE SWITCH FOR SETTING BASE COLOR AND CLICKED
                         case ('[RMV]'):
                             setColor('#1C1C1C')
