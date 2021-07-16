@@ -57,8 +57,5 @@ an internal page that acknowledges the official rule pdf (with a link to it) and
 your ability (if you're within your legal rights to). if not, I would recommend the "how to play" becoming a CTA
 button (call to action) to download the pdf or something, rather than redirecting to it.
 
-on the map editor I can't click and drag to place hexagons which is counter-intuitive. I find it funny that I can
-click, drag around, return to the clicked square, and release and it'll place one. same with remove squares.
-
 
 */
