@@ -1,4 +1,4 @@
-import { useState, memo, useEffect } from "react"
+import { useState, memo, useEffect, useCallback } from "react"
 import { factionSwitch } from "../utils"
 
 const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
@@ -15,11 +15,39 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
         }
     }, [setColor, hexObject])
 
+    const hexHandler = useCallback((e, initialClick) => {
+        if (hexObject.t) {
+            if (action.type === '[CTRL]') {
+                let [faction, color] = hexClickHandler(x, y, hexObject)
+                setColor(color)
+                setControl(faction)
+                return
+            }
+            if (hexObject.t === '<BLK>' && initialClick) {
+                if (action.type === '[CLR]') {
+                    if (hexObject.c) {
+                        hexClickHandler(x, y, hexObject)
+                        setColor('white')
+                        setControl(null)
+                        setType('<BLK>')
+                    }
+                } else {
+                    setType(hexClickHandler(x, y, hexObject))
+                }
+            } else if (action.type === '[CLR]') {
+                hexClickHandler(x, y, hexObject)
+                setColor('white')
+                setControl(null)
+                setType('<BLK>')
+            }
+        }
+    }, [action.type, x, y, hexClickHandler, hexObject])
+
     return (
         <>
             <mesh
                 position={pos}
-                onPointerOver={() => {
+                onPointerOver={(e) => {
                     if (hexObject.t) {
                         if (action.type === '[CTRL]') {
                             setHovered(true)
@@ -31,38 +59,18 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                             setExtraHovered(true)
                         }
                     }
+                    if (e.buttons) {
+                        hexHandler(e, false)
+                    }
                 }}
                 onPointerOut={() => {
                     setHovered(false)
                     setExtraHovered(false)
                 }}
-                onClick={() => {
-                    if (hexObject.t) {
-                        if (action.type === '[CTRL]') {
-                            let [faction, color] = hexClickHandler(x, y, hexObject)
-                            setColor(color)
-                            setControl(faction)
-                            return
-                        }
-                        if (hexObject.t === '<BLK>') {
-                            if (action.type === '[CLR]') {
-                                if (hexObject.c) {
-                                    hexClickHandler(x, y, hexObject)
-                                    setColor('white')
-                                    setControl(null)
-                                    setType('<BLK>')
-                                }
-                            } else {
-                                setType(hexClickHandler(x, y, hexObject))
-                            }
-                        } else if (action.type === '[CLR]') {
-                            hexClickHandler(x, y, hexObject)
-                            setColor('white')
-                            setControl(null)
-                            setType('<BLK>')
-                        }
-                    }
-                }}
+                onPointerDown={(e) => {
+                    hexHandler(e, true)
+                }
+                }
             >
                 <cylinderBufferGeometry args={[0.92, 0.92, 0.01, 6]} />
                 <meshBasicMaterial color={
