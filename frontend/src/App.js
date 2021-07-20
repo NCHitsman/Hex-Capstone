@@ -35,14 +35,14 @@ function App() {
               <Route exact path='/login'>
                 <LogInSignUpFormPage page={'login'} />
               </Route>
-              <Route exact path='/about'>
-                <About />
-              </Route>
               <Route exact path='/features'>
                 <UnderConstruction />
               </Route>
               <Route exact path='/mapGallery'>
                 <UnderConstruction />
+              </Route>
+              <Route exact path='/about'>
+                <About />
               </Route>
               <Route exact path='/faq'>
                 <UnderConstruction />
