@@ -4,7 +4,7 @@ import { getMap, saveMapChanges } from "../../store/maps"
 import { getTeamPlayers, getTeams } from '../../store/teams'
 import { getPermission } from "../../store/session"
 import { getSystem } from '../../store/systems'
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import Hex from "./Hex"
 import { Canvas } from '@react-three/fiber'
 import './MapPage.css'
@@ -72,7 +72,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
     }, [setCurrentTeam, teams, user, players, system, map, currentTeam, permission])
 
 
-    const hexClickHandler = (x, y, hexObject) => {
+    const hexClickHandler = useCallback((x, y, hexObject) => {
         const newArray = [...mapArray]
         switch (action.type) {
             case '[CTRL]':
@@ -102,10 +102,10 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
             default:
                 return
         }
-    }
+    }, [mapArray, action.body.faction, action.type])
 
 
-    const actionTypeText = () => {
+    const actionTypeText = useCallback(() => {
         switch (action.type) {
             case '[CTRL]':
                 return 'Click a hex to change territory...'
@@ -122,7 +122,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
             default:
                 return 'Choose from the options below to edit the map hexes...'
         }
-    }
+    }, [action.type])
 
     return (
         <>
@@ -141,7 +141,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                                 }}
                             >
                                 <OrbitControls enableRotate={threeD} />
-                                {map?.map_seed.map((xArray, xArrayIndex) => {
+                                {map.map_seed.map((xArray, xArrayIndex) => {
                                     y += 1.51
 
                                     if (eachOther) {
@@ -159,8 +159,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                                                 return (
                                                     <Hex
                                                         hexObject={hexObject}
-                                                        key={xArrayIndex + yArrayIndex
-                                                            + x + y * Math.random()}
+                                                        key={`${xArrayIndex}, ${yArrayIndex}`}
                                                         pos={[x, 0.3, y]}
                                                         x={xArrayIndex}
                                                         y={yArrayIndex}
@@ -181,7 +180,6 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                         </div>
 
                         <div className='MapInfoCont'>
-
 
                             <div className='MapNameTypeCont'>
                                 <div className='MapName'>{map.name}</div>

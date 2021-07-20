@@ -45,29 +45,15 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                             return
                         }
                         if (hexObject.t === '<BLK>') {
-                            switch (action.type) {
-                                case ('[CMD]'):
-                                    setType(hexClickHandler(x, y, hexObject))
-                                    break
-                                case ('[PWR]'):
-                                    setType(hexClickHandler(x, y, hexObject))
-                                    break
-                                case ('[SLD]'):
-                                    setType(hexClickHandler(x, y, hexObject))
-                                    break
-                                case ('[MAN]'):
-                                    setType(hexClickHandler(x, y, hexObject))
-                                    break
-                                case ('[CLR]'):
-                                    if (hexObject.c) {
-                                        hexClickHandler(x, y, hexObject)
-                                        setColor('white')
-                                        setControl(null)
-                                        setType('<BLK>')
-                                    }
-                                    break
-                                default:
-                                    return null
+                            if (action.type === '[CLR]') {
+                                if (hexObject.c) {
+                                    hexClickHandler(x, y, hexObject)
+                                    setColor('white')
+                                    setControl(null)
+                                    setType('<BLK>')
+                                }
+                            } else {
+                                setType(hexClickHandler(x, y, hexObject))
                             }
                         } else if (action.type === '[CLR]') {
                             hexClickHandler(x, y, hexObject)
@@ -97,7 +83,7 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
 
 
             {(type === '<PWR>' || action.type === '[PWR]') && <mesh
-                position={[pos[0], pos[1]+ 0.05, pos[2] + 0.07]}
+                position={[pos[0], pos[1] + 0.05, pos[2] + 0.07]}
                 rotation-x={Math.PI}
             >
                 <meshBasicMaterial color={type === '<PWR>' ? action.type === '[CLR]' ? extraHovered ? 'white' : '#FFCE47' : '#FFCE47' : extraHovered ? '#FFCE47' : color} />
