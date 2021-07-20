@@ -108,7 +108,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
     const actionTypeText = useCallback(() => {
         switch (action.type) {
             case '[CTRL]':
-                return 'Click a hex to change territory...'
+                return 'Click and drag hexes to add or change territory...'
             case '[CMD]':
                 return 'Click a hex to add a Command Bastion...'
             case '[PWR]':
@@ -118,7 +118,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
             case '[MAN]':
                 return 'Click a hex to add a Manufactorum...'
             case '[CLR]':
-                return 'Click a hex to clear it...'
+                return 'Click and drag hexes to clear them...'
             default:
                 return 'Choose from the options below to edit the map hexes...'
         }

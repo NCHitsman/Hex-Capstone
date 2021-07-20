@@ -67,13 +67,7 @@
 .ActionTypeText {
   font-family: "Open Sans";
   font-size: 30px;
-  margin-right: 5%;
-  margin-left: 5%;
-  background-color: #fca311;
-  border-radius: 5px;
-  border: 1px solid black;
-  padding: 1%;
-  box-shadow: 2px 2px 10px grey;
+  max-width: 95%;
 }
 
 .TeamSelect {
@@ -91,11 +85,19 @@
 
 .ActionTypeTextCont {
   display: flex;
-  min-width: 100%;
   min-height: 13%;
   justify-content: center;
   align-items: center;
   margin-top: 2.5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  background-color: #fca311;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 1%;
+  box-shadow: 2px 2px 10px grey;
+  min-width: 90%;
+  max-width: 90%;
 }
 
 .MapControlsInnerCont {
