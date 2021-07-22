@@ -97,7 +97,7 @@ const SystemPage = ({ user, maps, systems, teams, level }) => {
                                     {level <= 1 ? <button
                                         style={{ border: Object.values(maps.systemMaps).length ? 'border: 1px solid black' : '3px solid red' }}
                                         className='MapCardCreateNewWorldButton'
-                                        onClick={() => history.push('/createMap')}
+                                        onClick={() => history.push(`/system/${systemId}/createMap`)}
                                     >Create New Map</button>
                                         :
                                         <button

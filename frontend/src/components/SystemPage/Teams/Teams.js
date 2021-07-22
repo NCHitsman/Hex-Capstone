@@ -1,4 +1,3 @@
-import './Teams.css'
 import TeamCard from './TeamCard'
 
 const Teams = ({ teams, user, systemUsers, system, players, edit }) => {

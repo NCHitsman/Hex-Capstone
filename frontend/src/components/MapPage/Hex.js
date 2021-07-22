@@ -59,7 +59,7 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                             setExtraHovered(true)
                         }
                     }
-                    if (e.buttons) {
+                    if (e.buttons === 1) {
                         hexHandler(e, false)
                     }
                 }}
@@ -68,7 +68,9 @@ const Hex = ({ hexObject, pos, x, y, hexClickHandler, action }) => {
                     setExtraHovered(false)
                 }}
                 onPointerDown={(e) => {
-                    hexHandler(e, true)
+                    if (e.buttons === 1) {
+                        hexHandler(e, true)
+                    }
                 }
                 }
             >

@@ -65,3 +65,13 @@
   padding-left: 7px;
   padding-right: 7px;
 }
+
+.LoadingText.createMapPage{
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+
+.PermError.createMapPage{
+  color: black;
+}

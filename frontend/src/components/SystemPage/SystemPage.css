@@ -116,6 +116,8 @@
   min-width: 20.5%;
   margin-right: 1.5%;
   margin-left: 1.5%;
+  font-family: "Open Sans";
+  font-size: 34px;
 }
 
 .UserFlexCont {
@@ -174,6 +176,8 @@
   color: black;
   font-size: 26px;
   cursor: auto;
+  margin: 6.5px;
+  margin-bottom: 8px;
 }
 
 .InviteUserCreateTeamFormCont {

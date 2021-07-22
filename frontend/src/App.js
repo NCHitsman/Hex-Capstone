@@ -53,7 +53,7 @@ function App() {
               {user && <Route exact path='/system/:systemId/map/:mapId'>
                 <MapPage />
               </Route>}
-              {user && <Route exact path='/createMap'>
+              {user && <Route exact path='/system/:systemId/createMap'>
                 <CreateMap />
               </Route>}
               {user && <Route exact path='/'>

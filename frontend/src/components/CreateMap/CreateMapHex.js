@@ -8,7 +8,6 @@ const CreateMapHex = ({ pos, x, y, hexClickHandler, action }) => {
     const [clicked, setClicked] = useState(false)
     const [hoveredColor, setHoveredColor] = useState('green')
 
-
     return (
         <>
             <mesh
@@ -28,7 +27,7 @@ const CreateMapHex = ({ pos, x, y, hexClickHandler, action }) => {
                                 setHoveredColor('green')
                             }
                     }
-                    if (e.buttons) {
+                    if (e.buttons === 1) {
                         switch (action.type) {  // * ACTION TYPE SWITCH FOR SETTING BASE COLOR AND CLICKED
                             case ('[RMV]'):
                                 setColor('#1C1C1C')
@@ -44,17 +43,19 @@ const CreateMapHex = ({ pos, x, y, hexClickHandler, action }) => {
                 onPointerOut={() => {
                     setHover(false)
                 }}
-                onPointerDown={() => {
-                    switch (action.type) {  // * ACTION TYPE SWITCH FOR SETTING BASE COLOR AND CLICKED
-                        case ('[RMV]'):
-                            setColor('#1C1C1C')
-                            setClicked(false)
-                            break
-                        default:
-                            setColor('white')
-                            setClicked(true)
+                onPointerDown={(e) => {
+                    if (e.buttons === 1) {
+                        switch (action.type) {  // * ACTION TYPE SWITCH FOR SETTING BASE COLOR AND CLICKED
+                            case ('[RMV]'):
+                                setColor('#1C1C1C')
+                                setClicked(false)
+                                break
+                            default:
+                                setColor('white')
+                                setClicked(true)
+                        }
+                        hexClickHandler(x, y)
                     }
-                    hexClickHandler(x, y)
                 }}
             >
                 <cylinderBufferGeometry attach='geometry' args={[0.92, 0.92, 0.001, 6]} />

@@ -1,11 +1,10 @@
 /* TODO Add site wide styles */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Staatliches&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Staatliches&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
 .card {
   background-color: #14213d;
@@ -36,7 +35,12 @@ body {
 .mapcanvas {
   max-width: 100%;
   min-height: 800px;
-  background-color: #045676;
+  background-image: linear-gradient(
+    #0189b3,
+    #00799e,
+    #7441c5,
+    #a041c5
+  );
   border-radius: 5px;
 }
 
@@ -80,23 +84,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 ::-webkit-scrollbar {
-    width: 1em;
+  width: 1em;
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    border-radius: 5px;
+  background-color: darkgrey;
+  border-radius: 5px;
 }
 
-.gif{
+.gif {
   max-width: 1274.66666667px;
   max-height: 615.333333333;
   border: 2px solid black;
