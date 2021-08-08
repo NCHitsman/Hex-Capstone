@@ -11,8 +11,6 @@ import LogInSignUpFormPage from "./components/LogInSignUpFormPage";
 import Splashpage from './components/Splashpage'
 import About from "./components/About";
 import UnderConstruction from "./components/UnderConstruction";
-import HowToPlay from "./components/HowToPlay";
-import Features from "./components/Features";
 
 function App() {
   const dispatch = useDispatch();
