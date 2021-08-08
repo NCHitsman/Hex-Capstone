@@ -11,6 +11,7 @@ import LogInSignUpFormPage from "./components/LogInSignUpFormPage";
 import Splashpage from './components/Splashpage'
 import About from "./components/About";
 import UnderConstruction from "./components/UnderConstruction";
+import HowToPlay from "./components/HowToPlay";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
               </Route>
               <Route exact path='/features'>
                 <UnderConstruction />
+              </Route>
+              <Route exact path='/howToPlay'>
+                <HowToPlay />
               </Route>
               <Route exact path='/mapGallery'>
                 <UnderConstruction />
