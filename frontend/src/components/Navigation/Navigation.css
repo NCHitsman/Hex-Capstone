@@ -25,7 +25,7 @@
   text-decoration: none;
   cursor: pointer;
   font-family: Staatliches;
-  font-size: 32px;
+  font-size: 2em;
 }
 
 .NavLink.UnderConstruction:hover {

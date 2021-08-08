@@ -50,38 +50,38 @@
   margin-bottom: 2.5%;
 }
 
-.SplashPageTitle{
-    font-size: 2.6em;
-    font-family: Staatliches;
-    border-bottom: 1px solid black;
+.SplashPageTitle {
+  font-size: 2.6em;
+  font-family: Staatliches;
+  border-bottom: 1px solid black;
 }
 
-.SplashPageDetail{
-    font-size: 28px;
-    font-family: Staatliches;
+.SplashPageDetail {
+  font-size: 1.75em;
+  font-family: Staatliches;
 }
 
-.SplashPageText{
-    font-size: 22px;
-    font-family: "Open Sans";
-    margin-top: 5%;
-    max-width: 70%;
-    text-align: center;
-    background-color: #14213d;
-    padding: 2%;
-    border-radius: 5px;
-    color: white;
-    padding: 2.5%;
+.SplashPageText {
+  font-size: 1.375em;
+  font-family: "Open Sans";
+  margin-top: 5%;
+  max-width: 70%;
+  text-align: center;
+  background-color: #14213d;
+  padding: 2%;
+  border-radius: 5px;
+  color: white;
+  padding: 2.5%;
 }
 
-.SplashPageTextContLeft{
-    min-width: 100%;
-    display: flex;
-    justify-content: flex-start;
+.SplashPageTextContLeft {
+  min-width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.SplashPageTextContRight{
-    min-width: 100%;
-    display: flex;
-    justify-content: flex-end;
+.SplashPageTextContRight {
+  min-width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
