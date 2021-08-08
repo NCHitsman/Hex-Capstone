@@ -20,7 +20,7 @@
   /* overflow: auto; */
   /* margin-bottom: 1%; */
   /* margin-right: 3%; */
-  max-height: 820px;
+  max-height: 87.5vh;
   /* margin-top: 1%; */
 }
 
@@ -36,8 +36,8 @@
 .SplashPageTextCont {
   min-width: 26%;
   max-width: 26%;
-  min-height: 787px;
-  max-height: 787px;
+  min-height: 84vh;
+  max-height: 84vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -51,7 +51,7 @@
 }
 
 .SplashPageTitle{
-    font-size: 42px;
+    font-size: 2.6em;
     font-family: Staatliches;
     border-bottom: 1px solid black;
 }
