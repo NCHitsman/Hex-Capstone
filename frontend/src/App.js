@@ -38,10 +38,7 @@ function App() {
                 <LogInSignUpFormPage page={'login'} />
               </Route>
               <Route exact path='/features'>
-                <Features />
-              </Route>
-              <Route exact path='/howToPlay'>
-                <HowToPlay />
+                <UnderConstruction />
               </Route>
               <Route exact path='/mapGallery'>
                 <UnderConstruction />
