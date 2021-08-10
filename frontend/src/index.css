@@ -6,6 +6,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
+:root {
+  font-size: 0.8vw;
+}
+
 .card {
   background-color: #14213d;
   max-width: 94%;
@@ -19,7 +23,7 @@
   border: 1px solid black;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 36px;
+  font-size: 2.25rem;
   color: #e5e5e5;
 }
 
@@ -34,7 +38,7 @@ body {
 
 .mapcanvas {
   max-width: 100%;
-  min-height: 800px;
+  min-height: 85.378vh;
   background-image: linear-gradient(
     #0189b3,
     #00799e,
@@ -60,13 +64,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 840px;
+  height: 89.64vh;
   position: relative;
 }
 
 .BackgroundImage {
-  height: 1080px;
-  width: 1920px;
+  height: 115.2614727854856vh;
+  width: 100vw;
   position: fixed;
   top: 0em;
   left: 0.03em;
@@ -75,12 +79,12 @@ body {
 
 .LoadingText {
   font-family: Staatliches;
-  font-size: 500px;
+  font-size: 31.25rem;
   text-align: center;
 }
 
 .LoadingTextCont {
-  min-height: calc(100vh - 50px - 75px);
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;

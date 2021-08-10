@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  min-height: 800px;
+  min-height: 85.37vh;
   align-items: center;
 }
 
@@ -10,8 +10,8 @@
   background-color: #e5e5e5;
   max-width: 28%;
   min-width: 28%;
-  max-height: 800px;
-  border: 15px double #fca311;
+  max-height: 85.37vh;
+  border: 1.6vh double #fca311;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -20,21 +20,21 @@
 }
 
 .ParentSwitchButtonCont {
-  min-height: 100px;
-  width: 350px;
+  min-height: 10.67vh;
+  width: 18.229vw;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10%;
-  border-radius: 50px;
+  border-radius: 5.336vh;
 }
 
 .ParentSwitchButtonContLeft {
-  width: 175px;
-  height: 100px;
+  width: 9.11vw;
+  height: 10.67vh;
   background-color: #14213d;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
+  border-top-left-radius: 5.336vh;
+  border-bottom-left-radius: 5.336vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,11 +42,11 @@
 }
 
 .ParentSwitchButtonContRight {
-  width: 175px;
-  height: 100px;
+  width: 9.11vw;
+  height: 10.67vh;
   background-color: #14213d;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+  border-top-right-radius: 5.336vh;
+  border-bottom-right-radius: 5.336vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,9 +64,9 @@
 
 .ParentSwitchButton {
   font-family: Staatliches;
-  font-size: 46px;
-  margin-right: 20px;
-  margin-left: 20px;
+  font-size: 2.875rem;
+  margin-right: 1.04vw;
+  margin-left: 1.04vw;
   color: white;
   cursor: pointer;
 }
@@ -83,7 +83,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  min-height: 600px;
+  min-height: 64.03vh;
   align-items: center;
   width: 100%;
 }
@@ -91,19 +91,19 @@
 .FormLabel {
   color: black;
   font-family: "Open Sans";
-  font-size: 20px;
+  font-size: 1.25rem;
   max-width: 90%;
 }
 
 .FormInput {
   margin-left: 15px;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "Open Sans";
   border-radius: 5px;
 }
 
 .FormButton {
-  font-size: 28px;
+  font-size: 1.75rem;
   color: black;
   background-color: white;
   border-radius: 5px;
@@ -119,7 +119,7 @@
 }
 
 .FormErrors {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "Open Sans";
   color: red;
   max-width: 80%;

@@ -7,8 +7,8 @@
 
 .SystemPageParentCont {
   background-color: #e5e5e5;
-  max-height: 800px;
-  min-height: 800px;
+  max-height: 85.37vh;
+  min-height: 85.37vh;
   margin-top: 15px;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
   min-width: 90%;
   border-radius: 10px;
   border: 15px double #fca311;
-  margin-bottom: 7px;
+  margin-bottom: 15px;
 }
 
 .MapCardCont {
@@ -32,7 +32,7 @@
 .MapCardTilte {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 48px;
+  font-size: 3rem;
   font-family: Staatliches;
 }
 
@@ -53,7 +53,7 @@
 
 .MapCardTitleEditButton {
   font-family: "Open Sans";
-  font-size: 24px;
+  font-size: 1.5rem;
   border-radius: 5px;
   padding-right: 3%;
   padding-left: 3%;
@@ -70,7 +70,7 @@
 
 .MapCardCreateNewWorldButton {
   font-family: "Open Sans";
-  font-size: 24px;
+  font-size: 1.5rem;
   border-radius: 5px;
   padding-right: 3%;
   padding-left: 3%;
@@ -107,8 +107,8 @@
   border-radius: 5px;
   border: 1px solid black;
   box-shadow: 2px 2px 10px gray;
-  min-height: 110px;
-  max-height: 110px;
+  min-height: 11.74vh;
+  max-height: 11.74vh;
 }
 
 .card.mapCard {
@@ -117,7 +117,7 @@
   margin-right: 1.5%;
   margin-left: 1.5%;
   font-family: "Open Sans";
-  font-size: 34px;
+  font-size: 2.125rem;
 }
 
 .UserFlexCont {
@@ -134,7 +134,7 @@
 
 .SystemUsersTitle {
   margin-bottom: 10px;
-  font-size: 48px;
+  font-size: 3rem;
   font-family: Staatliches;
   min-width: 100%;
   max-height: 10%;
@@ -164,7 +164,7 @@
 
 .SystemUserRemoveButton {
   font-family: "Open Sans";
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   padding-left: 7px;
   padding-right: 7px;
@@ -174,7 +174,7 @@
   max-width: 45%;
   min-width: 45%;
   color: black;
-  font-size: 26px;
+  font-size: 1.625rem;
   cursor: auto;
   margin: 6.5px;
   margin-bottom: 8px;
@@ -188,30 +188,30 @@
 }
 
 .InviteUserCreateTeamFormTitle {
-  font-size: 36px;
+  font-size: 2.25rem;
   font-family: Staatliches;
 }
 
 .InviteUserCreateTeamFormInput {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: "Open Sans";
   border-radius: 5px;
 }
 
 .InviteUserCreateTeamFormSelect {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: "Open Sans";
   border-radius: 5px;
 }
 
 .InviteUserCreateTeamFormButton {
-  font-size: 26px;
+  font-size: 1.625rem;
   border-radius: 5px;
   font-family: Staatliches;
 }
 
 .InviteUserCreateTeamFormError {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "Open Sans";
 }
 
@@ -226,7 +226,7 @@
 
 .TeamTitle {
   margin-bottom: 10px;
-  font-size: 48px;
+  font-size: 3rem;
   font-family: Staatliches;
   min-width: 100%;
   max-height: 10%;
@@ -266,14 +266,14 @@
 }
 
 .TeamCardName {
-  font-size: 30px;
+  font-size: 1.875rem;
   font-family: "Open Sans";
   border-bottom: 2px solid black;
   min-width: 75%;
 }
 
 .TeamCardFaction {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "Open Sans";
   border-bottom: 1px solid black;
   margin-bottom: 3px;
@@ -281,7 +281,7 @@
 
 .TeamEditButton {
   font-family: "Open Sans";
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   padding-left: 7px;
   padding-right: 7px;
@@ -290,12 +290,12 @@
 .TeamCardRemoveUserButton {
   cursor: pointer;
   color: red;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: "Open Sans";
 }
 
 .TeamCardPlayerName {
-  font-size: 22px;
+  font-size: 1.375rem;
   display: flex;
   justify-content: space-between;
 }
@@ -310,24 +310,24 @@
 
 .TeamOptionsUserSelect {
   font-family: "Open Sans";
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .TeamOptionsRoleSelect {
   font-family: "Open Sans";
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .TeamOptionsSubmit {
   font-family: "Open Sans";
-  font-size: 16px;
+  font-size: 1;
 }
 
 .TeamCardDelete {
   margin-top: 5%;
   border-bottom: 2px solid black;
   min-width: 25%;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .TeamCardPlayerNameCont{
@@ -343,7 +343,7 @@
 
 .PermError{
   font-family: Staatliches;
-  font-size: 200px;
+  font-size: 12.5rem;
   text-align: center;
   color: #fca311;
 }

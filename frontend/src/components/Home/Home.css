@@ -7,8 +7,8 @@
 
 .SystemCardParentCont {
   background-color: #e5e5e5;
-  max-height: 800px;
-  min-height: 800px;
+  max-height: 85.37886872998932vh;
+  min-height: 85.37886872998932vh;
   margin-top: 15px;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   max-width: 80%;
   min-width: 80%;
   border-radius: 10px;
-  border: 15px double #fca311;
+  border: 1.6vh double #fca311;
   margin-bottom: 7px;
 }
 
@@ -33,7 +33,7 @@
 .SystemCardContTitle {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 48px;
+  font-size: 3rem;
   font-family: Staatliches;
 }
 
@@ -72,18 +72,18 @@
 }
 
 .NewSystemFormTitle {
-  font-size: 48px;
+  font-size: 3rem;
   font-family: Staatliches;
 }
 
 .NewSystemFormInput {
-  font-size: 26px;
+  font-size: 1.625rem;
   font-family: "Open Sans";
   border-radius: 5px;
 }
 
 .NewSystemFormButton {
-  font-size: 36px;
+  font-size: 2.25rem;
   border-radius: 5px;
   font-family: Staatliches;
 }
@@ -96,7 +96,7 @@
 
 .SystemCardContTitleEditButton {
   font-family: "Open Sans";
-  font-size: 24px;
+  font-size: 1.5rem;
   border-radius: 5px;
   padding-right: 3%;
   padding-left: 3%;
@@ -114,6 +114,6 @@
 
 .SystemCardButton {
   font-family: "Open Sans";
-  font-size: 18px;
+  font-size: 1.125rem;
   cursor: pointer;
 }

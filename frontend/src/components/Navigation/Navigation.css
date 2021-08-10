@@ -42,22 +42,22 @@
   align-items: center;
   /* background-color: red; */
   border-right: 2px solid gray;
-  padding-right: 60px;
-  padding-left: 60px;
+  padding-right: 3.125vw;
+  padding-left: 3.125vw;
 }
 
 .NavLinkCont.Features{
   border-left: 2px solid gray;
-  padding-left: 60px;
+  padding-left: 3.125vw;
 }
 
 
 .HomeLink {
-  font-size: 45px;
+  font-size: 2.813rem;
   text-decoration: none;
   color: #E5E5E5;
-  margin-left: 25px;
-  margin-right: 60px;
+  margin-left: 1.3vw;
+  margin-right: 3.125vw;
   font-family: Staatliches;
 }
 
@@ -66,8 +66,8 @@
 }
 
 .LogOutSignUpButton {
-  margin-right: 40px;
-  font-size: 24px;
+  margin-right: 2.08vw;
+  font-size: 1.5rem;
   color: black;
   background-color: #E5E5E5;
   border-radius: 5px;
@@ -91,7 +91,7 @@
 }
 
 .WelcomeText {
-  font-size: 30px;
+  font-size: 1.875rem;
   font-family: Cairo;
   color: lightgreen;
   overflow: hidden;
