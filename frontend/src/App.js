@@ -11,6 +11,7 @@ import LogInSignUpFormPage from "./components/LogInSignUpFormPage";
 import Splashpage from './components/Splashpage'
 import About from "./components/About";
 import UnderConstruction from "./components/UnderConstruction";
+import Features from "./components/Features";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function App() {
                 <LogInSignUpFormPage page={'login'} />
               </Route>
               <Route exact path='/features'>
-                <UnderConstruction />
+                <Features />
               </Route>
               <Route exact path='/mapGallery'>
                 <UnderConstruction />
