@@ -1,20 +1,25 @@
 .FeaturesParentCont{
-    background-color: red;
+    background-color: rgba(0,0,0,0.7);
     width: 100%;
-    height: 92vh;
+    height: 92.44vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 2vh;
+    margin-top: 1.8vh;
 }
 
 .FeaturesSubCont{
-    background-color: lightblue;
-    width: 98%;
+    /* background-color: lightblue; */
+    width: 100%;
     height: 45vh;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+}
+
+.FeaturesSubCont.Bot{
+    align-items: flex-end;
 }
 
 .FeaturesSubCont.Top{
@@ -30,7 +35,22 @@
     min-width: 37%;
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+.FeaturesGifCont.Top{
+    align-items: flex-start;
+}
+
+.FeaturesGifCont.Top.BottomLeft{
+    height: 46vh;
+}
+
+.FeaturesGifCont.Bot{
+    align-items: flex-end;
+}
+
+.FeaturesGifCont.Bot.TopRight{
+    height: 47vh;
 }
 
 .FeaturesGif{
@@ -38,4 +58,47 @@
     height: 324px;
     border: solid 3px black;
     border-radius: 15px;
+}
+
+.FeatureParentTextCont{
+    height: 46vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.FeatureParentTextCont.Bot{
+    margin-bottom: 1vh;
+}
+
+.FeaturesTextCont{
+    height: 20vh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.FeaturesTextCont.Left{
+    text-align: start;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.FeaturesTextCont.Right{
+    text-align: end;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.FeaturesTitle{
+    font-size: 2.1875vw;
+    font-family: 'Open Sans';
+    color: white;
+}
+
+.FeaturesText{
+    font-size: 1.04vw;
+    font-family: 'Open Sans';
+    color: white;
 }
