@@ -61,7 +61,7 @@
 }
 
 .FeatureParentTextCont{
-    height: 46vh;
+    height: 45.5vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -95,6 +95,7 @@
     font-size: 2.1875vw;
     font-family: 'Open Sans';
     color: white;
+    text-decoration: underline;
 }
 
 .FeaturesText{

@@ -19,11 +19,11 @@ const Features = () => {
                     <div className='FeatureParentTextCont'>
                         <div className='FeaturesTextCont Left'>
                             <div className='FeaturesTitle'>Create Games</div>
-                            <div className='FeaturesText'>Create a System to be the home for your Planetary Empires Campaign. Each System will hold all of your maps, players, and teams. </div>
+                            <div className='FeaturesText'>Create a System to be the home for your Planetary Empires Campaign. Each System will hold all of your maps, players, and teams. Create a team for each Faction you plan on having in your game. Now lets create some Planets and Moons to play on!</div>
                         </div>
                         <div className='FeaturesTextCont Right'>
                             <div className='FeaturesTitle'>Make Your Own Maps</div>
-                            <div className='FeaturesText'>Using the map creator, you can draw out hexigonal maps to use within your Campaign.</div>
+                            <div className='FeaturesText'>Using the map creator, you can draw out hexagonal maps to use within your Campaign. Once you have the base outline you like, hit 'Create Map' and it will take you to the new Map page. Once there you can add territory control for your teams, as well as game objects.</div>
                         </div>
                     </div>
                     <div className='FeaturesGifCont TopRight Bot'>
@@ -37,11 +37,11 @@ const Features = () => {
                     <div className='FeatureParentTextCont Bot'>
                         <div className='FeaturesTextCont Left'>
                             <div className='FeaturesTitle'>Invite Your Players</div>
-                            <div className='FeaturesText'></div>
+                            <div className='FeaturesText'>Once your players create accounts, you can invite them using their username, and add them to your teams! Make them either players or Captains, who are able to edit the map for their team.</div>
                         </div>
                         <div className='FeaturesTextCont Right'>
                             <div className='FeaturesTitle'>Play the Game</div>
-                            <div className='FeaturesText'></div>
+                            <div className='FeaturesText'>Now that you have your System, Maps, Players, and Captains, it is time to play games of Warhammer 40k to fight over territory! Use the points you obtain to build Command Bastions, Power Stations, Shield Generators, and Manufactorums. Keep track of everything you need to run a successful Planetary Empires Campaign!</div>
                         </div>
                     </div>
                     <div className='FeaturesGifCont Bot'>
