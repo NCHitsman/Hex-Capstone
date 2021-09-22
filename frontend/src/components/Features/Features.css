@@ -11,7 +11,7 @@
 
 .FeaturesSubCont{
     background-color: lightblue;
-    width: 49%;
+    width: 98%;
     height: 45vh;
     display: flex;
     justify-content: center;
@@ -26,6 +26,6 @@
 }
 
 .FeaturesGif{
-    width: 478px;
-    height: 230.75px;
+    width: 637px;
+    height: 307px;
 }
