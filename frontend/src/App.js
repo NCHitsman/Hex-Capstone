@@ -11,7 +11,6 @@ import LogInSignUpFormPage from "./components/LogInSignUpFormPage";
 import Splashpage from './components/Splashpage'
 import About from "./components/About";
 import UnderConstruction from "./components/UnderConstruction";
-import { GreaterStencilFunc } from "three";
 
 function App() {
   const dispatch = useDispatch();

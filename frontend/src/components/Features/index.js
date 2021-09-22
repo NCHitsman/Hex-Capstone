@@ -1,5 +1,6 @@
 import gif from '../../images/example.gif'
 import './Features.css'
+import backgroundImage from '../../images/headshot.jpg'
 
 const FeatureCard = () => {
     return (
@@ -18,6 +19,10 @@ const FeatureCard = () => {
             <div>
 
             </div>
+            <img
+            className='BackgroundImage'
+            src={backgroundImage}
+            alt='' />
         </div>
     )
 }
