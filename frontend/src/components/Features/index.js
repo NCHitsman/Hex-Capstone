@@ -13,7 +13,9 @@ const Features = () => {
         <>
             <div className='FeaturesParentCont'>
                 <div className='FeaturesSubCont'>
-                    <img className='FeaturesGif Top' src={gif} />
+                    <div className='FeaturesGifCont'>
+                        <img className='FeaturesGif Top' src={gif} />
+                    </div>
                     <div>
                         <div>
                             <div>Title</div>
@@ -24,7 +26,9 @@ const Features = () => {
                             </div>
                         </div>
                     </div>
-                    <img className='FeaturesGif' src={gif} />
+                    <div className='FeaturesGifCont'>
+                        <img className='FeaturesGif' src={gif} />
+                    </div>
                 </div>
                 {/* <div className='FeaturesSubCont Bottom'>
                 </div> */}
@@ -33,15 +37,17 @@ const Features = () => {
                         <div>Title</div>
                         <div>Esse duis reprehenderit ullamco esse eu commodo id ut pariatur non irure ea. Elit et consequat nostrud nisi amet elit fugiat id fugiat aliquip.Ea laborum elit Lorem dolore magna pariatur fugiat non non aliqua sunt veniam ad.Sint ex quis proident voluptate quis velit.</div>
                     </div>
-                    <img className='FeaturesGif' src={gif} />
+                    <div className='FeaturesGifCont'>
+                        <img className='FeaturesGif' src={gif} />
+                    </div>
                 </div>
-                <div className='FeaturesSubCont Bottom'>
+                {/* <div className='FeaturesSubCont Bottom'>
                     <img className='FeaturesGif' src={gif} />
                     <div>
                         <div>Title</div>
                         <div>Esse duis reprehenderit ullamco esse eu commodo id ut pariatur non irure ea. Elit et consequat nostrud nisi amet elit fugiat id fugiat aliquip.Ea laborum elit Lorem dolore magna pariatur fugiat non non aliqua sunt veniam ad.Sint ex quis proident voluptate quis velit.</div>
                     </div>
-                </div>
+                </div> */}
             </div>
             <img
                 className='BackgroundImage'

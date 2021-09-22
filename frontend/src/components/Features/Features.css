@@ -25,7 +25,17 @@
     align-items: flex-end;
 }
 
+.FeaturesGifCont{
+    height: 45vh;
+    min-width: 37%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .FeaturesGif{
-    width: 637px;
-    height: 307px;
+    width: 670px;
+    height: 324px;
+    border: solid 3px black;
+    border-radius: 15px;
 }
