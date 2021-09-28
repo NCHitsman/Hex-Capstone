@@ -23,7 +23,7 @@ const Features = () => {
                         </div>
                         <div className='FeaturesTextCont Right'>
                             <div className='FeaturesTitle'>Make Your Own Maps</div>
-                            <div className='FeaturesText'>Using the map creator, you can draw out hexagonal maps to use within your Campaign. Once you have the base outline you like, hit 'Create Map' and it will take you to the new Map page. Once there you can add territory control for your teams, as well as game objects.</div>
+                            <div className='FeaturesText'>Using the map creator, you can draw out hexagonal maps to use within your Campaign. Once you have the base outline you like, hit 'Create Map' and it will take you to the new Map page.</div>
                         </div>
                     </div>
                     <div className='FeaturesGifCont TopRight Bot'>
@@ -41,7 +41,7 @@ const Features = () => {
                         </div>
                         <div className='FeaturesTextCont Right'>
                             <div className='FeaturesTitle'>Play the Game</div>
-                            <div className='FeaturesText'>Now that you have your System, Maps, Players, and Captains, it is time to play games of Warhammer 40k to fight over territory! Use the points you obtain to build Command Bastions, Power Stations, Shield Generators, and Manufactorums. Keep track of everything you need to run a successful Planetary Empires Campaign!</div>
+                            <div className='FeaturesText'>It is time to play games of Warhammer 40k to fight over territory! Use the points you obtain to build Command Bastions, Power Stations, Shield Generators, and Manufactorums. Keep track of everything you need to run a successful Planetary Empires Campaign!</div>
                         </div>
                     </div>
                     <div className='FeaturesGifCont Bot'>
