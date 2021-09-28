@@ -2,12 +2,6 @@ import gif from '../../images/example.gif'
 import './Features.css'
 import backgroundImage from '../../images/headshot.jpg'
 
-// const FeatureCard = () => {
-//     return (
-
-//     )
-// }
-
 const Features = () => {
     return (
         <>
