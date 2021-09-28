@@ -12,7 +12,7 @@ import Splashpage from './components/Splashpage'
 import About from "./components/About";
 import UnderConstruction from "./components/UnderConstruction";
 import Features from "./components/Features";
-import MapGallery from "./components/Map Gallery";
+import MapGallery from "./components/MapGallery";
 
 function App() {
   const dispatch = useDispatch();
