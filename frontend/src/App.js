@@ -12,6 +12,7 @@ import Splashpage from './components/Splashpage'
 import About from "./components/About";
 import UnderConstruction from "./components/UnderConstruction";
 import Features from "./components/Features";
+import MapGallery from "./components/Map Gallery";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function App() {
                 <Features />
               </Route>
               <Route exact path='/mapGallery'>
-                <UnderConstruction />
+                <MapGallery />
               </Route>
               <Route exact path='/about'>
                 <About />
