@@ -1,4 +1,4 @@
-
+import './MapGallery.css'
 
 const MapGallery = () => {
 
