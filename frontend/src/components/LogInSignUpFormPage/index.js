@@ -12,9 +12,11 @@ const LogInSignUpFormPage = ({ page }) => {
     useEffect(() => {
         if (page === 'signup') {
             setSignUpActive(true)
+            setCurrentPage('signup')
             setLogInActive(false)
         } else {
             setLogInActive(true)
+            setCurrentPage('login')
             setSignUpActive(false)
         }
     }, [page])
@@ -29,22 +31,11 @@ const LogInSignUpFormPage = ({ page }) => {
                 <div className='ParentSwitchButtonCont'>
                     <div
                         onClick={() => {
-                            setCurrentPage('signup')
-                            setSignUpActive(true)
-                            setLogInActive(false)
-                        }}
-                        className={signUpActive ? 'ParentSwitchButtonContLeft active' : 'ParentSwitchButtonContLeft'}>
-                        <div
-                            className={signUpActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
-                        >SIGN UP</div>
-                    </div>
-                    <div
-                        onClick={() => {
                             setCurrentPage('login')
                             setLogInActive(true)
                             setSignUpActive(false)
                         }}
-                        className={logInActive ? 'ParentSwitchButtonContRight active' : 'ParentSwitchButtonContRight'}>
+                        className={logInActive ? 'ParentSwitchButtonContLeft active' : 'ParentSwitchButtonContLeft'}>
                         <div
                             className={logInActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
                             onClick={() => {
@@ -53,6 +44,17 @@ const LogInSignUpFormPage = ({ page }) => {
                                 setSignUpActive(false)
                             }}
                         >Log In</div>
+                    </div>
+                    <div
+                        onClick={() => {
+                            setCurrentPage('signup')
+                            setSignUpActive(true)
+                            setLogInActive(false)
+                        }}
+                        className={signUpActive ? 'ParentSwitchButtonContRight active' : 'ParentSwitchButtonContRight'}>
+                        <div
+                            className={signUpActive ? 'ParentSwitchButton active' : 'ParentSwitchButton'}
+                        >SIGN UP</div>
                     </div>
                 </div>
                 {currentPage === 'login' ?

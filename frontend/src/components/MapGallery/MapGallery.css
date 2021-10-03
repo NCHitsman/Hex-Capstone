@@ -1,0 +1,15 @@
+@import "react-alice-carousel/lib/alice-carousel.css";
+
+.GalleryImg{
+    max-width: 1550px;
+    max-height: 750px;
+}
+
+.CarouselHolder{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+}
