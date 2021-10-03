@@ -5,14 +5,20 @@ import map1 from '../../images/map1.PNG'
 import map2 from '../../images/map2.PNG'
 import map3 from '../../images/map3.PNG'
 import './MapGallery.css'
-import backgroundImage from '../../images/factory.jpg'
+import backgroundImage from '../../images/eddy-gonzalez-davila-kasrkins.jpg'
 
 const handleDragStart = (e) => e.preventDefault();
 
 const items = [
-    <img className='GalleryImg' alt='MapExampleImg' src={map1} onDragStart={handleDragStart} />,
-    <img className='GalleryImg' alt='MapExampleImg' src={map2} onDragStart={handleDragStart} />,
-    <img className='GalleryImg' alt='MapExampleImg' src={map3} onDragStart={handleDragStart} />,
+    <div className='GalleryImg'>
+        <img className='MapExampleImg' alt='MapExampleImg' src={map1} onDragStart={handleDragStart} />
+    </div>,
+    <div className='GalleryImg'>
+        <img className='MapExampleImg' alt='MapExampleImg' src={map2} onDragStart={handleDragStart} />
+    </div>,
+    <div className='GalleryImg'>
+        <img className='MapExampleImg' alt='MapExampleImg' src={map3} onDragStart={handleDragStart} />
+    </div>,
 ];
 
 const MapGallery = () => {
@@ -24,7 +30,7 @@ const MapGallery = () => {
             <img
                 className='BackgroundImage'
                 src={backgroundImage}
-                alt='Warzone Orkz 1© by Sergei Panin; https://www.artstation.com/artwork/W2wbOQ' />
+                alt='Kasrkin© by Eddy González Dávila; https://www.artstation.com/artwork/rAnEP6' />
         </>
     );
 }
