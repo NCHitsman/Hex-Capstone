@@ -26,6 +26,7 @@ const LogInSignUpFormPage = ({ page }) => {
             <img
                 className='BackgroundImage'
                 src={formSideImage}
+                loading='eager'
                 alt='Mars, Cradle of the Mechanicum - Warhammer 40,000© by Joacim Holm; https://www.artstation.com/artwork/WKd69G' />
             <div className='ParentFormCont'>
                 <div className='ParentSwitchButtonCont'>

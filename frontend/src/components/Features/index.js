@@ -49,6 +49,7 @@ const Features = () => {
             <img
                 className='BackgroundImage'
                 src={backgroundImage}
+                loading='eager'
                 alt='Unnamed by Games Workshop; https://www.warhammer-community.com/2019/10/16/space-marines-preview-the-imperial-fistsgw-homepage-post-1/#gallery-1' />
         </>
     )

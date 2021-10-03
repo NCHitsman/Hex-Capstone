@@ -14,6 +14,7 @@ const UnderConstruction = () => {
             <img
                 className='BackgroundImage'
                 src={backgroundImage}
+                loading='eager'
                 alt='Warzone Orkz 1© by Sergei Panin; https://www.artstation.com/artwork/W2wbOQ' />
         </div>
     )

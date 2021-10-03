@@ -21,6 +21,23 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  useEffect(() => {
+    let i1 = new Image()
+    i1.src = '../../images/overlook.jpg'
+    let i2 = new Image()
+    i2.src = '../../images/SpaceMarines.png'
+    let i3 = new Image()
+    i3.src = '../../images/headshot.jpg'
+    let i4 = new Image()
+    i4.src = '../../images/shipoutofwarpbackground.png'
+    let i5 = new Image()
+    i5.src = '../../images/eddy-gonzalez-davila-kasrkins.jpg'
+    let i6 = new Image()
+    i6.src = '../../images/orkattack.png'
+    let i7 = new Image()
+    i7.src = '../../images/shipwarp2background.png'
+  }, [])
+
   const user = useSelector(state => state.session.user)
 
   return (

@@ -23,7 +23,7 @@ const CreateMap = memo(({ system, user, level }) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setLoaded(true)
-        }, 1000)
+        }, 600)
         return () => {
             clearTimeout(timeout)
         }
@@ -162,6 +162,7 @@ const CreateMap = memo(({ system, user, level }) => {
             <img
                 className='BackgroundImage'
                 src={backgroundImage}
+                loading='eager'
                 alt='THE CRUSADE FLEETS© by Phil Moss; https://www.artstation.com/phil-moss' />
         </div>
     )

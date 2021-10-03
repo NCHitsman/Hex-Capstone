@@ -28,7 +28,7 @@ const SystemPage = ({ user, maps, systems, teams, level }) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setLoaded(true)
-        }, 1000)
+        }, 600)
         return () => {
             clearTimeout(timeout)
         }
@@ -186,7 +186,7 @@ const SystemPage = ({ user, maps, systems, teams, level }) => {
                     <div className='LoadingText systemPage'>Loading...</div>
                 </div>
             }
-            <img className='BackgroundImage' src={backgroundImage} alt='Warhammer 40K Nebula© by jordi van hees; https://www.artstation.com/artwork/W294dN' />
+            <img className='BackgroundImage' src={backgroundImage} loading='eager' alt='Warhammer 40K Nebula© by jordi van hees; https://www.artstation.com/artwork/W294dN' />
         </div>
     )
 }

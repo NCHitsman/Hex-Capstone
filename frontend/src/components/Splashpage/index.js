@@ -39,6 +39,7 @@ const Splashpage = () => {
             <img
                 className='BackgroundImage'
                 src={backgroundImage}
+                loading='eager'
                 alt='Gather the troops© by Eddy González Dávila; https://www.artstation.com/artwork/OolJ3K' />
         </div>
     )

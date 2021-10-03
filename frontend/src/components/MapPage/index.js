@@ -26,7 +26,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setLoaded(true)
-        }, 1000)
+        }, 600)
         return () => {
             clearTimeout(timeout)
         }
@@ -315,6 +315,7 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
             <img
                 className='BackgroundImage'
                 src={backgroundImage}
+                loading='eager'
                 alt='Warzone Orkz 2© by Sergei Panin; https://www.artstation.com/artwork/W2wbOQ' />
         </>
     )

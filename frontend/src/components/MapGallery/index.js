@@ -37,6 +37,7 @@ const MapGallery = () => {
             <img
                 className='BackgroundImage'
                 src={backgroundImage}
+                loading='eager'
                 alt='Kasrkin© by Eddy González Dávila; https://www.artstation.com/artwork/rAnEP6' />
         </>
     );
