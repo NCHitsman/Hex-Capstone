@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
@@ -6,16 +6,25 @@ import formSideImage from '../../images/formpagemars.png'
 
 const LogInSignUpFormPage = ({ page }) => {
     const [currentPage, setCurrentPage] = useState(page)
-    const [signUpActive, setSignUpActive] = useState(page === 'signup' ? true : false)
-    const [logInActive, setLogInActive] = useState(page === 'login' ? true : false)
+    const [signUpActive, setSignUpActive] = useState(false)
+    const [logInActive, setLogInActive] = useState(false)
 
+    useEffect(() => {
+        if (page === 'signup') {
+            setSignUpActive(true)
+            setLogInActive(false)
+        } else {
+            setLogInActive(true)
+            setSignUpActive(false)
+        }
+    }, [page])
 
     return (
         <div className='PageParentLogInSignUpForm'>
             <img
-            className='BackgroundImage'
-            src={formSideImage}
-            alt='Mars, Cradle of the Mechanicum - Warhammer 40,000© by Joacim Holm; https://www.artstation.com/artwork/WKd69G' />
+                className='BackgroundImage'
+                src={formSideImage}
+                alt='Mars, Cradle of the Mechanicum - Warhammer 40,000© by Joacim Holm; https://www.artstation.com/artwork/WKd69G' />
             <div className='ParentFormCont'>
                 <div className='ParentSwitchButtonCont'>
                     <div
