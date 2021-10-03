@@ -20,12 +20,12 @@ const Features = () => {
                             <div className='FeaturesText'>Using the map creator, you can draw out hexagonal maps to use within your Campaign. Once you have the base outline you like, hit 'Create Map' and it will take you to the new Map page.</div>
                         </div>
                     </div>
-                    <div className='FeaturesGifCont TopRight Bot'>
+                    <div className='FeaturesGifCont Bot'>
                         <img className='FeaturesGif' alt='Example Gif' src={gif} />
                     </div>
                 </div>
                 <div className='FeaturesSubCont Bot'>
-                    <div className='FeaturesGifCont BottomLeft Top'>
+                    <div className='FeaturesGifCont Top'>
                         <img className='FeaturesGif' alt='Example Gif' src={gif} />
                     </div>
                     <div className='FeatureParentTextCont Bot'>

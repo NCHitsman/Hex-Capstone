@@ -40,16 +40,8 @@
     align-items: flex-start;
 }
 
-.FeaturesGifCont.Top.BottomLeft{
-    height: 46vh;
-}
-
 .FeaturesGifCont.Bot{
     align-items: flex-end;
-}
-
-.FeaturesGifCont.Bot.TopRight{
-    height: 47vh;
 }
 
 .FeaturesGif{
@@ -62,13 +54,9 @@
 .FeatureParentTextCont{
     height: 45.5vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-}
-
-.FeatureParentTextCont.Bot{
-    margin-bottom: 1vh;
 }
 
 .FeaturesTextCont{
@@ -91,14 +79,13 @@
 }
 
 .FeaturesTitle{
-    font-size: 2.1875vw;
+    font-size: 2vw;
     font-family: 'Open Sans';
     color: white;
-    text-decoration: underline;
 }
 
 .FeaturesText{
-    font-size: 1.1vw;
+    font-size: 1vw;
     font-family: 'Open Sans';
     color: white;
 }

@@ -10,7 +10,6 @@ import MapPage from "./components/MapPage";
 import LogInSignUpFormPage from "./components/LogInSignUpFormPage";
 import Splashpage from './components/Splashpage'
 import About from "./components/About";
-import UnderConstruction from "./components/UnderConstruction";
 import Features from "./components/Features";
 import MapGallery from "./components/MapGallery";
 
@@ -45,9 +44,6 @@ function App() {
               </Route>
               <Route exact path='/about'>
                 <About />
-              </Route>
-              <Route exact path='/faq'>
-                <UnderConstruction />
               </Route>
               {user && <Route exact path='/system/:systemId'>
                 <SystemPage user={user} />
