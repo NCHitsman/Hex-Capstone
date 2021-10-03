@@ -25,7 +25,14 @@ const MapGallery = () => {
     return (
         <>
             <div className='CarouselHolder'>
-                <AliceCarousel mouseTracking items={items} />
+                <AliceCarousel
+                    autoPlay={true}
+                    autoPlayInterval={1500}
+                    disableButtonsControls={true}
+                    infinite={true}
+                    mouseTracking
+                    items={items}
+                />
             </div>
             <img
                 className='BackgroundImage'
