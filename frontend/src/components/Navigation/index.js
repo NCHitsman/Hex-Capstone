@@ -35,23 +35,25 @@ function Navigation({ isLoaded }) {
         <NavLink className='HomeLink' exact to="/">Planetary Empires</NavLink>
       </div>
       <div className='NavLinkParentCont'>
-        <div className='NavLinkCont Features'>
-          <NavLink
-            className='NavLink UnderConstruction' to='/features'>Features</NavLink>
-        </div>
-        <div className='NavLinkCont'>
+        <div className='NaveLinkParent'>
+          <div className='NavLinkCont Features'>
+            <NavLink
+              className='NavLink' to='/features'>Features</NavLink>
+          </div>
+          {/* <div className='NavLinkCont'>
           <div className='NavLink' onClick={() => window.open('https://img.fireden.net/tg/image/1559/17/1559178030443.pdf')} >How To Play</div>
-        </div>
-        <div className='NavLinkCont'>
-          <NavLink
-            className='NavLink UnderConstruction' to='/mapGallery'>Map Gallery</NavLink>
-        </div>
-        <div className='NavLinkCont'>
-          <NavLink className='NavLink' to='/about'>About Me</NavLink>
-        </div>
-        <div className='NavLinkCont'>
-          {/* <NavLink
-            className='NavLink UnderConstruction' to='/faq'></NavLink> */}
+        </div> */}
+          <div className='NavLinkCont'>
+            <NavLink
+              className='NavLink' to='/mapGallery'>Map Gallery</NavLink>
+          </div>
+          <div className='NavLinkCont'>
+            <NavLink className='NavLink' to='/about'>About Me</NavLink>
+          </div>
+          {/* <div className='NavLinkCont'>
+            <NavLink
+            className='NavLink UnderConstruction' to='/faq'></NavLink>
+          </div> */}
         </div>
       </div>
       {isLoaded && sessionLinks}
