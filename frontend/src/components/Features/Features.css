@@ -51,6 +51,10 @@
     border-radius: 15px;
 }
 
+.FeaturesGif.Left{
+    margin-top: 2vh;
+}
+
 .FeatureParentTextCont{
     height: 45.5vh;
     display: flex;
@@ -85,7 +89,7 @@
 }
 
 .FeaturesText{
-    font-size: 1vw;
+    font-size: 1.05vw;
     font-family: 'Open Sans';
     color: white;
 }

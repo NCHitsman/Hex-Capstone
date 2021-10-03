@@ -8,7 +8,7 @@ const Features = () => {
             <div className='FeaturesParentCont'>
                 <div className='FeaturesSubCont'>
                     <div className='FeaturesGifCont Top'>
-                        <img className='FeaturesGif' alt='Example Gif' src={gif} />
+                        <img className='FeaturesGif Left' alt='Example Gif' src={gif} />
                     </div>
                     <div className='FeatureParentTextCont'>
                         <div className='FeaturesTextCont Left'>
@@ -26,7 +26,7 @@ const Features = () => {
                 </div>
                 <div className='FeaturesSubCont Bot'>
                     <div className='FeaturesGifCont Top'>
-                        <img className='FeaturesGif' alt='Example Gif' src={gif} />
+                        <img className='FeaturesGif Left' alt='Example Gif' src={gif} />
                     </div>
                     <div className='FeatureParentTextCont Bot'>
                         <div className='FeaturesTextCont Left'>
@@ -35,7 +35,7 @@ const Features = () => {
                         </div>
                         <div className='FeaturesTextCont Right'>
                             <div className='FeaturesTitle'>Play the Game</div>
-                            <div className='FeaturesText'>It is time to play games of Warhammer 40k to fight over territory! Use the points you obtain to build Command Bastions, Power Stations, Shield Generators, and Manufactorums. Keep track of everything you need to run a successful Planetary Empires Campaign!</div>
+                            <div className='FeaturesText'>It is time to play games of Warhammer 40k! Use the points you win to build Command Bastions, Power Stations, Shield Generators, and Manufactorums. Keep track of everything you need to run a successful Planetary Empires Campaign!</div>
                         </div>
                     </div>
                     <div className='FeaturesGifCont Bot'>
