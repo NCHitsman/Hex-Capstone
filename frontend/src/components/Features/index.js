@@ -1,4 +1,7 @@
-import gif from '../../images/example.gif'
+import createSystem from '../../images/createSystem.gif'
+import createMap from '../../images/createMap.gif'
+import play from '../../images/Play.gif'
+import invite from '../../images/Invite.gif'
 import './Features.css'
 import backgroundImage from '../../images/headshot.jpg'
 
@@ -8,7 +11,7 @@ const Features = () => {
             <div className='FeaturesParentCont'>
                 <div className='FeaturesSubCont'>
                     <div className='FeaturesGifCont Top'>
-                        <img className='FeaturesGif Left' alt='Example Gif' src={gif} />
+                        <img className='FeaturesGif Left' alt='Example Gif' src={createSystem} />
                     </div>
                     <div className='FeatureParentTextCont'>
                         <div className='FeaturesTextCont Left'>
@@ -21,12 +24,12 @@ const Features = () => {
                         </div>
                     </div>
                     <div className='FeaturesGifCont Bot'>
-                        <img className='FeaturesGif' alt='Example Gif' src={gif} />
+                        <img className='FeaturesGif' alt='Example Gif' src={createMap} />
                     </div>
                 </div>
                 <div className='FeaturesSubCont Bot'>
                     <div className='FeaturesGifCont Top'>
-                        <img className='FeaturesGif Left' alt='Example Gif' src={gif} />
+                        <img className='FeaturesGif Left' alt='Example Gif' src={invite} />
                     </div>
                     <div className='FeatureParentTextCont Bot'>
                         <div className='FeaturesTextCont Left'>
@@ -39,7 +42,7 @@ const Features = () => {
                         </div>
                     </div>
                     <div className='FeaturesGifCont Bot'>
-                        <img className='FeaturesGif' alt='Example Gif' src={gif} />
+                        <img className='FeaturesGif' alt='Example Gif' src={play} />
                     </div>
                 </div>
             </div>
