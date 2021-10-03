@@ -47,11 +47,11 @@ function Navigation({ isLoaded }) {
             className='NavLink UnderConstruction' to='/mapGallery'>Map Gallery</NavLink>
         </div>
         <div className='NavLinkCont'>
-          <NavLink
-            className='NavLink UnderConstruction' to='/faq'>FAQ</NavLink>
+          <NavLink className='NavLink' to='/about'>About Me</NavLink>
         </div>
         <div className='NavLinkCont'>
-          <NavLink className='NavLink' to='/about'>About Me</NavLink>
+          {/* <NavLink
+            className='NavLink UnderConstruction' to='/faq'></NavLink> */}
         </div>
       </div>
       {isLoaded && sessionLinks}
