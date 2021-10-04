@@ -173,7 +173,15 @@ const MapPage = ({ teams, user, players, system, map, permission }) => {
                             </Canvas>
                             <button
                                 className='MapThreeDButton'
-                                onClick={() => threeD ? setThreeD(false) : setThreeD(true)}
+                                onClick={() => {
+                                    if (threeD) {
+                                        setThreeD(false)
+                                        setAction({ type: null, body: {} })
+                                    } else {
+                                        setThreeD(true)
+                                        setAction({ type: null, body: {} })
+                                    }
+                                }}
                             >
                                 {threeD ? 'Change to 2d' : 'Change to 3d'}
                             </button>
